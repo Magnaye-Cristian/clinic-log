@@ -16,30 +16,37 @@ export class TallyLogComponent implements AfterViewInit {
   dataSource: any;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = [];
+  rows = [];
   tableData = [];
   _maxDateOfTheMonth = 0;
+  columns: [];
   constructor() {
     this._maxDateOfTheMonth = this.lastDateOfTheMonth(9, 2021)
-
-    console.log(this._maxDateOfTheMonth)
     this.columnGenerator()
-    this.dataSource = new MatTableDataSource();
+    this.columns = this.rows[0];
+    this.fakeDataGenerator()
+    console.log(this._maxDateOfTheMonth)
+    this.dataSource = new MatTableDataSource(this.rows);
 
   }
   private lastDateOfTheMonth(month: number, year: number): number {
     return new Date(year, month+1, 0).getDate();
   }
   private fakeDataGenerator(): void{
-
+    this.rows[1] = ['ankle', 1]
+    this.rows[2] = ['ankle', 1,3]
+    this.rows[3] = ['ankle', 2,4]
+    this.rows[4] = ['ankle', 8]
   }
   private columnGenerator(): void{
-    this.displayedColumns.push(`Complaints`)
-    for(let i = 1; this._maxDateOfTheMonth >= i   ; i++){
-      this.displayedColumns.push(`${i}`)
+    let header = []
+    header.push('complaints')
+    for(let i = 1; 1 >= i   ; i++){
+      header.push(`${i}`)
     }
-    this.displayedColumns.push(`Total`)
-    console.log(this.displayedColumns)
+    header.push(`Total`)
+    this.rows[0] = header;
+    console.log(this.rows)
   }
 
   ngAfterViewInit(): void {
