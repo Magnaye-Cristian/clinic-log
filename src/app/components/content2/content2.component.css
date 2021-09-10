@@ -1,0 +1,91 @@
+.container {
+  width: 100%;
+  margin: 0%;
+}
+.left {
+  width: 80%;
+  float: left;
+}
+.row {
+  width: 90%;
+  margin: 2% 5%;
+  float: left;
+}
+.column {
+  width: 45%;
+  float: left;
+}
+
+h2 {
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #344767;
+}
+@media screen and (max-width: 780px) {
+  .column, h2 {
+    width: 100%;
+  }
+}
+
+p {
+  width: 70%;
+  line-height: 2;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #7f8fa6;
+}
+@media screen and (max-width: 780px) {
+  p {
+    font-size: 100%;
+    width: 100%;
+  }
+}
+
+mat-icon {
+  color: #fd7e14;
+}
+
+.right{
+  float: right;
+  margin-left: 0%;
+  width: 20%;
+  background-image: url("../../../assets/Untitled.png");
+  border-radius: 10px;
+  height: 500px;
+  text-align: center;
+}
+@media screen and (max-width: 780px) {
+  .right {
+    width: 90%;
+    margin: 5%;
+    float: left;
+  }
+}
+.logo {
+  height: 70px;
+  margin-top: 40%;
+}
+.register {
+  padding: 40px;
+  font-weight: 600;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+@media screen and (max-width: 780px) {
+  .logo {
+    margin-top: 40%;
+  }
+}
+.btn {
+  background-color: white;
+  color: black;
+  padding: 12px 28px;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 20px;
+  border: none;
+}

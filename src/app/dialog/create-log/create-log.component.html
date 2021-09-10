@@ -1,0 +1,11 @@
+<div>
+  <h1>Create Log for:</h1>
+  <ul>
+    <li [class.active]="viewMode == 'stakeholders'"><a (click)="viewMode = 'stakeholders'">University Stakeholders</a></li>
+    <li [class.active]="viewMode == 'others'"><a (click)="viewMode = 'others'">Non-University Personnel</a></li>
+  </ul>
+</div>
+<div [ngSwitch]="viewMode">
+  <div *ngSwitchCase="'stakeholders'" class="forms"><app-create-log-stakeholders></app-create-log-stakeholders></div>
+  <div *ngSwitchCase="'others'" class="forms"><app-create-log-others></app-create-log-others></div>
+</div>

@@ -1,0 +1,49 @@
+<div class="dashboard">
+<div class="number-cards">
+  <ngx-charts-number-card
+    [results]="stakeholders"
+    [cardColor]="cardColor"
+    class="cards">
+  </ngx-charts-number-card>
+</div>
+<div class="container">
+  <div class="chart mat-elevation-z8">
+    <table class="bar-chart">
+        <ngx-charts-bar-vertical
+          [view] = "view"
+          [results]="purpose"
+          [xAxis] = "xAxis"
+          [yAxis] = "yAxis"
+          [showXAxisLabel] = "showXAxisLabel"
+          [showYAxisLabel] = "showYAxisLabel"
+          [legendTitle] = "alegendTitle"
+          [legend] = "legend"
+          [legendPosition] = "right"
+          [showGridLines] = "showGridLines"
+          [showDataLabel] = "showDataLabel">
+        </ngx-charts-bar-vertical>
+    </table>
+  </div>
+
+<div class="chart mat-elevation-z8">
+  <table class="line-chart">
+    <tr>
+      <td>
+        <ngx-charts-line-chart
+          [results]="complaintsMulti"
+          [view] = "view"
+          [xAxis] = "xAxis"
+          [yAxis] = "yAxis"
+          [showXAxisLabel] = "showXAxisLabel"
+          [showYAxisLabel] = "showYAxisLabel"
+          [legendTitle] = "legendTitle"
+          [legend] = "legend"
+          [legendPosition] = "right"
+          [showGridLines] = "showGridLines">
+        </ngx-charts-line-chart>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+</div>

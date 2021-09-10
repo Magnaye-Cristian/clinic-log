@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="logo">
+    <img class="img" src="../../assets/logo.png">
+  </div>
+  <ul>
+    <li [class.active]="viewMode == 'home'"><a (click)="viewMode = 'home'">Home</a></li>
+    <li [class.active]="viewMode == 'about'"><a (click)="viewMode = 'about'">About</a></li>
+  </ul>
+  <div>
+    <div>
+      <a (click)="viewMode = 'register'"><button class="register" [class.active]="viewMode == 'register'">Register</button></a>
+    </div>
+  </div>
+</div>
+<div [ngSwitch]="viewMode">
+  <div *ngSwitchCase="'home'" class="content-1"><app-content1></app-content1></div>
+  <div *ngSwitchCase="'about'" class="content-2"><app-content2></app-content2></div>
+  <div *ngSwitchCase="'register'" class="content-3"><app-register></app-register></div>
+</div>

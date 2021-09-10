@@ -1,0 +1,56 @@
+<div class="content-1">
+  <div class="login-container">
+
+    <h1>Digital Logbook Management</h1>
+    <h1>And Data Visualization</h1>
+    <h3>For Universities and Colleges</h3>
+
+    <form class="login-form" (ngSubmit)="login(loginForm.value)" #loginForm="ngForm">
+      <div class="form-group">
+        <mat-form-field class="form-input">
+          <mat-label>Sr-Code:</mat-label>
+          <input
+          required
+          minlength="8"
+          ngModel
+          name="srcode"
+          #srcode="ngModel"
+          id="srcode"
+          matInput
+          placeholder="Ex. 21-00000">
+        </mat-form-field>
+        <div class="alert alert-danger" *ngIf="srcode.touched && !srcode.valid">
+          <div *ngIf="srcode.errors?.required">Sr-Code is required.</div>
+          <div *ngIf="srcode.errors?.minlength">Name must be {{ srcode.errors?.minlength?.requiredLength }} characters long with "-".</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="form-input">
+          <mat-label>Password:</mat-label>
+          <input
+          required
+          ngModel
+          name="password"
+          #password="ngModel"
+          id="password"
+          type="text"
+          matInput placeholder="Ex. 000xxx">
+        </mat-form-field>
+        <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+          <div *ngIf="password.errors?.required">Password is required.</div>
+        </div>
+      </div>
+      <a routerLink="/head-admin"><button class="button" mat-button type="submit" [disabled]="(!loginForm.valid || disablebutton)">Login</button></a>
+    </form>
+
+
+    <h4>
+      If you're not registered click <a class="link" routerLink="/home">here</a>.
+    </h4>
+  </div>
+
+  <div class="container">
+    <img class="img" src="assets/home.jpg">
+  </div>
+</div>

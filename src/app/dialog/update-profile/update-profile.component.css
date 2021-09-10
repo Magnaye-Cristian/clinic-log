@@ -1,0 +1,62 @@
+
+.info {
+  background-color: white;
+  width: 400px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 1px;
+}
+.info-header {
+  font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
+  font-weight: 400;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.form-group {
+  padding-bottom: 10px;
+}
+label {
+  color: #9a9a9a;
+  font-size: .8571em;
+  margin-bottom: 5px;
+  font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
+}
+input {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #66615b;
+  font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
+  font-size: 14px;
+}
+.btn {
+  width: 100%;
+}
+button {
+  border: none;
+  border-width: 1px;
+  border-radius: 30px;
+  padding-right: 23px;
+  padding-left: 23px;
+}
+.update {
+  background-color: #51cbce;
+  text-transform: uppercase;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35em;
+  padding: 11px 22px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
+}
+@media only screen
+  and (min-device-width : 360px)
+  and (max-device-width : 780px) {
+    .info {
+      width: 90%;
+      float: left;
+      margin-left: 4%;
+    }
+  }

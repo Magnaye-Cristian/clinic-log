@@ -1,0 +1,101 @@
+<div class="container">
+  <h2>Create Account</h2>
+  <form>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+      required
+      ngModel
+      name="name"
+      #name="ngModel"
+      id="name"
+      type="text"
+      class="form-control"
+      placeholder="Ex. Juan Dela Cruz">
+    </div>
+    <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
+      <div *ngIf="name.errors?.required">Name is required.</div>
+    </div>
+    <div class="form-group">
+      <label for="department">University / College:</label>
+      <input
+      required
+      ngModel
+      name="university"
+      #department="ngModel"
+      id="university"
+      type="text"
+      class="form-control"
+      placeholder="Ex. Batangas State University">
+    </div>
+    <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
+      <div *ngIf="name.errors?.required">Department is required.</div>
+    </div>
+    <div class="form-group">
+      <label for="department">Department:</label>
+      <input
+      required
+      ngModel
+      name="department"
+      #department="ngModel"
+      id="department"
+      type="text"
+      class="form-control"
+      placeholder="Ex. CICS">
+    </div>
+    <div class="alert alert-danger" *ngIf="department.touched && !department.valid">
+      <div *ngIf="department.errors?.required">Department is required.</div>
+    </div>
+    <div class="form-group">
+      <label for="program">Program:</label>
+      <input
+      required
+      ngModel
+      name="program"
+      #program="ngModel"
+      id="program"
+      type="text"
+      class="form-control"
+      placeholder="Ex. BS-IT">
+    </div>
+    <div class="alert alert-danger" *ngIf="program.touched && !program.valid">
+      <div *ngIf="program.errors?.required">Program is required.</div>
+    </div>
+    <div class="form-group">
+      <label for="srcode">Sr-Code/ID Number:</label>
+      <input
+      required
+      ngModel
+      name="srcode"
+      #srcode="ngModel"
+      id="srcode"
+      type="text"
+      class="form-control"
+      placeholder="Ex. 18-00000">
+    </div>
+    <div class="alert alert-danger" *ngIf="srcode.touched && !srcode.valid">
+      <div *ngIf="srcode.errors?.required">Sr-Code is required.</div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input
+      required
+      ngModel
+      minlength="6"
+      name="password"
+      #password="ngModel"
+      id="password"
+      type="text"
+      class="form-control"
+      placeholder="Ex. 000xxx">
+    </div>
+    <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+      <div *ngIf="password.errors?.required">Password is required.</div>
+      <div *ngIf="password.errors?.minlength">Password must be {{ password.errors?.minlength?.requiredLength }} characters long.</div>
+    </div>
+  </form>
+  <button>Register</button>
+</div>
+<div class="right">
+  <img class="img" src="assets/register.jpg">
+</div>

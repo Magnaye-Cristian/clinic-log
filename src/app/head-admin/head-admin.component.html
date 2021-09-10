@@ -1,0 +1,65 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+
+    <mat-toolbar>
+      <img class="logo" src="assets/logo.png">
+      <h2>Clinic Log</h2>
+    </mat-toolbar>
+    <mat-divider></mat-divider>
+
+    <mat-nav-list>
+      <a class="nav" [class.active]="viewMode == 'profile'"
+        (click)="viewMode = 'profile'" mat-list-item >
+        <mat-icon [class.active]="viewMode == 'profile'">perm_identity</mat-icon> PROFILE
+      </a>
+      <a class="nav" [class.active]="viewMode == 'manage-accounts'"
+        (click)="viewMode = 'manage-accounts'" mat-list-item>
+        <mat-icon [class.active]="viewMode == 'manage-accounts'">manage_accounts</mat-icon> MANAGE ACCOUNTS
+      </a>
+      <a class="nav" [class.active]="viewMode == 'dashboard'"
+        (click)="viewMode = 'dashboard'" mat-list-item>
+        <mat-icon [class.active]="viewMode == 'dashboard'">dashboard_outlined</mat-icon> DASHBOARD
+      </a>
+      <a class="nav" [class.active]="viewMode == 'logbook'"
+        (click)="viewMode = 'logbook'" mat-list-item>
+        <mat-icon [class.active]="viewMode == 'logbook'">library_books</mat-icon> LOGBOOK
+      </a>
+      <a class="nav" [class.active]="viewMode == 'records'"
+        (click)="viewMode = 'records'" mat-list-item>
+        <mat-icon [class.active]="viewMode == 'records'">format_list_numbered</mat-icon> RECORDS
+      </a>
+      <a class="nav" [class.active]="viewMode == 'tally'"
+        (click)="viewMode = 'tally'" mat-list-item>
+        <mat-icon [class.active]="viewMode == 'tally'">summarize</mat-icon> TALLY
+      </a>
+      <mat-divider></mat-divider>
+      <a class="nav" mat-list-item ><mat-icon>logout</mat-icon> LOG OUT</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>{{ viewMode }}</span>
+    </mat-toolbar>
+
+    <div [ngSwitch]="viewMode">
+      <div *ngSwitchCase="'profile'"><app-profile></app-profile></div>
+      <div *ngSwitchCase="'manage-accounts'"><app-manage-accounts></app-manage-accounts></div>
+      <div *ngSwitchCase="'dashboard'"><app-dashboard></app-dashboard></div>
+      <div *ngSwitchCase="'logbook'"><app-logbook></app-logbook></div>
+      <div *ngSwitchCase="'records'"><app-records></app-records></div>
+      <div *ngSwitchCase="'tally'"><app-tally></app-tally></div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

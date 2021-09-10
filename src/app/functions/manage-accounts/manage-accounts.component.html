@@ -1,0 +1,9 @@
+<div>
+    <a (click)="viewMode = 'admin-list'"><button [class.active]="viewMode == 'admin-list'">List of Admins</button></a>
+    <a (click)="viewMode = 'student-list'"><button [class.active]="viewMode == 'student-list'">List of Students</button></a>
+</div>
+<div [ngSwitch]="viewMode">
+  <div *ngSwitchCase="'admin-list'" class="content-1"><app-admin-list></app-admin-list></div>
+  <div *ngSwitchCase="'student-list'" class="content-2"><app-student-list></app-student-list></div>
+</div>
+

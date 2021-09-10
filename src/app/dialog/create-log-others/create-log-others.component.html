@@ -1,0 +1,41 @@
+<div class="log">
+  <div class="form-group">
+    <mat-form-field appearance="fill" class="purpose">
+      <mat-label>Purpose</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let purpose of purpose" [value]="purpose.value">
+          {{purpose.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input
+    required
+    id="name"
+    type="text"
+    class="form-control"
+    placeholder="Ex. Juan Dela Cruz">
+  </div>
+  <div class="form-group">
+    <label for="name">Address:</label>
+    <input
+    required
+    id="name"
+    type="text"
+    class="form-control"
+    placeholder="Ex. Alangilan">
+  </div>
+  <mat-form-field appearance="fill" class="purpose">
+    <mat-label>Purpose</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let purpose of purpose" [value]="purpose.value">
+        {{purpose.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div>
+    <button class="btn" type="submit">Create</button>
+  </div>
+</div>

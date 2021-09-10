@@ -1,0 +1,35 @@
+.dashboard {
+  display: block;
+  width: 95%;
+  height: 90%;
+}
+.chart {
+  width: 96%;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 2%;
+  align-items: center;
+  display: flex;
+  overflow: auto;
+}
+
+.number-cards {
+  height: 200px;
+  margin: 2%;
+}
+
+@media only screen
+  and (min-device-width : 360px)
+  and (max-device-width : 1024px) {
+    .container {
+      width: 100%;
+    }
+    .chart {
+      overflow: auto;
+      white-space: nowrap;
+    }
+    .number-cards {
+      height: 300px;
+    }
+    }
+

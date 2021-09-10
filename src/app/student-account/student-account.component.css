@@ -1,0 +1,72 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 260px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+mat-nav-list {
+  width: 90%;
+  margin-right: 0%;
+}
+
+.logo {
+  height: 30px;
+  margin-left: 10px;
+}
+h2 {
+  font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-left: 20px;
+  line-height: 30px;
+  color: #66615b;
+  text-transform: uppercase;
+}
+.nav {
+  font-size: 12px;
+  font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
+}
+a {
+  margin: 10px 15px;
+  color: #66615b;
+  opacity: .7;
+  font-weight: 300;
+  line-height: 30px;
+  padding-top: 10px;
+}
+mat-icon {
+  color: #66615b;
+  margin-right: 10px;
+  font-size: 25px;
+  opacity: .7;
+  display: inline-block;
+}
+mat-divider {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 0%;
+
+  width: 90%;
+}
+.active {
+  color: #fd7e14 !important;
+  opacity: 1;
+}
+span {
+  text-transform: uppercase;
+  font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
+  color: #66615b;
+  margin-left: 3%;
+}
