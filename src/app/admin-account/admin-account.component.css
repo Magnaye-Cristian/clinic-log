@@ -64,9 +64,21 @@ mat-divider {
   color: #fd7e14 !important;
   opacity: 1;
 }
-span {
+.span {
+  width: 100%;
+}
+.s-left {
   text-transform: uppercase;
   font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
+  font-size: 16px;
   color: #66615b;
   margin-left: 3%;
+}
+.s-right {
+  float: right;
+  text-transform: uppercase;
+  font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
+  font-size: 16px;
+  color: #66615b;
+  margin-right: 3%;
 }
