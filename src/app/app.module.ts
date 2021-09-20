@@ -37,7 +37,6 @@ import { Content2Component } from './components/content2/content2.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HeadAdminComponent } from './head-admin/head-admin.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { ProfileComponent } from './functions/profile/profile.component';
 import { ManageAccountsComponent } from './functions/manage-accounts/manage-accounts.component';
 import { LogbookComponent } from './functions/logbook/logbook.component';
 import { TallyComponent } from './functions/tally/tally.component';
@@ -48,13 +47,28 @@ import { StudentListComponent } from './datasource/student-list/student-list.com
 import { LogbookRecordsComponent } from './datasource/logbook-records/logbook-records.component';
 import { CreateLogComponent } from './dialog/create-log/create-log.component';
 import { LogbookLogsComponent } from './datasource/logbook-logs/logbook-logs.component';
-import { CreateLogOthersComponent } from './dialog/create-log-others/create-log-others.component';
-import { CreateLogStakeholdersComponent } from './dialog/create-log-stakeholders/create-log-stakeholders.component';
+import { CreateLogOthersComponent } from './dialog/create-log/create-log-others/create-log-others.component';
+import { CreateLogStakeholdersComponent } from './dialog/create-log/create-log-stakeholders/create-log-stakeholders.component';
 import { UpdateProfileComponent } from './dialog/update-profile/update-profile.component';
 import { StudentAccountComponent } from './student-account/student-account.component';
 import { AdminAccountComponent } from './admin-account/admin-account.component';
 import { DatePickerComponent } from './functions/services/date-picker/date-picker.component';
 import { TallyLogComponent } from './datasource/tally-log/tally-log.component';
+import { StudentProfileComponent } from './functions/user-profile/student-profile/student-profile.component';
+import { AdminProfileComponent } from './functions/user-profile/admin-profile/admin-profile.component';
+import { HeadAdminProfileComponent } from './functions/user-profile/head-admin-profile/head-admin-profile.component';
+import { FacultyProfileComponent } from './functions/user-profile/faculty-profile/faculty-profile.component';
+import { StaffProfileComponent } from './functions/user-profile/staff-profile/staff-profile.component';
+import { StaffAccountComponent } from './staff-account/staff-account.component';
+import { FacultyAccountComponent } from './faculty-account/faculty-account.component';
+import { FacultyListComponent } from './datasource/faculty-list/faculty-list.component';
+import { StaffListComponent } from './datasource/staff-list/staff-list.component';
+import { LogOutComponent } from './dialog/log-out/log-out.component';
+import { TerminateComponent } from './dialog/terminate/terminate.component';
+import { EditLogComponent } from './dialog/edit-log/edit-log.component';
+import { DisableComponent } from './dialog/disable/disable.component';
+import { EditStakeholderComponent } from './dialog/edit-log/edit-stakeholder/edit-stakeholder.component';
+import { EditOthersComponent } from './dialog/edit-log/edit-others/edit-others.component';
 
 
 @NgModule({
@@ -66,7 +80,6 @@ import { TallyLogComponent } from './datasource/tally-log/tally-log.component';
     Content2Component,
     RegisterComponent,
     HeadAdminComponent,
-    ProfileComponent,
     ManageAccountsComponent,
     LogbookComponent,
     TallyComponent,
@@ -83,7 +96,22 @@ import { TallyLogComponent } from './datasource/tally-log/tally-log.component';
     StudentAccountComponent,
     AdminAccountComponent,
     DatePickerComponent,
-    TallyLogComponent
+    TallyLogComponent,
+    StudentProfileComponent,
+    AdminProfileComponent,
+    HeadAdminProfileComponent,
+    StaffProfileComponent,
+    StaffAccountComponent,
+    FacultyProfileComponent,
+    FacultyAccountComponent,
+    FacultyListComponent,
+    StaffListComponent,
+    LogOutComponent,
+    TerminateComponent,
+    EditLogComponent,
+    DisableComponent,
+    EditStakeholderComponent,
+    EditOthersComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +140,7 @@ import { TallyLogComponent } from './datasource/tally-log/tally-log.component';
     NgxChartsModule,
     NgxPrintModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]
