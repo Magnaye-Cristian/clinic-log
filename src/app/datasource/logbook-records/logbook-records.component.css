@@ -13,22 +13,14 @@
 .date {
   margin-top: 0%;
   float: left;
-  display: inline-block;
-}
-h1 {
-  font-size: 1.714em;
-  line-height: 1.45em;
-  margin-top: 10px;
-  font-weight: 400;
-  font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
 }
 .print-btn {
   background-color: #51cbce;
   color: white;
-  display: inline-block;
   padding-left: 40px;
   padding-right: 40px;
   float: right;
+  margin-top: 2%;
 }
 mat-icon {
   color: white;
@@ -41,7 +33,7 @@ table {
   border-spacing: 2px;
 }
 th {
-  color: #51cbce!important;
+  color: #51cbce;
   font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
   font-size: 14px;
   font-weight: 600;

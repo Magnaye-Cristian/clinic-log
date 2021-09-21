@@ -8,6 +8,56 @@
   float: left;
   margin: 8% 2%;
 }
+h1 {
+  font-weight: 600;
+  text-align: center;
+}
+h3 {
+  font-weight: 500;
+  text-align: center;
+}
+.login-form {
+  width: 350px;
+  margin-left: 9%;
+}
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+.form-input {
+  width: 100%;
+  border: solid 2px gray;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+mat-label, input{
+  margin-left: 20px;
+  width: 90%;
+}
+button {
+  background-color: #008CBA;
+  color: white;
+  width: 350px;
+  padding: 5px 28px;
+  text-align: center;
+  font-size: 14px;
+  font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+}
+h4 {
+  margin-left: 24%;
+}
+.container {
+  float: right;
+  width: 50%;
+  margin-top: 2%;
+}
+.img {
+  float: right;
+  width: 90%;
+}
 
 @media only screen
   and (min-device-width : 360px)
@@ -36,67 +86,9 @@
         width: 90%;
         float: left;
       }
+      .container {
+        visibility: hidden;
+        width: 0%;
+        margin: 0%;
+      }
     }
-
-h1 {
-  font-weight: 600;
-  text-align: center;
-}
-h3 {
-  font-weight: 500;
-  text-align: center;
-}
-form {
-  margin: 3% 5%;
-}
-.login-form {
-  width: 350px;
-  margin-left: 9%;
-}
-::ng-deep .mat-form-field-underline {
-  display: none;
-}
-.form-input {
-  width: 100%;
-  border: solid 2px gray;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-mat-label, input{
-  margin-left: 20px;
-  width: 90%;
-}
-button {
-  background-color: #008CBA;
-  color: white;
-  width: 350px;
-  padding: 12px 28px;
-  text-align: center;
-  font-size: 12px;
-  cursor: pointer;
-  border-radius: 5px;
-  border: none;
-}
-h4 {
-  margin-left: 24%;
-}
-.link {
-  text-underline-position: below;
-  cursor: pointer;
-}
-.container {
-  float: right;
-  width: 50%;
-  margin-top: 2%;
-}
-@media screen and (max-width: 780px) {
-  .container {
-    visibility: hidden;
-    width: 0%;
-    margin: 0%;
-  }
-}
-.img {
-  width: 100%;
-}
-

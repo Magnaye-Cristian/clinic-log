@@ -1,0 +1,47 @@
+.log {
+  padding: 10px;
+  width: 400px;
+}
+.purpose {
+  margin-top: 4%;
+  width: 100%;
+}
+mat-form-field {
+  width: 100%;
+}
+.btn1 {
+  width: 50%;
+  float: left;
+}
+.btn2 {
+  width: 50%;
+  float: right;
+}
+.cancel {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  width: 90%;
+  margin-left: 5%;
+  background-color: rgb(52, 52, 160);
+  display: inline-block;
+}
+.create {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  margin-left: 5%;
+  width: 90%;
+  background-color: rgb(132, 216, 5);
+  display: inline-block;
+}
+@media only screen
+  and (min-device-width : 360px)
+  and (max-device-width : 780px) {
+    .log {
+      padding: 10px;
+      width: 98%;
+    }
+  }

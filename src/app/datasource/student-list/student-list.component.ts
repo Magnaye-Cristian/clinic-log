@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { StudentListDataSource, StudentListItem } from './student-list-datasource';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DisableComponent } from 'src/app/dialog/disable/disable.component';
 
 @Component({
   selector: 'app-student-list',
@@ -18,8 +20,12 @@ export class StudentListComponent implements AfterViewInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name', 'department', 'status', 'disable'];
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
     this.dataSource = new StudentListDataSource();
+  }
+
+  onDisable(){
+    this.dialog.open(DisableComponent);
   }
 
   ngAfterViewInit(): void {

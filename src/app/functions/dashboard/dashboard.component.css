@@ -3,6 +3,19 @@
   width: 95%;
   height: 90%;
 }
+.container {
+  width: 100%;
+}
+.header {
+  text-align: center;
+  float: left;
+}
+.date {
+  float: right;
+}
+.bar-chart {
+  width: 100%;
+}
 .chart {
   width: 96%;
   padding: 20px;

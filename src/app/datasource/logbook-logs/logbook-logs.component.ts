@@ -5,6 +5,8 @@ import { MatTable } from '@angular/material/table';
 import { LogbookLogsDataSource, LogbookLogsItem } from './logbook-logs-datasource';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateLogComponent } from 'src/app/dialog/create-log/create-log.component';
+import { TerminateComponent } from 'src/app/dialog/terminate/terminate.component';
+import { EditLogComponent } from 'src/app/dialog/edit-log/edit-log.component';
 
 @Component({
   selector: 'app-logbook-logs',
@@ -26,6 +28,14 @@ export class LogbookLogsComponent implements AfterViewInit {
 
   onCreate(){
     this.dialog.open(CreateLogComponent);
+  }
+
+  onEdit(){
+    this.dialog.open(EditLogComponent);
+  }
+
+  onTerminate(){
+    this.dialog.open(TerminateComponent);
   }
 
   ngAfterViewInit(): void {

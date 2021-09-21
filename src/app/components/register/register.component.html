@@ -1,6 +1,13 @@
-<div class="container">
-  <h2>Create Account</h2>
+<div class="container mat-elevation-z8">
   <form>
+    <mat-form-field appearance="fill" class="purpose">
+      <mat-label>Register as a:</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let purpose of purpose" [value]="purpose.value">
+          {{purpose.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <div class="form-group">
       <label for="name">Name:</label>
       <input
@@ -21,15 +28,16 @@
       <input
       required
       ngModel
+      minlength="6"
       name="university"
-      #department="ngModel"
-      id="university"
+      #university="ngModel"
+      id="iniversity"
       type="text"
       class="form-control"
       placeholder="Ex. Batangas State University">
     </div>
-    <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
-      <div *ngIf="name.errors?.required">Department is required.</div>
+    <div class="alert alert-danger" *ngIf="university.touched && !university.valid">
+      <div *ngIf="university.errors?.required">University is required.</div>
     </div>
     <div class="form-group">
       <label for="department">Department:</label>
@@ -93,9 +101,26 @@
       <div *ngIf="password.errors?.required">Password is required.</div>
       <div *ngIf="password.errors?.minlength">Password must be {{ password.errors?.minlength?.requiredLength }} characters long.</div>
     </div>
+    <div class="form-group">
+      <label for="ConfirmPassword">Confirm Password:</label>
+      <input
+      required
+      ngModel
+      minlength="6"
+      name="ConfirmPassword"
+      #ConfirmPassword="ngModel"
+      id="ConfirmPassword"
+      type="text"
+      class="form-control"
+      placeholder="Ex. 000xxx">
+    </div>
+    <div class="alert alert-danger" *ngIf="ConfirmPassword.touched && !ConfirmPassword.valid">
+      <div *ngIf="ConfirmPassword.errors?.required">Password is required.</div>
+      <div *ngIf="ConfirmPassword.errors?.minlength">Password must be {{ password.errors?.minlength?.requiredLength }} characters long.</div>
+    </div>
   </form>
   <button>Register</button>
 </div>
 <div class="right">
-  <img class="img" src="assets/register.jpg">
+  <img class="img" src="assets/register.png">
 </div>
