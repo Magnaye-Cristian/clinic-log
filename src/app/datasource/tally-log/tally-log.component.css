@@ -9,10 +9,6 @@
   white-space: nowrap;
   flex: 0%;
 }
-.container {
-  width: 100%;
-  padding: 0%;
-}
 .date {
   float: left;
   margin-left: 0%;
@@ -40,25 +36,28 @@ mat-icon {
 .full-width-table {
   width: 100%;
 }
+
 mat-header-cell {
-  border-left: .5px solid rgb(204, 203, 203);
-  border-right: .5px solid rgb(204, 203, 203);
+  border: inherit;
+  border: 1px solid rgb(204, 203, 203);
   color: black;
   font-weight: 600;
   width: 20px;
   margin: 0%;
   width: 30px;
   text-transform: capitalize;
+  height: inherit;
+}
+mat-cell {
+  border: inherit;
+  border: .5px solid rgb(204, 203, 203);
+  width: 30px;
+  height: inherit;
 }
 mat-header-row, mat-row {
   min-height: 30px;
   width: 95%;
-  border-top: .5px solid rgb(204, 203, 203);
-}
-mat-cell {
-  border-left: .5px solid rgb(204, 203, 203);
-  border-right: .5px solid rgb(204, 203, 203);
-  width: 30px;
+  height: 40px;
 }
 mat-cell:first-of-type, mat-header-cell:first-of-type {
   padding-left: 0%;
@@ -80,9 +79,8 @@ mat-cell, mat-header-cell, mat-footer-cell {
 mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-type {
   padding-top: 10px;
   padding-bottom: 10px;
-  border-top: 2px solid rgb(204, 203, 203);
-  border-bottom: 2px solid rgb(204, 203, 203);
 }
+
 @media only screen
   and (min-device-width : 360px)
   and (max-device-width : 1024px) {

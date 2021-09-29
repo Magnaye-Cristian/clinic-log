@@ -1,0 +1,51 @@
+.table {
+  float: left;
+  overflow: auto;
+  white-space: nowrap;
+}
+.full-width-table {
+  width: 100%;
+}
+.btn1 {
+  width: 50%;
+  float: left;
+}
+.btn2 {
+  width: 50%;
+  float: right;
+}
+.generate-btn {
+  background-color: #114dcf;
+  color: white;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 0%;
+  margin-bottom: 2%;
+  float: left;
+}
+.print-btn {
+  background-color: #51cbce;
+  color: white;
+  padding-left: 40px;
+  padding-right: 40px;
+  float: right;
+}
+mat-icon {
+  color: white;
+  font-size: 25px;
+  display: inline-block;
+  line-height: .8em;
+  margin-right: 10px;
+}
+@media only screen
+  and (min-device-width : 360px)
+  and (max-device-width : 800px) {
+    .generate-btn {
+      width: 95%;
+      margin-left: 2%;
+    }
+    .print-btn {
+      width: 95%;
+      margin-right: 2%;
+    }
+  }

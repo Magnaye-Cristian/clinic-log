@@ -49,6 +49,7 @@ export class TallyLogComponent implements AfterViewInit {
     this.rows[11] = ['Vomiting', 8]
     this.rows[12] = ['Wound', 8]
     this.rows[13] = ['Others', 8]
+    this.rows[14] = ['Total']
   }
 
   private columnGenerator(): void{
@@ -61,6 +62,7 @@ export class TallyLogComponent implements AfterViewInit {
     this.columns = header;
     console.log(this.rows)
   }
+
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;

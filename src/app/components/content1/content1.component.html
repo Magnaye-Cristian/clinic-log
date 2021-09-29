@@ -8,6 +8,23 @@
     <form class="login-form" (ngSubmit)="login(loginForm.value)" #loginForm="ngForm">
       <div class="form-group">
         <mat-form-field class="form-input">
+          <mat-label>University: </mat-label>
+          <input
+          required
+          ngModel
+          name="university"
+          #university="ngModel"
+          id="university"
+          matInput
+          placeholder="Ex. Sample University">
+        </mat-form-field>
+        <div class="alert alert-danger" *ngIf="university.touched && !university.valid">
+          <div *ngIf="university.errors?.required">University is required.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="form-input">
           <mat-label>Sr-Code:</mat-label>
           <input
           required
@@ -44,8 +61,8 @@
       <a routerLink="/head-admin"><button class="button" mat-button type="submit" [disabled]="(!loginForm.valid || disablebutton)">Login</button></a>
     </form>
   </div>
-
   <div class="container">
     <img class="img" src="assets/home.png">
   </div>
+
 </div>

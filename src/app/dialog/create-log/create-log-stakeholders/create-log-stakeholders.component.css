@@ -47,6 +47,7 @@
   background-color: rgb(132, 216, 5);
   display: inline-block;
 }
+
 @media only screen
   and (min-device-width : 360px)
   and (max-device-width : 780px) {

@@ -69,6 +69,7 @@ import { EditLogComponent } from './dialog/edit-log/edit-log.component';
 import { DisableComponent } from './dialog/disable/disable.component';
 import { EditStakeholderComponent } from './dialog/edit-log/edit-stakeholder/edit-stakeholder.component';
 import { EditOthersComponent } from './dialog/edit-log/edit-others/edit-others.component';
+import { CodeGeneratorComponent } from './dialog/code-generator/code-generator.component';
 
 
 @NgModule({
@@ -111,7 +112,8 @@ import { EditOthersComponent } from './dialog/edit-log/edit-others/edit-others.c
     EditLogComponent,
     DisableComponent,
     EditStakeholderComponent,
-    EditOthersComponent
+    EditOthersComponent,
+    CodeGeneratorComponent
   ],
   imports: [
     BrowserModule,

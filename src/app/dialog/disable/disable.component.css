@@ -44,7 +44,7 @@ input {
   background-color: rgb(52, 52, 160);
   display: inline-block;
 }
-.disable {
+.deactivate {
   border: none;
   border-radius: 10px;
   padding: 10px;

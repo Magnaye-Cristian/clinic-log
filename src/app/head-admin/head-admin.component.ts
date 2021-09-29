@@ -11,7 +11,7 @@ import { LogOutComponent } from '../dialog/log-out/log-out.component';
   styleUrls: ['./head-admin.component.css']
 })
 export class HeadAdminComponent {
-  viewMode = 'logbook';
+  viewMode = 'profile';
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
