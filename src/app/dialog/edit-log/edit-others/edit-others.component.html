@@ -43,6 +43,14 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
+  <mat-form-field appearance="fill" class="dropdown">
+    <mat-label>Medicine</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let medicine of medicine" [value]="medicine.value">
+        {{medicine.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
   <div class="btn1">
     <button class="cancel">Cancel</button>
   </div>

@@ -10,20 +10,17 @@
   width: 100%;
   align-items: center;
 }
-h1 {
-  font-size: 1.714em;
-  line-height: 1.45em;
-  margin-top: 10px;
-  font-weight: 400;
-  font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
-  display: inline-block;
+.date {
+  margin-top: 0%;
+  float: left;
 }
-.create {
-   float: right;
-}
-button {
-   margin: 1%;
-   padding: 5px;
+.print-btn {
+  background-color: #51cbce;
+  color: white;
+  padding-left: 40px;
+  padding-right: 40px;
+  float: right;
+  margin-top: 2%;
 }
 mat-icon {
   color: white;
@@ -35,7 +32,6 @@ mat-icon {
 table {
   border-spacing: 2px;
 }
-
 th {
   color: #51cbce;
   font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
@@ -47,22 +43,6 @@ td {
   font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
   font-weight: 400;
 }
-.add {
-  margin-top: 10px;
-}
-.medicine {
-  margin-left: 10px;
-  color: #00b600;
-}
-.edit {
-  margin-left: 10px;
-  color: #51cbce;
-}
-.terminate {
-  margin-left: 10px;
-  color: rgba(255, 0, 0, 0.829);
-}
-
 @media only screen
   and (min-device-width : 360px)
   and (max-device-width : 1024px) {

@@ -70,6 +70,9 @@ import { DisableComponent } from './dialog/disable/disable.component';
 import { EditStakeholderComponent } from './dialog/edit-log/edit-stakeholder/edit-stakeholder.component';
 import { EditOthersComponent } from './dialog/edit-log/edit-others/edit-others.component';
 import { CodeGeneratorComponent } from './dialog/code-generator/code-generator.component';
+import { MedicineLogTableComponent } from './datasource/medicine-log-table/medicine-log-table.component';
+import { MedicineLogComponent } from './functions/medicine-log/medicine-log.component';
+import { AddMedicineComponent } from './dialog/add-medicine/add-medicine.component';
 
 
 @NgModule({
@@ -113,7 +116,10 @@ import { CodeGeneratorComponent } from './dialog/code-generator/code-generator.c
     DisableComponent,
     EditStakeholderComponent,
     EditOthersComponent,
-    CodeGeneratorComponent
+    CodeGeneratorComponent,
+    MedicineLogTableComponent,
+    MedicineLogComponent,
+    AddMedicineComponent
   ],
   imports: [
     BrowserModule,

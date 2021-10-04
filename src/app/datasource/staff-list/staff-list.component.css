@@ -10,17 +10,28 @@
   align-items: center;
 }
 h1 {
+  float: left;
   font-size: 1.714em;
   line-height: 1.45em;
   margin-top: 10px;
   font-weight: 400;
   font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
 }
+.search {
+  margin-top: 10px;
+  line-height: 1.8em;
+  float: right;
+}
+.input {
+  border: 2px solid #777777;
+  background-color: rgb(240, 240, 240);
+  width: 200px;
+}
 table {
   border-spacing: 2px;
 }
 th {
-  color: #51cbce!important;
+  color: #51cbce;
   font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
   font-size: 14px;
   font-weight: 600;

@@ -7,6 +7,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateLogComponent } from 'src/app/dialog/create-log/create-log.component';
 import { TerminateComponent } from 'src/app/dialog/terminate/terminate.component';
 import { EditLogComponent } from 'src/app/dialog/edit-log/edit-log.component';
+import { AddMedicineComponent } from 'src/app/dialog/add-medicine/add-medicine.component';
 
 @Component({
   selector: 'app-logbook-logs',
@@ -20,7 +21,7 @@ export class LogbookLogsComponent implements AfterViewInit {
   dataSource: LogbookLogsDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['srCode', 'name', 'department', 'purpose', 'edit', 'terminate'];
+  displayedColumns = ['srCode', 'name', 'department', 'purpose', 'medicine', 'edit', 'terminate'];
 
   constructor( private dialog: MatDialog ) {
     this.dataSource = new LogbookLogsDataSource();
@@ -32,6 +33,10 @@ export class LogbookLogsComponent implements AfterViewInit {
 
   onEdit(){
     this.dialog.open(EditLogComponent);
+  }
+
+  onMedicine(){
+    this.dialog.open(AddMedicineComponent);
   }
 
   onTerminate(){
