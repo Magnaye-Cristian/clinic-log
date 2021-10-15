@@ -32,11 +32,14 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>{{ viewMode }}</span>
+      <div class="span">
+        <span class="s-left">{{ viewMode }}</span>
+        <span class="s-right">Student Account</span>
+      </div>
     </mat-toolbar>
 
     <div [ngSwitch]="viewMode">
-      <div *ngSwitchCase="'profile'"><app-profile></app-profile></div>
+      <div *ngSwitchCase="'profile'"><student-profile></student-profile></div>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,3 +1,94 @@
+.table {
+  width: 90%;
+  float: left;
+  margin-left: 5%;
+  background-color: white;
+  padding: 2%;
+  border-radius: 10px;
+  overflow: auto;
+  white-space: nowrap;
+  flex: 0%;
+}
+.date {
+  float: left;
+  margin-left: 0%;
+}
+.btn {
+  float: right;
+  margin-right: 0%;
+}
+.print-btn {
+  background-color: #51cbce;
+  color: white;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 2%;
+  padding-top: 0%;
+  padding-bottom: 0%;
+}
+mat-icon {
+  color: white;
+  font-size: 25px;
+  display: inline-block;
+  line-height: .8em;
+  margin-right: 10px;
+}
 .full-width-table {
   width: 100%;
 }
+
+mat-header-cell {
+  border: inherit;
+  border: 1px solid rgb(204, 203, 203);
+  color: black;
+  font-weight: 600;
+  width: 20px;
+  margin: 0%;
+  width: 30px;
+  text-transform: capitalize;
+  height: inherit;
+}
+mat-cell {
+  border: inherit;
+  border: .5px solid rgb(204, 203, 203);
+  width: 30px;
+  height: inherit;
+}
+mat-header-row, mat-row {
+  min-height: 30px;
+  width: 95%;
+  height: 40px;
+}
+mat-cell:first-of-type, mat-header-cell:first-of-type {
+  padding-left: 0%;
+  width: 120px;
+}
+mat-cell:last-of-type, mat-header-cell:last-of-type {
+  padding-left: 0%;
+  width: 40px;
+}
+mat-cell, mat-header-cell, mat-footer-cell {
+  flex: none;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  word-wrap: break-word;
+  min-height: inherit;
+  font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
+}
+mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-type {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+@media only screen
+  and (min-device-width : 360px)
+  and (max-device-width : 1024px) {
+    .table {
+      width: 98%;
+      margin: 1%;
+      overflow: auto;
+      white-space: nowrap;
+      flex: 0%;
+    }
+    }

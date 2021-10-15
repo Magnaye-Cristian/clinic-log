@@ -1,13 +1,23 @@
-<div class="mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+<div class="table mat-elevation-z8" id="table">
+    <div class="date">
+      <date-picker></date-picker>
+    </div>
+    <div class="btn">
+      <button class="print-btn" mat-raised-button
+        [useExistingCss]="true"
+        printSectionId="table"
+        ngxPrint>
+      <mat-icon>print</mat-icon>Print</button>
+    </div>
 
-    <ng-container *ngFor="let disCol of displayedColumns; let colIndex = index" matColumnDef="{{disCol}}">
-        <mat-header-cell *matHeaderCellDef>{{disCol}}</mat-header-cell>
-        <mat-cell *matCellDef="let element "> {{element.disCol}}
-        </mat-cell>
-    </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+    <mat-table mat-table class="full-width-table" #table [dataSource]="dataSource">
+      <ng-container *ngFor="let column of columns; let colIndex = index" matColumnDef="{{column}}">
+        <mat-header-cell *matHeaderCellDef>{{column}}</mat-header-cell>
+        <mat-cell *matCellDef="let element "> {{element[colIndex]}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+    </mat-table>
 </div>

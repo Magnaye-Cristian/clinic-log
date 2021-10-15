@@ -1,0 +1,60 @@
+<div class="log">
+  <div class="form-group">
+    <mat-form-field appearance="fill" class="purpose">
+      <mat-label>Type of Non-University Personnel</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let type of type" [value]="type.value">
+          {{type.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input
+    required
+    id="name"
+    type="text"
+    class="form-control"
+    placeholder="Ex. Juan Dela Cruz">
+  </div>
+  <div class="form-group">
+    <label for="name">Address:</label>
+    <input
+    required
+    id="name"
+    type="text"
+    class="form-control"
+    placeholder="Ex. Alangilan">
+  </div>
+  <mat-form-field appearance="fill" class="purpose">
+    <mat-label>Purpose</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let purpose of purpose" [value]="purpose.value">
+        {{purpose.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="dropdown">
+    <mat-label>Complaint</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let complaint of complaint" [value]="complaint.value">
+        {{complaint.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="dropdown">
+    <mat-label>Medicine</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let medicine of medicine" [value]="medicine.value">
+        {{medicine.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="btn1">
+    <button class="cancel">Cancel</button>
+  </div>
+  <div class="btn2">
+    <button class="update">Update Log</button>
+  </div>
+</div>

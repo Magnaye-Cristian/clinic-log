@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { AdminListDataSource, AdminListItem } from './admin-list-datasource';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { CreateLogComponent } from 'src/app/dialog/create-log/create-log.component';
+import { DisableComponent } from 'src/app/dialog/disable/disable.component';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class AdminListComponent implements AfterViewInit {
   }
 
   onDisable(){
-    this.dialog.open(CreateLogComponent);
+    this.dialog.open(DisableComponent);
   }
 
   ngAfterViewInit(): void {

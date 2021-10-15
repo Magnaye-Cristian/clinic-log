@@ -15,9 +15,9 @@
         (click)="viewMode = 'profile'" mat-list-item >
         <mat-icon [class.active]="viewMode == 'profile'">perm_identity</mat-icon> PROFILE
       </a>
-      <a class="nav" [class.active]="viewMode == 'manage-accounts'"
-        (click)="viewMode = 'manage-accounts'" mat-list-item>
-        <mat-icon [class.active]="viewMode == 'manage-accounts'">manage_accounts</mat-icon> MANAGE ACCOUNTS
+      <a class="nav" [class.active]="viewMode == 'manage accounts'"
+        (click)="viewMode = 'manage accounts'" mat-list-item>
+        <mat-icon [class.active]="viewMode == 'manage accounts'">manage_accounts</mat-icon> MANAGE ACCOUNTS
       </a>
       <a class="nav" [class.active]="viewMode == 'dashboard'"
         (click)="viewMode = 'dashboard'" mat-list-item>
@@ -26,6 +26,10 @@
       <a class="nav" [class.active]="viewMode == 'logbook'"
         (click)="viewMode = 'logbook'" mat-list-item>
         <mat-icon [class.active]="viewMode == 'logbook'">library_books</mat-icon> LOGBOOK
+      </a>
+      <a class="nav" [class.active]="viewMode == 'medicine logs'"
+        (click)="viewMode = 'medicine logs'" mat-list-item>
+        <mat-icon [class.active]="viewMode == 'medicine logs'">view_list</mat-icon> MEDICINE LOGS
       </a>
       <a class="nav" [class.active]="viewMode == 'records'"
         (click)="viewMode = 'records'" mat-list-item>
@@ -36,7 +40,7 @@
         <mat-icon [class.active]="viewMode == 'tally'">summarize</mat-icon> TALLY
       </a>
       <mat-divider></mat-divider>
-      <a class="nav" mat-list-item ><mat-icon>logout</mat-icon> LOG OUT</a>
+      <a class="nav" mat-list-item (click)="onLogout()"><mat-icon>logout</mat-icon> LOG OUT</a>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -50,14 +54,18 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>{{ viewMode }}</span>
+      <div class="span">
+        <span class="s-left">{{ viewMode }}</span>
+        <span class="s-right">Head Admin Account</span>
+      </div>
     </mat-toolbar>
 
     <div [ngSwitch]="viewMode">
-      <div *ngSwitchCase="'profile'"><app-profile></app-profile></div>
-      <div *ngSwitchCase="'manage-accounts'"><app-manage-accounts></app-manage-accounts></div>
+      <div *ngSwitchCase="'profile'"><head-admin-profile></head-admin-profile></div>
+      <div *ngSwitchCase="'manage accounts'"><app-manage-accounts></app-manage-accounts></div>
       <div *ngSwitchCase="'dashboard'"><app-dashboard></app-dashboard></div>
       <div *ngSwitchCase="'logbook'"><app-logbook></app-logbook></div>
+      <div *ngSwitchCase="'medicine logs'"><app-medicine-log></app-medicine-log></div>
       <div *ngSwitchCase="'records'"><app-records></app-records></div>
       <div *ngSwitchCase="'tally'"><app-tally></app-tally></div>
     </div>

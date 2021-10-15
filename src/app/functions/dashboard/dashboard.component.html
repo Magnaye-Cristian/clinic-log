@@ -9,24 +9,37 @@
 <div class="container">
   <div class="chart mat-elevation-z8">
     <table class="bar-chart">
-        <ngx-charts-bar-vertical
-          [view] = "view"
-          [results]="purpose"
-          [xAxis] = "xAxis"
-          [yAxis] = "yAxis"
-          [showXAxisLabel] = "showXAxisLabel"
-          [showYAxisLabel] = "showYAxisLabel"
-          [legendTitle] = "alegendTitle"
-          [legend] = "legend"
-          [legendPosition] = "right"
-          [showGridLines] = "showGridLines"
-          [showDataLabel] = "showDataLabel">
-        </ngx-charts-bar-vertical>
+      <div class="container">
+        <div class="header">
+          <h1>Purpose of Visit</h1>
+        </div>
+        <div class="date">
+          <date-picker></date-picker>
+        </div>
+      </div>
+      <ngx-charts-bar-vertical
+        [view] = "view"
+        [results]="purpose"
+        [xAxis] = "xAxis"
+        [yAxis] = "yAxis"
+        [showXAxisLabel] = "showXAxisLabel"
+        [showYAxisLabel] = "showYAxisLabel"
+        [legendTitle] = "alegendTitle"
+        [legend] = "legend"
+        [legendPosition] = "right"
+        [showGridLines] = "showGridLines"
+        [showDataLabel] = "showDataLabel">
+      </ngx-charts-bar-vertical>
     </table>
   </div>
 
 <div class="chart mat-elevation-z8">
   <table class="line-chart">
+    <div class="container">
+      <div class="header">
+        <h1>Monthly Complaints</h1>
+      </div>
+    </div>
     <tr>
       <td>
         <ngx-charts-line-chart

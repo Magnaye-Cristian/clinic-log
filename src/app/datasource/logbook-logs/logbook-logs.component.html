@@ -30,16 +30,22 @@
       <td mat-cell *matCellDef="let row">{{row.purpose}}</td>
     </ng-container>
 
+    <!-- Medicine Column -->
+    <ng-container matColumnDef="medicine">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Medicine</th>
+      <td mat-cell *matCellDef="let row"><a (click)="onMedicine()"><mat-icon class="medicine">add_circle</mat-icon></a></td>
+    </ng-container>
+
     <!-- Edit Column -->
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Modify</th>
-      <td mat-cell *matCellDef="let row"><a (click)="onCreate()"><mat-icon class="edit">edit</mat-icon></a></td>
+      <td mat-cell *matCellDef="let row"><a (click)="onEdit()"><mat-icon class="edit">edit</mat-icon></a></td>
     </ng-container>
 
     <!-- Terminate Column -->
     <ng-container matColumnDef="terminate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Terminate</th>
-      <td mat-cell *matCellDef="let row"><a (click)="onCreate()"><mat-icon class="terminate">highlight_off</mat-icon></a></td>
+      <td mat-cell *matCellDef="let row"><a (click)="onTerminate()"><mat-icon class="terminate">highlight_off</mat-icon></a></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

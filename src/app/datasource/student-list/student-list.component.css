@@ -2,7 +2,6 @@
   width: 90%;
   float: right;
   margin-right: 5%;
-  background-color: white;
   padding: 2%;
   border-radius: 10px;
 }
@@ -11,11 +10,22 @@
   align-items: center;
 }
 h1 {
+  float: left;
   font-size: 1.714em;
   line-height: 1.45em;
   margin-top: 10px;
   font-weight: 400;
   font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
+}
+.search {
+  margin-top: 10px;
+  line-height: 1.8em;
+  float: right;
+}
+.input {
+  border: 2px solid #777777;
+  background-color: rgb(240, 240, 240);
+  width: 200px;
 }
 table {
   border-spacing: 2px;
@@ -31,3 +41,24 @@ td {
   font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
   font-weight: 400;
 }
+@media only screen
+  and (min-device-width : 360px)
+  and (max-device-width : 1024px) {
+    .table {
+      width: 90%;
+      margin: 5%;
+      overflow: auto;
+      white-space: nowrap;
+    }
+  }
+@media only screen
+  and (min-device-width : 360px)
+  and (max-device-width : 780px) {
+    .search {
+      float: left;
+      margin: 0%;
+      margin-bottom: 2%;
+      width: 90%;
+    }
+  }
+

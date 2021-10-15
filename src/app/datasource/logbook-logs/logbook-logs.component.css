@@ -50,10 +50,16 @@ td {
 .add {
   margin-top: 10px;
 }
+.medicine {
+  margin-left: 10px;
+  color: #00b600;
+}
 .edit {
+  margin-left: 10px;
   color: #51cbce;
 }
 .terminate {
+  margin-left: 10px;
   color: rgba(255, 0, 0, 0.829);
 }
 

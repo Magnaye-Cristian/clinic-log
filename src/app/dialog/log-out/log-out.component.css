@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  padding: 10px;
+}
+h1 {
+  text-align: center;
+}
+.button {
+  width: 100%;
+}
+.btn1 {
+  width: 50%;
+  float: left;
+}
+.btn2 {
+  width: 50%;
+  float: right;
+}
+.cancel {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  width: 90%;
+  background-color: rgb(52, 52, 160);
+  display: inline-block;
+}
+.logout {
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  width: 90%;
+  background-color: rgb(255, 0, 0);
+  display: inline-block;
+}
