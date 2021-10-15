@@ -75,6 +75,7 @@ import { MedicineLogComponent } from './functions/medicine-log/medicine-log.comp
 import { AddMedicineComponent } from './dialog/add-medicine/add-medicine.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { BaseUrlInterceptorService } from './services/base-url-interceptor.service';
 
 
 @NgModule({
@@ -156,7 +157,12 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
-  }],
+  }, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: BaseUrlInterceptorService,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
