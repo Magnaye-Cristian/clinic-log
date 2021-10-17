@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ILogin } from 'src/app/models/login.model';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -15,6 +16,7 @@ export class Content1Component implements OnInit {
     // public dialogRef: MatDialogRef<Content1Component>,
     // @Inject(MAT_DIALOG_DATA) data,
     // private _ngZone: NgZone
+    private router: Router,
     private loginService: LoginService
   ) { }
 
@@ -31,14 +33,16 @@ export class Content1Component implements OnInit {
     // this.disablebutton = true;
     console.log(loginForm);
     this.loginService.login(loginForm).subscribe(
-      x => { console.log(x) },
+      x => {
+        this.router.navigate(['/head-admin']);
+      },
       error => {
         console.log(error)
         console.log('invalid credentials')
         this.dialogOpen('Invalid Credentials')
       }
     )
-
+    //redirect to admin
     // if (!this.validate(loginForm)) {
     //   console.log(`Invalid`);
     // }
