@@ -1,10 +1,13 @@
 
   <div class="info">
     <h1 class="info-header">Account Information</h1>
+    <form (ngSubmit)="updateProfile()" [formGroup]="updateForm">
     <div class="form-group">
-      <label for="name">Name:</label>
+      <label for="name">First Name:</label>
       <input
+      formControlName="first_name"
       required
+      name="first_name"
       id="name"
       type="text"
       class="form-control"
@@ -41,16 +44,15 @@
       <label for="password">Password:</label>
       <input
       required
-      ngModel
       minlength="6"
       name="password"
-      #password="ngModel"
       id="password"
       type="text"
       class="form-control"
       placeholder="Ex. 000xxx">
     </div>
     <div class="btn">
-      <button class="update" mat-raised-button>Update Profile</button>
+      <button class="update" type="submit" mat-raised-button>Update Profile</button>
     </div>
+  </form>
   </div>
