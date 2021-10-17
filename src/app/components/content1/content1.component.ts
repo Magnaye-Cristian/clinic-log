@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ILogin } from 'src/app/models/login.model';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-content1',
@@ -13,31 +15,45 @@ export class Content1Component implements OnInit {
     // public dialogRef: MatDialogRef<Content1Component>,
     // @Inject(MAT_DIALOG_DATA) data,
     // private _ngZone: NgZone
-    ) { }
+    private loginService: LoginService
+  ) { }
 
   ngOnInit(): void {
   }
+  private dialogOpen(message): void {
+    // this.dialog.open(DialogComponent, {
+    //   data: { message: 'Invalid'}
+    // });
 
+  }
 
-  login(loginForm: any) {
-    this.disablebutton = true;
+  login(loginForm: ILogin) {
+    // this.disablebutton = true;
     console.log(loginForm);
-    if (!this.validate(loginForm)){
-      console.log(`Invalid`);
-      // this.dialog.open(DialogComponent, {
-      //   data: { message: 'Invalid'}
-      // });
-    }
-    else {
-      console.log(`Validated`)
-    }
+    this.loginService.login(loginForm).subscribe(
+      x => { console.log(x) },
+      error => {
+        console.log(error)
+        console.log('invalid credentials')
+        this.dialogOpen('Invalid Credentials')
+      }
+    )
+
+    // if (!this.validate(loginForm)) {
+    //   console.log(`Invalid`);
+    // }
+    // else {
+    //   // save token generated
+    //   // move to head-admin page
+    //   console.log(`Validated`)
+    // }
   }
 
 
-  validate(loginForm: any): boolean {
-    if (!loginForm.srcode.match('[0-9-]') &&
-         loginForm.password.match('[a-z0-9]')
-         ) { return false; }
+  validate(loginForm: ILogin): boolean {
+    if (!loginForm.schoolId.match('[0-9-]') &&
+      loginForm.password.match('[a-z0-9]')
+    ) { return false; }
     return true;
   }
 }

@@ -30,15 +30,15 @@
           required
           minlength="8"
           ngModel
-          name="srcode"
-          #srcode="ngModel"
-          id="srcode"
+          name="schoolId"
+          #schoolId="ngModel"
+          id="schoolId"
           matInput
           placeholder="Ex. 21-00000">
         </mat-form-field>
-        <div class="alert alert-danger" *ngIf="srcode.touched && !srcode.valid">
-          <div *ngIf="srcode.errors?.required">Sr-Code is required.</div>
-          <div *ngIf="srcode.errors?.minlength">Name must be {{ srcode.errors?.minlength?.requiredLength }} characters long with "-".</div>
+        <div class="alert alert-danger" *ngIf="schoolId.touched && !schoolId.valid">
+          <div *ngIf="schoolId.errors?.required">Sr-Code is required.</div>
+          <div *ngIf="schoolId.errors?.minlength">Name must be {{ schoolId.errors?.minlength?.requiredLength }} characters long with "-".</div>
         </div>
       </div>
 
@@ -58,7 +58,7 @@
           <div *ngIf="password.errors?.required">Password is required.</div>
         </div>
       </div>
-      <a routerLink="/head-admin"><button class="button" mat-button type="submit" [disabled]="(!loginForm.valid || disablebutton)">Login</button></a>
+      <button class="button" mat-button type="submit" [disabled]="false">Login</button>
     </form>
   </div>
   <div class="container">
