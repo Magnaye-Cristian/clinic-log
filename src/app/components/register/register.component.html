@@ -1,27 +1,57 @@
 <div class="container mat-elevation-z8">
-  <form>
+  <form (ngSubmit)="register(registrationForm.value)" #registrationForm="ngForm">
     <mat-form-field appearance="fill" class="purpose">
       <mat-label>Register as a:</mat-label>
-      <mat-select>
+      <mat-select ngModel #role name="role">
         <mat-option *ngFor="let purpose of purpose" [value]="purpose.value">
           {{purpose.viewValue}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <div class="form-group">
-      <label for="name">Name:</label>
+      <label for="name">first name:</label>
       <input
       required
       ngModel
-      name="name"
-      #name="ngModel"
+      name="first_name"
+      #first_name="ngModel"
       id="name"
       type="text"
       class="form-control"
       placeholder="Ex. Juan Dela Cruz">
     </div>
-    <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
-      <div *ngIf="name.errors?.required">Name is required.</div>
+    <div class="alert alert-danger" *ngIf="first_name.touched && !first_name.valid">
+      <div *ngIf="first_name.errors?.required">first name is required.</div>
+    </div>    
+    <div class="form-group">
+      <label for="name">last name:</label>
+      <input
+      required
+      ngModel
+      name="last_name"
+      #last_name="ngModel"
+      id="name"
+      type="text"
+      class="form-control"
+      placeholder="Ex. Juan Dela Cruz">
+    </div>
+    <div class="alert alert-danger" *ngIf="last_name.touched && !last_name.valid">
+      <div *ngIf="last_name.errors?.required">last name is required.</div>
+    </div>    
+    <div class="form-group">
+      <label for="name">middle name:</label>
+      <input
+      required
+      ngModel
+      name="middle_name"
+      #middle_name="ngModel"
+      id="name"
+      type="text"
+      class="form-control"
+      placeholder="Ex. Juan Dela Cruz">
+    </div>
+    <div class="alert alert-danger" *ngIf="middle_name.touched && !middle_name.valid">
+      <div *ngIf="middle_name.errors?.required">Name is required.</div>
     </div>
     <div class="form-group">
       <label for="department">University / College:</label>
@@ -74,15 +104,15 @@
       <input
       required
       ngModel
-      name="srcode"
-      #srcode="ngModel"
-      id="srcode"
+      name="school_id"
+      #school_id="ngModel"
+      id="schoolId"
       type="text"
       class="form-control"
       placeholder="Ex. 18-00000">
     </div>
-    <div class="alert alert-danger" *ngIf="srcode.touched && !srcode.valid">
-      <div *ngIf="srcode.errors?.required">Sr-Code is required.</div>
+    <div class="alert alert-danger" *ngIf="school_id.touched && !school_id.valid">
+      <div *ngIf="school_id.errors?.required">Sr-Code is required.</div>
     </div>
     <div class="form-group">
       <label for="password">Password:</label>
@@ -107,19 +137,21 @@
       required
       ngModel
       minlength="6"
-      name="ConfirmPassword"
-      #ConfirmPassword="ngModel"
-      id="ConfirmPassword"
+      name="confirmPassword"
+      #confirmPassword="ngModel"
+      id="confirmPassword"
       type="text"
       class="form-control"
       placeholder="Ex. 000xxx">
     </div>
-    <div class="alert alert-danger" *ngIf="ConfirmPassword.touched && !ConfirmPassword.valid">
-      <div *ngIf="ConfirmPassword.errors?.required">Password is required.</div>
-      <div *ngIf="ConfirmPassword.errors?.minlength">Password must be {{ password.errors?.minlength?.requiredLength }} characters long.</div>
+    <div class="alert alert-danger" *ngIf="confirmPassword.touched && !confirmPassword.valid || (confirmPassword.value !== password.value && !confirmPassword.value)">
+      <div *ngIf="confirmPassword.errors?.required">Password is required.</div>
+      <div *ngIf="confirmPassword.errors?.minlength">Password must be {{ password.errors?.minlength?.requiredLength }} characters long.</div>
+      <div *ngIf="confirmPassword.value !== password.value && !confirmPassword.value">Password do not match</div>
     </div>
-  </form>
-  <button>Register</button>
+
+  <button type="submit">Register</button>
+</form>
 </div>
 <div class="right">
   <img class="img" src="assets/register.png">
