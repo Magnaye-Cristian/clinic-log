@@ -73,9 +73,9 @@ import { CodeGeneratorComponent } from './dialog/code-generator/code-generator.c
 import { MedicineLogTableComponent } from './datasource/medicine-log-table/medicine-log-table.component';
 import { MedicineLogComponent } from './functions/medicine-log/medicine-log.component';
 import { AddMedicineComponent } from './dialog/add-medicine/add-medicine.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptorService } from './services/token-interceptor.service';
-import { BaseUrlInterceptorService } from './services/base-url-interceptor.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './services/interceptors/token-interceptor.service';
+import { BaseUrlInterceptorService } from './services/interceptors/base-url-interceptor.service';
 
 
 @NgModule({
@@ -128,6 +128,7 @@ import { BaseUrlInterceptorService } from './services/base-url-interceptor.servi
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
