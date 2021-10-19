@@ -10,8 +10,8 @@ export class AuthGuard implements CanActivate {
   constructor(private account: AccountService, private router: Router) { }
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
+    state: RouterStateSnapshot): boolean {
+    console.log(`auth guard`)
     const isTokenAvailable = !!this.account.getProfileFromToken();
     if (!isTokenAvailable)
       this.router.navigate(['']);

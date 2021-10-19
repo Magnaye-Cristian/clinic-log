@@ -6,4 +6,5 @@ export interface IProfile {
     program: string,
     university: string,
     school_id: string,
+    role: string
 }

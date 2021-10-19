@@ -23,7 +23,13 @@ export class AccountService {
   getProfileFromServer() {
     return this.http.get<IProfile>('profile/me');
   }
-
+  isAllowedToAccess(role: string): boolean {
+    const profile = this.getProfileFromToken();
+    if (!profile) return false;
+    console.log(`role ${role}`)
+    console.log(`profile role ${profile.role}`)
+    return profile.role === role;
+  }
   getProfileFromToken(): IProfile {
     /**
      * get values from token
