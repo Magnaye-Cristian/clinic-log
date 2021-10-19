@@ -17,8 +17,6 @@ export class LoginService {
       if (result.status !== 200)
         return;
       const token = result.headers.get('x-auth-token')
-      result.headers.keys().map((key) => console.log(`${key}: ${result.headers.get(key)}`));
-
       console.log(`token + ${token}`)
       localStorage.setItem('token', result.headers.get('x-auth-token'))
     })
