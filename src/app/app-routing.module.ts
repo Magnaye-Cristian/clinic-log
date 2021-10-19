@@ -13,9 +13,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'head-admin', component: HeadAdminComponent, canActivate: [AuthGuard] },
   { path: 'admin-account', component: AdminAccountComponent },
-  { path: 'student-account', component: StudentAccountComponent },
-  { path: 'faculty-account', component: FacultyAccountComponent },
-  { path: 'staff-account', component: StaffAccountComponent },
+  { path: 'student-account', component: StudentAccountComponent, canActivate: [AuthGuard] },
+  { path: 'faculty-account', component: FacultyAccountComponent, canActivate: [AuthGuard] },
+  { path: 'staff-account', component: StaffAccountComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
