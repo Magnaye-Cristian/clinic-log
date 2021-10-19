@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ILogin } from 'src/app/models/login.model';
 import { ROLEENUM } from 'src/app/models/role.enum';
+import { AccountService } from 'src/app/services/account.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class Content1Component implements OnInit {
     // @Inject(MAT_DIALOG_DATA) data,
     // private _ngZone: NgZone
     private router: Router,
-    private loginService: LoginService
+    private accountService: AccountService
   ) { }
 
   ngOnInit(): void {
@@ -33,9 +34,9 @@ export class Content1Component implements OnInit {
   login(loginForm: ILogin) {
     // this.disablebutton = true;
     console.log(loginForm);
-    this.loginService.login(loginForm).subscribe(
+    this.accountService.login(loginForm).subscribe(
       (x: any) => {
-        this.navigateByRole(x.body.role)
+        this.accountService.navigateByRole(x.body.role)
       },
       error => {
         console.log(error)
@@ -54,21 +55,7 @@ export class Content1Component implements OnInit {
     //   console.log(`Validated`)
     // }
   }
-  private navigateByRole(role: string): void {
-    console.log(`role is ${role}`)
-    let link: string
-    if (role === ROLEENUM.HEAD_ADMIN)
-      link = 'head-admin'
-    if (role === ROLEENUM.ADMIN)
-      link = 'admin-account'
-    if (role === ROLEENUM.FACULTY)
-      link = 'faculty-account'
-    if (role === ROLEENUM.STAFF)
-      link = 'staff-account'
-    if (role === ROLEENUM.STUDENT)
-      link = 'student-account'
-    this.router.navigate([`/${link}`]);
-  }
+
 
   validate(loginForm: ILogin): boolean {
     if (!loginForm.schoolId.match('[0-9-]') &&

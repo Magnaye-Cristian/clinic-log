@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IRegister } from 'src/app/models/register.models';
+import { AccountService } from 'src/app/services/account.service';
 import { RegisterService } from 'src/app/services/register.service';
 
 interface Purpose {
@@ -14,7 +15,7 @@ interface Purpose {
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private registerServices: RegisterService) { }
+  constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
   }
@@ -31,9 +32,11 @@ export class RegisterComponent implements OnInit {
      * on register
      * redirect to default page according to accounttype
      */
+
     console.log(registrationForm);
-    this.registerServices.register(registrationForm).subscribe(x => {
+    this.accountService.register(registrationForm).subscribe((x: any) => {
       console.log(x)
+      this.accountService.navigateByRole(x.body.role)
     })
 
   }
