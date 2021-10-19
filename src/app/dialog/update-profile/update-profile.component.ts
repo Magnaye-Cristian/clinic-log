@@ -13,17 +13,20 @@ export class UpdateProfileComponent implements OnInit {
   constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
-    const account = this.getProfileValues()
     this.updateForm = new FormGroup({
-      first_name: new FormControl(account.first_name),
+      first_name: new FormControl(''),
       // department: new FormControl(),
     });
+    this.setProfileValues()
+
 
   }
-  getProfileValues(): IProfile {
-    // every reload get data in server
-    const account = this.accountService.getProfile();
-    console.log(account)
+  setProfileValues(): IProfile {
+    let account: IProfile;
+    this.accountService.getProfileFromServer().subscribe((res: any) => {
+      console.log(res.body)
+      this.updateForm.patchValue(res.body);
+    });
     return account;
   }
 

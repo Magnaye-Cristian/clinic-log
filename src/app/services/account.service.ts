@@ -20,7 +20,11 @@ export class AccountService {
     return this.http.put('profile', updateForm)
   }
 
-  getProfile(): IProfile {
+  getProfileFromServer() {
+    return this.http.get<IProfile>('profile/me');
+  }
+
+  getProfileFromToken(): IProfile {
     /**
      * get values from token
      */
