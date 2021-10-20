@@ -14,11 +14,11 @@ export class UpdateProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateForm = new FormGroup({
-      first_name: new FormControl(account.first_name),
-      last_name: new FormControl(account.last_name),
-      middle_name: new FormControl(account.middle_name),
-      department: new FormControl(account.department),
-      program: new FormControl(account.program),
+      first_name: new FormControl('account.first_name'),
+      last_name: new FormControl('account.last_name'),
+      middle_name: new FormControl('account.middle_name'),
+      department: new FormControl('account.department'),
+      program: new FormControl('account.program'),
     });
     this.setProfileValues()
 
