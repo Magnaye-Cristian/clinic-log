@@ -16,7 +16,10 @@ export class UpdateProfileComponent implements OnInit {
     const account = this.getProfileValues()
     this.updateForm = new FormGroup({
       first_name: new FormControl(account.first_name),
-      // department: new FormControl(),
+      last_name: new FormControl(account.last_name),
+      middle_name: new FormControl(account.middle_name),
+      department: new FormControl(account.department),
+      program: new FormControl(account.program),
     });
 
   }

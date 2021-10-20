@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IRegister } from 'src/app/models/register.models';
 import { RegisterService } from 'src/app/services/register.service';
 
-interface Purpose {
+interface user_type {
   value: string;
   viewValue: string;
 }
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  purpose: Purpose[] = [
+  user: user_type[] = [
     { value: 'head admin', viewValue: 'Head Admin' },
     { value: 'admin', viewValue: 'Admin' },
     { value: 'student', viewValue: 'Student' },
