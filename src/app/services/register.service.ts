@@ -10,8 +10,5 @@ export class RegisterService {
 
   constructor(private http: HttpClientHelperService) { }
 
-  register(register: IRegister) {
-    //create register dto
-    return this.http.post('register', register)
-  }
+
 }

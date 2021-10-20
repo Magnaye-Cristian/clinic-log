@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ILogin } from 'src/app/models/login.model';
+import { ROLEENUM } from 'src/app/models/role.enum';
+import { AccountService } from 'src/app/services/account.service';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -17,7 +19,7 @@ export class Content1Component implements OnInit {
     // @Inject(MAT_DIALOG_DATA) data,
     // private _ngZone: NgZone
     private router: Router,
-    private loginService: LoginService
+    private accountService: AccountService
   ) { }
 
   ngOnInit(): void {
@@ -32,9 +34,9 @@ export class Content1Component implements OnInit {
   login(loginForm: ILogin) {
     // this.disablebutton = true;
     console.log(loginForm);
-    this.loginService.login(loginForm).subscribe(
-      x => {
-        this.router.navigate(['/head-admin']);
+    this.accountService.login(loginForm).subscribe(
+      (x: any) => {
+        this.accountService.navigateByRole(x.body.role)
       },
       error => {
         console.log(error)
@@ -42,6 +44,7 @@ export class Content1Component implements OnInit {
         this.dialogOpen('Invalid Credentials')
       }
     )
+
     //redirect to admin
     // if (!this.validate(loginForm)) {
     //   console.log(`Invalid`);
