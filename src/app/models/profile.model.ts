@@ -1,4 +1,5 @@
 export interface IProfile {
+    role: string,
     first_name: string,
     last_name: string,
     middle_name: string,
@@ -6,5 +7,4 @@ export interface IProfile {
     program: string,
     university: string,
     school_id: string,
-    role: string
 }

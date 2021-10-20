@@ -1,5 +1,4 @@
 export interface IRegister {
-    role: string,
     university: string,
     password: string,
     first_name: string,

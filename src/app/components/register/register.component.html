@@ -3,13 +3,28 @@
     <mat-form-field appearance="fill" class="purpose">
       <mat-label>Register as a:</mat-label>
       <mat-select ngModel #role name="role">
-        <mat-option *ngFor="let purpose of purpose" [value]="purpose.value">
-          {{purpose.viewValue}}
+        <mat-option *ngFor="let user of user" [value]="user.value">
+          {{user.viewValue}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <div class="form-group">
-      <label for="name">first name:</label>
+      <label for="code">Registration Code:</label>
+      <input
+      required
+      ngModel
+      name="code"
+      #code="ngModel"
+      id="name"
+      type="text"
+      class="form-control"
+      placeholder="Ex. 3Df54r">
+    </div>
+    <div class="alert alert-danger" *ngIf="code.touched && !code.valid">
+      <div *ngIf="code.errors?.required">Code is required.</div>
+    </div>
+    <div class="form-group">
+      <label for="name">First Name:</label>
       <input
       required
       ngModel
@@ -22,9 +37,9 @@
     </div>
     <div class="alert alert-danger" *ngIf="first_name.touched && !first_name.valid">
       <div *ngIf="first_name.errors?.required">first name is required.</div>
-    </div>    
+    </div>
     <div class="form-group">
-      <label for="name">last name:</label>
+      <label for="name">Last Name:</label>
       <input
       required
       ngModel
@@ -37,9 +52,9 @@
     </div>
     <div class="alert alert-danger" *ngIf="last_name.touched && !last_name.valid">
       <div *ngIf="last_name.errors?.required">last name is required.</div>
-    </div>    
+    </div>
     <div class="form-group">
-      <label for="name">middle name:</label>
+      <label for="name">Middle Name:</label>
       <input
       required
       ngModel
@@ -54,14 +69,14 @@
       <div *ngIf="middle_name.errors?.required">Name is required.</div>
     </div>
     <div class="form-group">
-      <label for="department">University / College:</label>
+      <label for="university">University / College:</label>
       <input
       required
       ngModel
       minlength="6"
       name="university"
       #university="ngModel"
-      id="iniversity"
+      id="name"
       type="text"
       class="form-control"
       placeholder="Ex. Batangas State University">
@@ -76,7 +91,7 @@
       ngModel
       name="department"
       #department="ngModel"
-      id="department"
+      id="name"
       type="text"
       class="form-control"
       placeholder="Ex. CICS">
@@ -91,7 +106,7 @@
       ngModel
       name="program"
       #program="ngModel"
-      id="program"
+      id="name"
       type="text"
       class="form-control"
       placeholder="Ex. BS-IT">
@@ -100,13 +115,13 @@
       <div *ngIf="program.errors?.required">Program is required.</div>
     </div>
     <div class="form-group">
-      <label for="srcode">Sr-Code/ID Number:</label>
+      <label for="school_id">Sr-Code/ID Number:</label>
       <input
       required
       ngModel
       name="school_id"
       #school_id="ngModel"
-      id="schoolId"
+      id="name"
       type="text"
       class="form-control"
       placeholder="Ex. 18-00000">
@@ -122,7 +137,7 @@
       minlength="6"
       name="password"
       #password="ngModel"
-      id="password"
+      id="name"
       type="text"
       class="form-control"
       placeholder="Ex. 000xxx">
@@ -132,14 +147,14 @@
       <div *ngIf="password.errors?.minlength">Password must be {{ password.errors?.minlength?.requiredLength }} characters long.</div>
     </div>
     <div class="form-group">
-      <label for="ConfirmPassword">Confirm Password:</label>
+      <label for="confirmPassword">Confirm Password:</label>
       <input
       required
       ngModel
       minlength="6"
       name="confirmPassword"
       #confirmPassword="ngModel"
-      id="confirmPassword"
+      id="name"
       type="text"
       class="form-control"
       placeholder="Ex. 000xxx">
