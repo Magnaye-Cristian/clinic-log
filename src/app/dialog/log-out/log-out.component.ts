@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-log-out',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogOutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private accountService: AccountService, private matDialogRef: MatDialog) { }
 
   ngOnInit(): void {
   }
-
+  logout(): void {
+    this.matDialogRef.closeAll();
+    this.accountService.logout();
+  }
 }

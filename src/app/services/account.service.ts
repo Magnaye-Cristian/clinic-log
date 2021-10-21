@@ -47,6 +47,12 @@ export class AccountService {
     })
     return response;
   }
+
+  logout() {
+    localStorage.clear()
+    this.router.navigate(['/'])
+  }
+
   register(register: IRegister) {
     //create register dto
     return this.http.post('register', register)
