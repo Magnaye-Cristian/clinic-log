@@ -70,6 +70,7 @@ mat-expansion-panel-header {
   padding: 0;
   margin-left: 0;
   margin-right: 15px;
+  margin-bottom: 5px;
 }
 .expand {
   margin-left: 15px;
