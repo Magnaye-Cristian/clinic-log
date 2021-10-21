@@ -1,0 +1,46 @@
+.container {
+  padding: 10px;
+}
+h1 {
+  text-align: center;
+}
+.select {
+  padding: 5px;
+}
+.amount {
+  padding: 10px;
+}
+.number {
+  width: 100%;
+  padding: 5px;
+}
+.generate {
+  padding: 5px;
+}
+.generate-btn {
+  background-color: #114dcf;
+  color: white;
+  padding: 5px;
+  width: 100%;
+  border-radius: 5px;
+}
+mat-icon {
+  color: white;
+  font-size: 25px;
+  display: inline-block;
+  line-height: .8em;
+  margin-right: 10px;
+}
+@media only screen
+  and (min-device-width : 360px)
+  and (max-device-width : 800px) {
+    .table {
+      float: left;
+      overflow: auto;
+      white-space: nowrap;
+    }
+    .generate-btn {
+      width: 95%;
+      margin-left: 2%;
+    }
+  }

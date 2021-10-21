@@ -1,0 +1,10 @@
+mat-form-field {
+  width: 180px;
+  font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
+  font-weight: 400;
+}
+mat-datepicker-toggle {
+  font-size: 30px;
+  border: 2px solid rgb(204, 203, 203);
+  border-radius: 5px;
+}

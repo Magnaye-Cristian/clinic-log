@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { LogOutComponent } from '../dialog/log-out/log-out.component';
+import { GenerateCodeComponent } from '../dialog/generate-code/generate-code.component';
 
 @Component({
   selector: 'app-head-admin',
@@ -12,6 +13,7 @@ import { LogOutComponent } from '../dialog/log-out/log-out.component';
 })
 export class HeadAdminComponent {
   viewMode = 'profile';
+  panelOpenState = false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -20,6 +22,10 @@ export class HeadAdminComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog) {}
+
+  onClick(){
+    this.dialog.open(GenerateCodeComponent);
+  }
 
   onLogout(){
     this.dialog.open(LogOutComponent);
