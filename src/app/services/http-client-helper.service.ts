@@ -1,6 +1,8 @@
-import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/internal/operators/map';
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +25,25 @@ export class HttpClientHelperService {
   }
 
   get<T>(url: string) {
-    return this.http.get<T>(url, this.options);
+    return this.http.get<T>(url, this.options).pipe(
+      map((res: any) => { return res.body; console.log(res) })
+    );
+  }
+  private extractData(res: Response) {
+    let body = res.text();  // If response is a JSON use json()
+    if (body) {
+      return body;
+    } else {
+      return {};
+    }
+  }
+
+  private handleError(error: any) {
+    // In a real world app, we might use a remote logging infrastructure
+    // We'd also dig deeper into the error to get a better message
+    let errMsg = (error.message) ? error.message :
+      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+    console.error(errMsg); // log to console instead
+    return Observable.throw(errMsg);
   }
 }
