@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { stakeholders,purpose,complaintsMulti } from 'src/app/datasource/sources';
+import { Component, OnInit } from '@angular/core';
+import { stakeholders, purpose, complaintsMulti } from 'src/app/datasource/sources';
 import { LegendPosition } from '@swimlane/ngx-charts';
+import { DashboardService } from 'src/app/services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,7 @@ import { LegendPosition } from '@swimlane/ngx-charts';
   styleUrls: ['./dashboard.component.css']
 })
 
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
 
   // shared-configuration of charts
   view: any = [1020, 400];
@@ -22,7 +23,7 @@ export class DashboardComponent {
   showDataLabel: boolean = false;
 
   // number-cards
-  cardColor: string= '#ffff';
+  cardColor: string = '#ffff';
   stakeholders: object[];
 
   // barchart
@@ -30,12 +31,18 @@ export class DashboardComponent {
   alegendTitle: string = 'Purpose';
 
   // Line Chart
-  complaintsMulti : object[];
+  complaintsMulti: object[];
   legendTitle: string = 'Complaints';
 
 
-  constructor() {
-    Object.assign(this, {stakeholders,purpose,complaintsMulti})}
+  constructor(private dashboardService: DashboardService) {
+    Object.assign(this, { purpose, complaintsMulti })
+  }
+  ngOnInit(): void {
+
+    this.dashboardService.getDashboardInfo().subscribe(x => console.log(this.stakeholders = x))
+  }
+
 }
 
 
