@@ -19,6 +19,7 @@ export class UpdateProfileComponent implements OnInit {
       middle_name: new FormControl('account.middle_name'),
       department: new FormControl('account.department'),
       program: new FormControl('account.program'),
+      password: new FormControl('account.password'),
     });
     this.setProfileValues()
 

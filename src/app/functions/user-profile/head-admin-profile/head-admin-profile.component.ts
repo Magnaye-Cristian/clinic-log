@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CodeGeneratorComponent } from 'src/app/dialog/code-generator/code-generator.component';
+import { GenerateCodeComponent } from 'src/app/dialog/generate-code/generate-code.component';
 import { UpdateProfileComponent } from 'src/app/dialog/update-profile/update-profile.component';
 
 @Component({
@@ -20,7 +20,7 @@ export class HeadAdminProfileComponent implements OnInit {
   }
 
   onClick(){
-    this.dialog.open(CodeGeneratorComponent);
+    this.dialog.open(GenerateCodeComponent);
   }
 
 }

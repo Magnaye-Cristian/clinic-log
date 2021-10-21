@@ -39,6 +39,20 @@
         (click)="viewMode = 'tally'" mat-list-item>
         <mat-icon [class.active]="viewMode == 'tally'">summarize</mat-icon> TALLY
       </a>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false"
+                       class="expand mat-elevation-z0">
+        <mat-expansion-panel-header mat-list-item>
+          <mat-panel-title class="nav" style="justify-content: left">
+            <mat-icon>subtitles</mat-icon>Codes
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <a class="nav" (click)="onClick()" mat-list-item><mat-icon>playlist_add</mat-icon> Generate Codes</a>
+        <a class="nav" [class.active]="viewMode == 'codes'"
+          (click)="viewMode = 'codes'" mat-list-item>
+          <mat-icon [class.active]="viewMode == 'codes'">list_alt</mat-icon> List of Codes
+        </a>
+      </mat-expansion-panel>
       <mat-divider></mat-divider>
       <a class="nav" mat-list-item (click)="onLogout()"><mat-icon>logout</mat-icon> LOG OUT</a>
     </mat-nav-list>
@@ -68,6 +82,7 @@
       <div *ngSwitchCase="'medicine logs'"><app-medicine-log></app-medicine-log></div>
       <div *ngSwitchCase="'records'"><app-records></app-records></div>
       <div *ngSwitchCase="'tally'"><app-tally></app-tally></div>
+      <div *ngSwitchCase="'codes'"><app-tally></app-tally></div>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

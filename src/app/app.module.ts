@@ -26,6 +26,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxPrintModule } from 'ngx-print';
@@ -52,7 +53,7 @@ import { CreateLogStakeholdersComponent } from './dialog/create-log/create-log-s
 import { UpdateProfileComponent } from './dialog/update-profile/update-profile.component';
 import { StudentAccountComponent } from './student-account/student-account.component';
 import { AdminAccountComponent } from './admin-account/admin-account.component';
-import { DatePickerComponent } from './functions/services/date-picker/date-picker.component';
+import { DatePickerComponent } from './functions/date/date-picker/date-picker.component';
 import { TallyLogComponent } from './datasource/tally-log/tally-log.component';
 import { StudentProfileComponent } from './functions/user-profile/student-profile/student-profile.component';
 import { AdminProfileComponent } from './functions/user-profile/admin-profile/admin-profile.component';
@@ -69,13 +70,15 @@ import { EditLogComponent } from './dialog/edit-log/edit-log.component';
 import { DisableComponent } from './dialog/disable/disable.component';
 import { EditStakeholderComponent } from './dialog/edit-log/edit-stakeholder/edit-stakeholder.component';
 import { EditOthersComponent } from './dialog/edit-log/edit-others/edit-others.component';
-import { CodeGeneratorComponent } from './dialog/code-generator/code-generator.component';
 import { MedicineLogTableComponent } from './datasource/medicine-log-table/medicine-log-table.component';
 import { MedicineLogComponent } from './functions/medicine-log/medicine-log.component';
 import { AddMedicineComponent } from './dialog/add-medicine/add-medicine.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './services/interceptors/token-interceptor.service';
 import { BaseUrlInterceptorService } from './services/interceptors/base-url-interceptor.service';
+import { GenerateCodeComponent } from './dialog/generate-code/generate-code.component';
+import { DatePickerDailyComponent } from './functions/date/date-picker-daily/date-picker-daily.component';
+import { DatePickerYearlyComponent } from './functions/date/date-picker-yearly/date-picker-yearly.component';
 
 
 @NgModule({
@@ -119,10 +122,12 @@ import { BaseUrlInterceptorService } from './services/interceptors/base-url-inte
     DisableComponent,
     EditStakeholderComponent,
     EditOthersComponent,
-    CodeGeneratorComponent,
     MedicineLogTableComponent,
     MedicineLogComponent,
-    AddMedicineComponent
+    AddMedicineComponent,
+    GenerateCodeComponent,
+    DatePickerDailyComponent,
+    DatePickerYearlyComponent
   ],
   imports: [
     BrowserModule,
@@ -153,6 +158,7 @@ import { BaseUrlInterceptorService } from './services/interceptors/base-url-inte
     NgxPrintModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatExpansionModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
