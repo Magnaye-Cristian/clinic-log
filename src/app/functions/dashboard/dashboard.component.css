@@ -10,6 +10,9 @@
   text-align: center;
   float: left;
 }
+h1 {
+  font-size: 18px;
+}
 .date {
   float: right;
 }

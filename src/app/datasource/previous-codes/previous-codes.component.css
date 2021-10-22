@@ -1,0 +1,12 @@
+.table {
+  width: 90%;
+  margin-left: 4%;
+  margin-top: 2%;
+}
+.full-width-table {
+  width: 100%;
+}
+h1 {
+  margin-left: 2%;
+  font-size: 18px;
+}

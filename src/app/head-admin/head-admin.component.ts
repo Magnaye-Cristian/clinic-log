@@ -23,10 +23,6 @@ export class HeadAdminComponent {
 
   constructor(private breakpointObserver: BreakpointObserver, public dialog: MatDialog) {}
 
-  onClick(){
-    this.dialog.open(GenerateCodeComponent);
-  }
-
   onLogout(){
     this.dialog.open(LogOutComponent);
   }

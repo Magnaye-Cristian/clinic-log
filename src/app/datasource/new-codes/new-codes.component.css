@@ -1,0 +1,94 @@
+.generator {
+  background-color: white;
+  width: 28%;
+  float: left;
+  margin-top: 4%;
+  margin-left: 4%;
+  border-radius: 10px;
+  padding: 20px;
+}
+.head {
+  width: 100%;
+  text-align: center;
+}
+.header {
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 1.57em;
+  line-height: 1.4em;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #51cbce;
+  font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
+}
+h1 {
+  margin-top: 2%;
+  font-size: 16px;
+  text-align: center;
+}
+h3 {
+  color: #9a9a9a;
+  font-weight: 300;
+}
+.generate {
+  background-color: #51cbce;
+  text-transform: uppercase;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35em;
+  padding: 11px 22px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
+}
+button {
+  border: none;
+  border-width: 1px;
+  border-radius: 30px;
+  padding-right: 23px;
+  padding-left: 23px;
+}
+.table {
+  margin-left: 4%;
+  float: left;
+  width: 60%;
+  border-radius: 10px;
+}
+.full-width-table {
+  width: 100%;
+}
+.h1 {
+  margin-top: 0%;
+  float: left;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+.print-btn {
+  background-color: #51cbce;
+  color: white;
+  padding-left: 40px;
+  padding-right: 40px;
+  float: right;
+  margin-top: 2%;
+  margin-right: 2%;
+}
+mat-icon {
+  color: white;
+  font-size: 25px;
+  display: inline-block;
+  line-height: .4em;
+  margin-right: 10px;
+}
+@media only screen
+  and (min-device-width : 300px)
+  and (max-device-width : 780px) {
+    .generator {
+      width: 90%;
+      margin-bottom: 4%;
+    }
+    .table{
+      width: 90%;
+    }
+  }
