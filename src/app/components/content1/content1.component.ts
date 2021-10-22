@@ -34,9 +34,11 @@ export class Content1Component implements OnInit {
   login(loginForm: ILogin) {
     // this.disablebutton = true;
     console.log(loginForm);
+
     this.accountService.login(loginForm).subscribe(
       (x: any) => {
-        this.accountService.navigateByRole(x.body.role)
+
+        this.accountService.navigateByRole(x.role)
       },
       error => {
         console.log(error)

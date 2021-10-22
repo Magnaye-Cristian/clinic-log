@@ -17,7 +17,20 @@ export class HttpClientHelperService {
     /**
      * this is created to avoid creation of options in every request
      */
-    return this.http.post<T>(url, body, this.options);
+    return this.http.post<T>(url, body, this.options).pipe(
+      map((res: any) => {
+        if (url === 'authenticate')
+          this.saveToken(res);
+        return res.body;
+      })
+    );;
+  }
+  private saveToken(result: any) {
+    if (result.status !== 200)
+      return;
+    const token = result.headers.get('x-auth-token')
+    console.log(`token + ${token}`)
+    localStorage.setItem('token', result.headers.get('x-auth-token'))
   }
 
   put<T>(url: string, body: any) {

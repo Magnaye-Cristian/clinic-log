@@ -7,6 +7,7 @@ import { ROLEENUM } from '../models/role.enum';
 import { Router } from '@angular/router';
 import { ILogin } from '../models/login.model';
 import { HttpResponse } from '@angular/common/http';
+import { IAccount } from '../models/account.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,9 @@ export class AccountService {
   updateProfile(updateForm: any) {
     return this.http.put('profile', updateForm)
   }
-
+  getAccounts(role: ROLEENUM) {
+    return this.http.get<IAccount[]>(`accounts/${role}`)
+  }
   getProfileFromServer() {
     return this.http.get<IProfile>('profile/me');
   }
@@ -39,11 +42,7 @@ export class AccountService {
   login(login: ILogin) {
     const response = this.http.post('authenticate', login);
     response.subscribe((result: HttpResponse<Object>) => {
-      if (result.status !== 200)
-        return;
-      const token = result.headers.get('x-auth-token')
-      console.log(`token + ${token}`)
-      localStorage.setItem('token', result.headers.get('x-auth-token'))
+
     })
     return response;
   }
@@ -72,7 +71,15 @@ export class AccountService {
 
   }
 
-  public navigateByRole(role: string): void {
+  generateCode(roleParam: string) {
+    const _role = {
+      role: roleParam
+    };
+    console.log(_role)
+    return this.http.post('accounts/code', _role)
+  }
+
+  navigateByRole(role: string): void {
     console.log(`role is ${role}`)
     let link: string
     if (role === ROLEENUM.HEAD_ADMIN)
