@@ -43,14 +43,17 @@
                        (closed)="panelOpenState = false"
                        class="expand mat-elevation-z0">
         <mat-expansion-panel-header mat-list-item>
-          <mat-panel-title class="nav" style="justify-content: left">
+          <mat-panel-title class="nav">
             <mat-icon>subtitles</mat-icon>Codes
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <a class="nav" (click)="onClick()" mat-list-item><mat-icon>playlist_add</mat-icon> Generate Codes</a>
-        <a class="nav" [class.active]="viewMode == 'codes'"
-          (click)="viewMode = 'codes'" mat-list-item>
-          <mat-icon [class.active]="viewMode == 'codes'">list_alt</mat-icon> List of Codes
+        <a class="nav" [class.active]="viewMode == 'generate codes'"
+          (click)="viewMode = 'generate codes'" mat-list-item>
+          <mat-icon [class.active]="viewMode == 'generate codes'">playlist_add</mat-icon> Generate Codes
+        </a>
+        <a class="nav" [class.active]="viewMode == 'list of codes'"
+          (click)="viewMode = 'list of codes'" mat-list-item>
+          <mat-icon [class.active]="viewMode == 'list of codes'">list_alt</mat-icon> List of Codes
         </a>
       </mat-expansion-panel>
       <mat-divider></mat-divider>
@@ -82,7 +85,8 @@
       <div *ngSwitchCase="'medicine logs'"><app-medicine-log></app-medicine-log></div>
       <div *ngSwitchCase="'records'"><app-records></app-records></div>
       <div *ngSwitchCase="'tally'"><app-tally></app-tally></div>
-      <div *ngSwitchCase="'codes'"><app-tally></app-tally></div>
+      <div *ngSwitchCase="'generate codes'"><new-codes-list></new-codes-list></div>
+      <div *ngSwitchCase="'list of codes'"><codes-list></codes-list></div>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

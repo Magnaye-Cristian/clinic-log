@@ -70,6 +70,7 @@ mat-expansion-panel-header {
   padding: 0;
   margin-left: 0;
   margin-right: 15px;
+  margin-bottom: 5px;
 }
 .expand {
   margin-left: 15px;
@@ -86,7 +87,7 @@ mat-expansion-panel-header {
 .s-left {
   text-transform: uppercase;
   font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   color: #66615b;
   margin-left: 3%;
 }
@@ -94,7 +95,7 @@ mat-expansion-panel-header {
   float: right;
   text-transform: uppercase;
   font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   color: #66615b;
   margin-right: 3%;
 }

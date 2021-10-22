@@ -79,6 +79,10 @@ import { BaseUrlInterceptorService } from './services/interceptors/base-url-inte
 import { GenerateCodeComponent } from './dialog/generate-code/generate-code.component';
 import { DatePickerDailyComponent } from './functions/date/date-picker-daily/date-picker-daily.component';
 import { DatePickerYearlyComponent } from './functions/date/date-picker-yearly/date-picker-yearly.component';
+import { CodesListComponent } from './functions/codes-list/codes-list.component';
+import { NewCodesListComponent } from './functions/new-codes-list/new-codes-list.component';
+import { NewCodesComponent } from './datasource/new-codes/new-codes.component';
+import { PreviousCodesComponent } from './datasource/previous-codes/previous-codes.component';
 
 
 @NgModule({
@@ -127,7 +131,11 @@ import { DatePickerYearlyComponent } from './functions/date/date-picker-yearly/d
     AddMedicineComponent,
     GenerateCodeComponent,
     DatePickerDailyComponent,
-    DatePickerYearlyComponent
+    DatePickerYearlyComponent,
+    CodesListComponent,
+    NewCodesListComponent,
+    NewCodesComponent,
+    PreviousCodesComponent
   ],
   imports: [
     BrowserModule,
