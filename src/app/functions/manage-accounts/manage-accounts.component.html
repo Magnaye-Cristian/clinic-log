@@ -1,8 +1,12 @@
 <div class="container">
-    <a (click)="viewMode = 'admin-list'"><button [class.active]="viewMode == 'admin-list'">List of Admins</button></a>
-    <a (click)="viewMode = 'student-list'"><button [class.active]="viewMode == 'student-list'">List of Students</button></a>
-    <a (click)="viewMode = 'faculty-list'"><button [class.active]="viewMode == 'faculty-list'">List of Faculties</button></a>
-    <a (click)="viewMode = 'staff-list'"><button [class.active]="viewMode == 'staff-list'">List of Staff</button></a>
+    <a (click)="viewMode = 'admin-list'"><button class="mat-elevation-z2"
+      [class.active]="viewMode == 'admin-list'">List of Admins</button></a>
+    <a (click)="viewMode = 'student-list'"><button class="mat-elevation-z2"
+      [class.active]="viewMode == 'student-list'">List of Students</button></a>
+    <a (click)="viewMode = 'faculty-list'"><button class="mat-elevation-z2"
+      [class.active]="viewMode == 'faculty-list'">List of Faculties</button></a>
+    <a (click)="viewMode = 'staff-list'"><button class="mat-elevation-z2"
+      [class.active]="viewMode == 'staff-list'">List of Staff</button></a>
 </div>
 <div [ngSwitch]="viewMode">
   <div *ngSwitchCase="'admin-list'" class="content-1"><app-admin-list></app-admin-list></div>

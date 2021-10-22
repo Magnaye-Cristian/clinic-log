@@ -28,11 +28,14 @@ button a {
 }
 
 @media only screen
-  and (min-device-width : 360px)
+  and (min-device-width : 300px)
   and (max-device-width : 800px) {
     .content-1{
       width: 95%;
       overflow: auto;
       white-space: nowrap;
+    }
+    button {
+      width: 90%;
     }
   }
