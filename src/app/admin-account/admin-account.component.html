@@ -27,16 +27,16 @@
         (click)="viewMode = 'medicine logs'" mat-list-item>
         <mat-icon [class.active]="viewMode == 'medicine logs'">view_list</mat-icon> MEDICINE LOGS
       </a>
-      <a class="nav" [class.active]="viewMode == 'records'"
-        (click)="viewMode = 'records'" mat-list-item>
-        <mat-icon [class.active]="viewMode == 'records'">format_list_numbered</mat-icon> RECORDS
+      <a class="nav" [class.active]="viewMode == 'logbook records'"
+        (click)="viewMode = 'logbook records'" mat-list-item>
+        <mat-icon [class.active]="viewMode == 'logbook records'">format_list_numbered</mat-icon> LOGBOOK RECORDS
       </a>
       <a class="nav" [class.active]="viewMode == 'tally'"
         (click)="viewMode = 'tally'" mat-list-item>
         <mat-icon [class.active]="viewMode == 'tally'">summarize</mat-icon> TALLY
       </a>
       <mat-divider></mat-divider>
-      <a class="nav" mat-list-item ><mat-icon>logout</mat-icon> LOG OUT</a>
+      <a class="nav" mat-list-item (click)="onLogout()"><mat-icon>logout</mat-icon> LOG OUT</a>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -61,7 +61,7 @@
       <div *ngSwitchCase="'dashboard'"><app-dashboard></app-dashboard></div>
       <div *ngSwitchCase="'logbook'"><app-logbook></app-logbook></div>
       <div *ngSwitchCase="'medicine logs'"><app-medicine-log></app-medicine-log></div>
-      <div *ngSwitchCase="'records'"><app-records></app-records></div>
+      <div *ngSwitchCase="'logbook records'"><app-records></app-records></div>
       <div *ngSwitchCase="'tally'"><app-tally></app-tally></div>
     </div>
   </mat-sidenav-content>
