@@ -1,10 +1,10 @@
 <div class="container">
   <h1> Code Generator</h1>
   <div class="select">
-    <mat-form-field appearance="fill" class="purpose">
+    <mat-form-field appearance="fill" class="purpose" [formGroup]="codeGroup">
       <mat-label>Generate Codes For:</mat-label>
-      <mat-select ngModel #role name="role">
-        <mat-option *ngFor="let code_type of code_type" [value]="code_type">
+      <mat-select name="role" formControlName="role">
+        <mat-option *ngFor="let code_type of code_type" [value]="code_type" >
           {{code_type.viewValue}}
         </mat-option>
       </mat-select>
@@ -20,6 +20,6 @@
     />
   </div>
   <div class="generate">
-    <button class="generate-btn" type="submit">Generate Codes</button>
+    <button class="generate-btn" type="button" (click)="generateCode()">Generate Codes</button>
   </div>
 </div>
