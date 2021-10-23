@@ -1,10 +1,13 @@
 <div class="table mat-elevation-z8">
   <h1>List of Admins</h1>
   <div class="search">
-    <input
-    class="input"
-    placeholder="ID no./Sr-Code..."
-    >
+    <mat-form-field class="fld">
+      <input
+        matInput
+        placeholder="ID no./Sr-Code"
+      >
+      <mat-icon matPrefix class="my-icon">search</mat-icon>
+    </mat-form-field>
   </div>
   <table mat-table class="full-width-table" matSort aria-label="Elements">
 
