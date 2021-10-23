@@ -1,8 +1,8 @@
 export interface LogCreateDTO {
-    people_id: number;
+    people_id?: number;
     type: string;
     type_spec: string | null;
-    school_id: string | null;
+    school_id?: string | null;
     first_name: string;
     last_name: string;
     middle_name: string;

@@ -1,4 +1,4 @@
-<div class="log">
+<div class="log" [formGroup]="createLog">
   <div class="form-group">
     <mat-form-field appearance="fill" class="purpose">
       <mat-label>Type of Non-University Personnel</mat-label>
@@ -12,6 +12,7 @@
   <div class="form-group">
     <label for="name">Name:</label>
     <input
+    formControlName = "first_name"
     required
     id="name"
     type="text"
@@ -22,6 +23,7 @@
     <label for="name">Address:</label>
     <input
     required
+    formControlName="address"
     id="name"
     type="text"
     class="form-control"
@@ -29,7 +31,7 @@
   </div>
   <mat-form-field appearance="fill" class="purpose">
     <mat-label>Purpose</mat-label>
-    <mat-select>
+    <mat-select formControlName="purpose">
       <mat-option *ngFor="let purpose of purpose" [value]="purpose.value">
         {{purpose.viewValue}}
       </mat-option>
@@ -37,7 +39,7 @@
   </mat-form-field>
   <mat-form-field appearance="fill" class="dropdown">
     <mat-label>Complaint</mat-label>
-    <mat-select>
+    <mat-select formControlName="complaint">
       <mat-option *ngFor="let complaint of complaint" [value]="complaint.value">
         {{complaint.viewValue}}
       </mat-option>
@@ -47,6 +49,6 @@
     <button class="cancel">Cancel</button>
   </div>
   <div class="btn2">
-    <button class="create">Create Log</button>
+    <button class="create" (click)="create()">Create Log</button>
   </div>
 </div>

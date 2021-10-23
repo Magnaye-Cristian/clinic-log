@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { COMPLAINTENUM } from 'src/app/models/complaint.enum';
+import { LogCreateDTO } from 'src/app/models/log-create-dto.model';
+import { LOGTYPEENUM } from 'src/app/models/log-type.enum';
+import { PURPOSEENUM } from 'src/app/models/purpose.enum';
+import { LogService } from 'src/app/services/log.service';
 
 interface Type {
   value: string;
@@ -22,44 +28,90 @@ interface Complaint {
   styleUrls: ['./create-log-others.component.css']
 })
 export class CreateLogOthersComponent implements OnInit {
+  createLog: FormGroup;
 
-  constructor() { }
+  constructor(private logService: LogService, private fb: FormBuilder) { }
 
+  get firstnameControl(): AbstractControl { return this.createLog.get('first_name') }
+  get lastnameControl(): AbstractControl { return this.createLog.get('last_name') }
+  get middlenameControl(): AbstractControl { return this.createLog.get('middle_name') }
+  get purposeControl(): AbstractControl { return this.createLog.get('purpose') }
+  get complaintControl(): AbstractControl { return this.createLog.get('complaint') }
+  get addressControl(): AbstractControl { return this.createLog.get('address') }
+  get typeSpecControl(): AbstractControl { return this.createLog.get('type_spec') }
   ngOnInit(): void {
+    this.createLog = this.fb.group({
+      type_spec: this.fb.control(''),
+      first_name: this.fb.control(''),
+      last_name: this.fb.control(''),
+      middle_name: this.fb.control(''),
+      address: this.fb.control(''),
+      purpose: this.fb.control(''),
+      complaint: this.fb.control('')
+    })
   }
+
+
+
+  create(): void {
+    console.log(`create`)
+    console.log(this.purposeControl.value)
+
+    const logCreateDTO: LogCreateDTO = {
+      type: LOGTYPEENUM.NON_UNIVERSITY,
+      type_spec: this.typeSpecControl.value,
+      first_name: this.firstnameControl.value,
+      // last_name: this.lastnameControl.value,
+      // middle_name: this.middlenameControl.value,
+      last_name: 'lastname',
+      middle_name: 'middle name',
+      purpose: this.purposeControl.value,
+      complaint: this.complaintControl.value,
+      department: '',
+      address: this.addressControl.value
+    }
+    this.logService.create(logCreateDTO).subscribe((x) => {
+      console.log(x)
+    });
+  }
+
+  // create(): void {
+  //   console.log(this.createLog)
+  // }
   type: Type[] = [
-    {value: '0', viewValue: 'Guardian'},
-    {value: '1', viewValue: 'Parent'},
-    {value: '2', viewValue: 'Visitor'},
-    {value: '3', viewValue: 'Guest'},
-    {value: '4', viewValue: 'Others'},
+    { value: '0', viewValue: 'Guardian' },
+    { value: '1', viewValue: 'Parent' },
+    { value: '2', viewValue: 'Visitor' },
+    { value: '3', viewValue: 'Guest' },
+    { value: '4', viewValue: 'Others' },
   ];
 
   purpose: Purpose[] = [
-    {value: '0', viewValue: 'BP Monitoring'},
-    {value: '1', viewValue: 'Check-up'},
-    {value: '2', viewValue: 'Consultation'},
-    {value: '3', viewValue: 'Emergency Case'},
-    {value: '4', viewValue: 'First Aid'},
-    {value: '5', viewValue: 'Medical'},
-    {value: '6', viewValue: 'Medicine'},
-    {value: '7', viewValue: 'Others'},
+    { value: PURPOSEENUM.BPMONITORING, viewValue: 'BP Monitoring' },
+    { value: PURPOSEENUM.CHECK_UP, viewValue: 'Check-up' },
+    { value: PURPOSEENUM.CONSULTATION, viewValue: 'Consultation' },
+    { value: PURPOSEENUM.EMERGENCYCASE, viewValue: 'Emergency Case' },
+    { value: PURPOSEENUM.FIRSTAID, viewValue: 'First Aid' },
+    { value: PURPOSEENUM.MEDICAL, viewValue: 'Medical' },
+    { value: PURPOSEENUM.MEDICINE, viewValue: 'Medicine' },
+    { value: PURPOSEENUM.OTHERS, viewValue: 'Others' },
   ];
 
   complaint: Complaint[] = [
-    {value: '0', viewValue: 'Abdominal Pain'},
-    {value: '1', viewValue: 'Allergy'},
-    {value: '2', viewValue: 'Body Malaise'},
-    {value: '3', viewValue: 'Chest Pain'},
-    {value: '4', viewValue: 'Cold'},
-    {value: '5', viewValue: 'Dysmenorrhea'},
-    {value: '6', viewValue: 'Headache'},
-    {value: '7', viewValue: 'Nausea'},
-    {value: '8', viewValue: 'Skin Rash'},
-    {value: '9', viewValue: 'Sore Throat'},
-    {value: '10', viewValue: 'Sprain'},
-    {value: '11', viewValue: 'Vomiting'},
-    {value: '12', viewValue: 'Wound'},
-    {value: '13', viewValue: 'Others'},
+    { value: COMPLAINTENUM.ABDOMINALPAIN, viewValue: 'Abdominal Pain' },
+    { value: COMPLAINTENUM.ALLERGY, viewValue: 'Allergy' },
+    { value: COMPLAINTENUM.BODYMALAISE, viewValue: 'Body Malaise' },
+    { value: COMPLAINTENUM.CHESTPAIN, viewValue: 'Chest Pain' },
+    { value: COMPLAINTENUM.COLD, viewValue: 'Cold' },
+    { value: COMPLAINTENUM.DYSMENORRHEA, viewValue: 'Dysmenorrhea' },
+    { value: COMPLAINTENUM.HEADACHE, viewValue: 'Headache' },
+    { value: COMPLAINTENUM.NAUSEA, viewValue: 'Nausea' },
+    { value: COMPLAINTENUM.SKIN_RASH, viewValue: 'Skin Rash' },
+    // { value: COMPLAINTENUM., viewValue: 'Sore Throat' },
+    { value: COMPLAINTENUM.SPRAIN, viewValue: 'Sprain' },
+    { value: COMPLAINTENUM.VOMNITING, viewValue: 'Vomiting' },
+    { value: COMPLAINTENUM.WOUND, viewValue: 'Wound' },
+    { value: COMPLAINTENUM.OTHERS, viewValue: 'Others' },
   ];
+
 }
