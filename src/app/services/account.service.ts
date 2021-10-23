@@ -75,12 +75,10 @@ export class AccountService {
 
   }
 
-  generateCode(roleParam: string) {
-    const _role = {
-      role: roleParam
-    };
-    console.log(_role)
-    return this.http.post('accounts/code', _role)
+  generateCode(codeRequest: { number_of_codes: number, role: string }) {
+
+    console.log(codeRequest)
+    return this.http.post('accounts/code', codeRequest)
   }
 
   navigateByRole(role: string): void {

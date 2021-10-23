@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" [formGroup]="codeGroup">
   <div class="select">
-    <mat-form-field appearance="fill" class="purpose" [formGroup]="codeGroup">
+    <mat-form-field appearance="fill" class="purpose" >
       <mat-label>Generate Codes For:</mat-label>
       <mat-select name="role" formControlName="role">
         <mat-option *ngFor="let code_type of code_type" [value]="code_type" >
@@ -11,6 +11,7 @@
   </div>
   <div class="amount">
     <input
+    formControlName="number_of_codes"
       class="number"
       mdInput
       type="number"
