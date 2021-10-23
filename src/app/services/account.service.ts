@@ -6,7 +6,7 @@ import { IRegister } from '../models/register.models';
 import { ROLEENUM } from '../models/role.enum';
 import { Router } from '@angular/router';
 import { ILogin } from '../models/login.model';
-import { HttpResponse } from '@angular/common/http';
+import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { IAccount } from '../models/account.model';
 
 @Injectable({
@@ -24,6 +24,10 @@ export class AccountService {
 
   updateProfile(updateForm: any) {
     return this.http.put('profile', updateForm)
+  }
+  get(school_id: string) {
+    // const options: Object = { observe: 'response', headers: new HttpHeaders({ 'x-auth-token': '' }) };
+    return this.http.get<IAccount>(`accounts/searchAll/${school_id}`);
   }
   getAccounts(role: ROLEENUM) {
     return this.http.get<IAccount[]>(`accounts/${role}`)
