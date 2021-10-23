@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { GenerateCodeComponent } from 'src/app/dialog/generate-code/generate-code.component';
 import { ICode } from 'src/app/models/code.model';
+import { ROLEENUM } from 'src/app/models/role.enum';
 import { CodeService } from 'src/app/services/code.service';
 import { NewCodesDataSource, NewCodesItem } from './new-codes-datasource';
 
@@ -20,7 +21,7 @@ export class NewCodesComponent implements OnInit {
   dataSource: any;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'code'];
+  displayedColumns = ['id', 'code', 'role'];
 
   constructor(public dialog: MatDialog, private codeService: CodeService) {
     // this.dataSource = new NewCodesDataSource();
@@ -33,11 +34,12 @@ export class NewCodesComponent implements OnInit {
       console.log('codelist subscription')
       if (!codes)
         return;
-      let tableData: { code: string, id: number }[] = [];
+      let tableData: { id: number, code: string, role:string }[] = [];
       for (let i = 0; i < codes.length; i++) {
         tableData.push({
           id: i + 1,
-          code: codes[i].code
+          code: codes[i].code,
+          role: codes[i].code
         })
       }
       this.dataSource = tableData;
@@ -47,7 +49,4 @@ export class NewCodesComponent implements OnInit {
     })
   }
 
-  onClick() {
-    this.dialog.open(GenerateCodeComponent);
-  }
 }
