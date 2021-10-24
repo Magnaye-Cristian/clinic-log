@@ -8,6 +8,9 @@ export class DashboardService {
 
   constructor(private http: HttpClientHelperService) { }
   getDashboardInfo() {
-    return this.http.get('records/dashboard')
+    return this.http.get('dashboard')
+  }
+  getMonthlyComplaintsOnYear(year: number) {
+    return this.http.get(`dashboard/monthlycomplaints/${year}`)
   }
 }

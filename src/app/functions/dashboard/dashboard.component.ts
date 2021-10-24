@@ -61,17 +61,29 @@ export class DashboardComponent implements OnInit {
 
 
   constructor(private dashboardService: DashboardService) {
-    Object.assign(this, { complaintsMulti })
+
+    // Object.assign(this, { complaintsMulti })
+
   }
   ngOnInit(): void {
+    this.monthlyComplaintsChangeYear(2021);
 
     this.dashboardService.getDashboardInfo().subscribe(x => {
-      this.stakeholders = x.roles
+      this.stakeholders = x.role
+      // purpose of visit needs to pass month and year
       this.purpose = x.purposes
       console.log(x)
     })
   }
 
+  monthlyComplaintsChangeYear($event: any) {
+    console.log(`${$event}`)
+    this.dashboardService.getMonthlyComplaintsOnYear($event).subscribe(x => {
+      console.log(JSON.stringify(x))
+      this.complaintsMulti = x
+    })
+
+  }
 }
 
 

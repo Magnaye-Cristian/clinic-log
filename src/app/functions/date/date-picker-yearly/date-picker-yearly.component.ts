@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -36,11 +36,12 @@ export const MY_FORMATS = {
     },
 
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
-    ],
+  ],
 })
 export class DatePickerYearlyComponent implements OnInit {
-
-  constructor() { }
+  @Output() yearlyDateChanged = new EventEmitter<number>();
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
@@ -50,6 +51,10 @@ export class DatePickerYearlyComponent implements OnInit {
     const ctrlValue = this.date.value;
     ctrlValue.year(normalizedYear.year());
     this.date.setValue(ctrlValue);
+    //request from server complaints
+    console.log(`year calendar`)
+    const year = new Date(this.date.value).getFullYear();
+    this.yearlyDateChanged.emit(year);
     datepicker.close();
   }
 }
