@@ -1,8 +1,8 @@
 <div>
   <h1>Modify Log for:</h1>
   <ul>
-    <li [class.active]="viewMode == 'stakeholders'"><a (click)="viewMode = 'stakeholders'">University Stakeholders</a></li>
-    <li [class.active]="viewMode == 'others'"><a (click)="viewMode = 'others'">Non-University Personnel</a></li>
+    <li [class.active]="viewMode == 'stakeholders'"><a (click)="viewMode = 'stakeholders'">University</a></li>
+    <li [class.active]="viewMode == 'others'"><a (click)="viewMode = 'others'">Non-University</a></li>
   </ul>
 </div>
 <div [ngSwitch]="viewMode">

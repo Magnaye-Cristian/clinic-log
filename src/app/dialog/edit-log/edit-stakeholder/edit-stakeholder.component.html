@@ -1,22 +1,40 @@
 <div class="log">
   <div class="form-group">
-    <label for="srcode">Sr-Code/ID Number:</label>
+    <label for="school_id">Sr-Code/ID Number:</label>
     <input
     required
     ngModel
-    name="srcode"
-    #srcode="ngModel"
-    id="srcode"
+    name="school_id"
+    #school_id="ngModel"
+    id="school_id"
     type="text"
     class="form-control"
     placeholder="Ex. 18-00000">
     <a><button class="search"><mat-icon>search</mat-icon></button></a>
   </div>
   <div class="form-group">
-    <label for="department">Name:</label>
+    <label for="department">First Name:</label>
     <input
-    name="name"
-    id="name"
+    name="first_name"
+    id="first_name"
+    type="text"
+    class="form-control"
+    disabled>
+  </div>
+  <div class="form-group">
+    <label for="department">Last Name:</label>
+    <input
+    name="last_name"
+    id="last_name"
+    type="text"
+    class="form-control"
+    disabled>
+  </div>
+  <div class="form-group">
+    <label for="department">Middle Name:</label>
+    <input
+    name="middle_name"
+    id="middle_name"
     type="text"
     class="form-control"
     disabled>
