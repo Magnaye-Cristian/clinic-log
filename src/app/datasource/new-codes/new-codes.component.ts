@@ -21,7 +21,7 @@ export class NewCodesComponent implements OnInit {
   dataSource: any;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'code', 'role'];
+  displayedColumns = ['id', 'code', 'role', 'date'];
 
   constructor(public dialog: MatDialog, private codeService: CodeService) {
     // this.dataSource = new NewCodesDataSource();
