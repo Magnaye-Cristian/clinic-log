@@ -34,13 +34,42 @@ export class DashboardComponent implements OnInit {
   complaintsMulti: object[];
   legendTitle: string = 'Complaints';
 
+  // export var purpose = [
+  //   {
+  //     "name": "Check-up",
+  //     "value": "15"
+  //   },{
+  //     "name": "Consultation",
+  //     "value": "6"
+  //   },{
+  //     "name": "Emergency Case",
+  //     "value": "4"
+  //   },{
+  //     "name": "First Aid",
+  //     "value": "7"
+  //   },{
+  //     "name": "Medical",
+  //     "value": "45"
+  //   },{
+  //     "name": "Medicine",
+  //     "value": "18"
+  //   },{
+  //     "name": "Others",
+  //     "value": "4"
+  //   }
+  // ]
+
 
   constructor(private dashboardService: DashboardService) {
-    Object.assign(this, { purpose, complaintsMulti })
+    Object.assign(this, { complaintsMulti })
   }
   ngOnInit(): void {
 
-    this.dashboardService.getDashboardInfo().subscribe(x => console.log(this.stakeholders = x))
+    this.dashboardService.getDashboardInfo().subscribe(x => {
+      this.stakeholders = x.roles
+      this.purpose = x.purposes
+      console.log(x)
+    })
   }
 
 }
