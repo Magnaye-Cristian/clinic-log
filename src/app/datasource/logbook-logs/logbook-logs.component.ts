@@ -32,6 +32,10 @@ export class LogbookLogsComponent implements AfterViewInit, OnInit {
     // this.dataSource = [{ school_id: '22-22222', name: 'Juan Dela Cruz', department: 'CICS', purpose: 'medical' }]
 
     console.log(this.dataSource)
+    this.getLogs();
+    this.onCreate();
+  }
+  getLogs() {
     this.logService.getLogsNoTimeOut().subscribe(x => {
       this.dataSource = x;
 
@@ -40,9 +44,7 @@ export class LogbookLogsComponent implements AfterViewInit, OnInit {
       this.table.dataSource = this.dataSource;
       console.log(x)
     })
-    this.onCreate();
   }
-
   onCreate() {
     this.dialog.open(CreateLogComponent);
   }
@@ -52,16 +54,23 @@ export class LogbookLogsComponent implements AfterViewInit, OnInit {
   }
 
   onMedicine(row: any) {
-    this.dialog.open(AddMedicineComponent, {
+    const dialog = this.dialog.open(AddMedicineComponent, {
       data: row
-    });
+    })
+    dialog.afterClosed().subscribe(() => {
+      console.log(`medicine is closed`)
+      this.getLogs();
+    })
   }
 
   onTerminate(row: any) {
     console.log(row)
-    this.dialog.open(TerminateComponent, {
+    const dialog = this.dialog.open(TerminateComponent, {
       data: row
     });
+    dialog.afterClosed().subscribe(() => {
+      this.getLogs();
+    })
   }
 
   ngAfterViewInit(): void {
