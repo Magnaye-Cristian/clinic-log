@@ -23,7 +23,15 @@ export class Content1Component implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loginViaToken();
   }
+  loginViaToken() {
+    const account = this.accountService.getProfileFromToken();
+    if (!account)
+      return
+    this.accountService.navigateByRole(account.role)
+  }
+
   private dialogOpen(message): void {
     // this.dialog.open(DialogComponent, {
     //   data: { message: 'Invalid'}
@@ -37,7 +45,6 @@ export class Content1Component implements OnInit {
 
     this.accountService.login(loginForm).subscribe(
       (x: any) => {
-
         this.accountService.navigateByRole(x.role)
       },
       error => {
