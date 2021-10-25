@@ -16,6 +16,7 @@ export class TerminateComponent implements OnInit {
     this.terminateMessage = `Terminate Log for ${this.data.first_name} ${this.data.last_name}`
     console.log()
   }
+
   delete(): void {
     console.log(`delete button is selected`)
     this.logService.delete(this.data.id).subscribe((x: any) => {

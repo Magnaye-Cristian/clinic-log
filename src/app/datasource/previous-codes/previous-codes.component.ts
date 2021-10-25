@@ -18,13 +18,12 @@ export class PreviousCodesComponent implements OnInit {
   dataSource: any;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'code', 'role'];
+  displayedColumns = ['id', 'code', 'role', 'date'];
 
   constructor(private codeService: CodeService) {
     // this.dataSource = new PreviousCodesDataSource();
 
   }
-
 
   ngOnInit(): void {
     // this.dataSource = []
