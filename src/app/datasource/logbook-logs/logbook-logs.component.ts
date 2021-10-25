@@ -33,12 +33,18 @@ export class LogbookLogsComponent implements AfterViewInit, OnInit {
 
     console.log(this.dataSource)
     this.getLogs();
-    this.onCreate();
+    // this.onCreate();
   }
   getLogs() {
+    // https://stackoverflow.com/questions/1168807/how-can-i-add-a-key-value-pair-to-a-javascript-object
     this.logService.getLogsNoTimeOut().subscribe(x => {
-      this.dataSource = x;
+      for (let z of x) {
+        console.log(z)
+        const appendObject = { name: `${z.first_name} ${z.last_name}` }
+        Object.assign(z, appendObject)
+      }
 
+      this.dataSource = x;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.table.dataSource = this.dataSource;
