@@ -56,7 +56,7 @@ export class CreateLogStakeholdersComponent implements OnInit {
       middle_name: this.profile.middle_name,
       purpose: this.purposeControl.value,
       complaint: this.complaintControl.value,
-      department: '',
+      department: this.profile.department,
       address: ''
     }
     this.LogService.create(logCreateDTO).subscribe((x) => {
