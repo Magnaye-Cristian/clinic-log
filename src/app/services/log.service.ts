@@ -7,6 +7,9 @@ import { HttpClientHelperService } from './http-client-helper.service';
   providedIn: 'root'
 })
 export class LogService {
+  delete(id: number) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private http: HttpClientHelperService) { }
   getLogsNoTimeOut() {

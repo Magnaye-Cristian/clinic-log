@@ -34,12 +34,13 @@ export class NewCodesComponent implements OnInit {
       console.log('codelist subscription')
       if (!codes)
         return;
-      let tableData: { id: number, code: string, role:string }[] = [];
+      let tableData: { id: number, code: string, role:string, date: Date }[] = [];
       for (let i = 0; i < codes.length; i++) {
         tableData.push({
           id: i + 1,
           code: codes[i].code,
-          role: codes[i].code
+          role: codes[i].role,
+          date: codes[i].created_on,
         })
       }
       this.dataSource = tableData;
