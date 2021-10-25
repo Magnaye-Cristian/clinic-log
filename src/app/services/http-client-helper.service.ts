@@ -43,6 +43,13 @@ export class HttpClientHelperService {
       map((res: any) => { return res.body; console.log(res) })
     );
   }
+
+  delete<T>(url: string, options = null) {
+    const _options = options ? options : this.options
+    return this.http.delete(url, _options).pipe(
+      map((res: any) => { return res.body; console.log(res) })
+    );
+  }
   private extractData(res: Response) {
     let body = res.text();  // If response is a JSON use json()
     if (body) {

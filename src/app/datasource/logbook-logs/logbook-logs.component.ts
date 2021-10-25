@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -23,7 +23,6 @@ export class LogbookLogsComponent implements AfterViewInit, OnInit {
   dataSource: any;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['school id', 'name', 'department', 'purpose', 'medicine', 'edit', 'terminate'];
-
   constructor(private dialog: MatDialog, private logService: LogService) {
     // this.dataSource = new LogbookLogsDataSource();
 
@@ -41,6 +40,7 @@ export class LogbookLogsComponent implements AfterViewInit, OnInit {
       this.table.dataSource = this.dataSource;
       console.log(x)
     })
+    this.onCreate();
   }
 
   onCreate() {
@@ -55,8 +55,11 @@ export class LogbookLogsComponent implements AfterViewInit, OnInit {
     this.dialog.open(AddMedicineComponent);
   }
 
-  onTerminate() {
-    this.dialog.open(TerminateComponent);
+  onTerminate(row: any) {
+    console.log(row)
+    this.dialog.open(TerminateComponent, {
+      data: row
+    });
   }
 
   ngAfterViewInit(): void {
