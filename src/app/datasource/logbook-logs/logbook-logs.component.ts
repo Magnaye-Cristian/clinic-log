@@ -46,7 +46,10 @@ export class LogbookLogsComponent implements AfterViewInit, OnInit {
     })
   }
   onCreate() {
-    this.dialog.open(CreateLogComponent);
+    const dialog = this.dialog.open(CreateLogComponent);
+    dialog.afterClosed().subscribe(() => {
+      this.getLogs()
+    })
   }
 
   onEdit() {
