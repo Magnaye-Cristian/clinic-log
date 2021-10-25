@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { LogService } from 'src/app/services/log.service';
 
 interface Medicine {
   value: string;
@@ -12,26 +14,42 @@ interface Medicine {
 })
 export class AddMedicineComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private logService: LogService, @Inject(MAT_DIALOG_DATA) public data: { id: number }) { }
+  selectedMedicine
   ngOnInit(): void {
+
   }
 
-  medicine: Medicine[] = [
-    {value: '0', viewValue: 'Antacid'},
-    {value: '1', viewValue: 'Antibiotics'},
-    {value: '2', viewValue: 'Antihistamine'},
-    {value: '3', viewValue: 'Aspirin'},
-    {value: '4', viewValue: 'Bio Flu'},
-    {value: '5', viewValue: 'Biogesic'},
-    {value: '6', viewValue: 'Buscopan'},
-    {value: '7', viewValue: 'Heat Pack Bag'},
-    {value: '8', viewValue: 'Ice Pack Bag'},
-    {value: '9', viewValue: 'Loperamide'},
-    {value: '10', viewValue: 'Mefenamic Acid'},
-    {value: '11', viewValue: 'Strepsils'},
-    {value: '12', viewValue: 'Vomiting'},
-    {value: '13', viewValue: 'Wound Dressing'},
-    {value: '14', viewValue: 'Others'},
+  addMedicine() {
+    const medInfo = {
+      id: this.data.id,
+      medicine: this.selectedMedicine
+    }
+    console.log(medInfo)
+    this.logService.updateMedicine(medInfo).subscribe((x: any) => {
+
+      if (x.message === 'success')
+        console.log('success')
+      else
+        console.log('failed')
+    })
+  }
+
+  medicines: Medicine[] = [
+    { value: 'Antacid', viewValue: 'Antacid' },
+    { value: 'Antibiotics', viewValue: 'Antibiotics' },
+    { value: 'Antihistamine', viewValue: 'Antihistamine' },
+    { value: 'Aspirin', viewValue: 'Aspirin' },
+    { value: 'Bio Flu', viewValue: 'Bio Flu' },
+    { value: 'Biogesic', viewValue: 'Biogesic' },
+    { value: 'Buscopan', viewValue: 'Buscopan' },
+    { value: 'Heat Pack Bag', viewValue: 'Heat Pack Bag' },
+    { value: 'Ice Pack Bag', viewValue: 'Ice Pack Bag' },
+    { value: 'Loperamide', viewValue: 'Loperamide' },
+    { value: 'Mefenamic Acid', viewValue: 'Mefenamic Acid' },
+    { value: 'Strepsils', viewValue: 'Strepsils' },
+    { value: 'Vomiting', viewValue: 'Vomiting' },
+    { value: 'Wound', viewValue: 'Wound Dressing' },
+    { value: 'Others', viewValue: 'Others' },
   ];
 }

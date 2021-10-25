@@ -34,7 +34,9 @@ export class HttpClientHelperService {
   }
 
   put<T>(url: string, body: any) {
-    return this.http.put<T>(url, body, this.options);
+    return this.http.put<T>(url, body, this.options).pipe(
+      map((res: any) => { return res.body; console.log(res) })
+    );;
   }
 
   get<T>(url: string, options = null) {

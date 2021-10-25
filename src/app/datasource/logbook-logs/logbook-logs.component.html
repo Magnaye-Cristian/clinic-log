@@ -35,7 +35,7 @@
     <!-- Medicine Column -->
     <ng-container matColumnDef="medicine">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Medicine</th>
-      <td mat-cell *matCellDef="let row"><a (click)="onMedicine()"><mat-icon class="medicine">add_circle</mat-icon></a></td>
+      <td mat-cell *matCellDef="let row"><a (click)="onMedicine(row)"><mat-icon class="medicine">add_circle</mat-icon></a></td>
     </ng-container>
 
     <!-- Edit Column -->
@@ -47,7 +47,7 @@
     <!-- Terminate Column -->
     <ng-container matColumnDef="terminate">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Terminate</th>
-      <td mat-cell *matCellDef="let row"><a (click)="onTerminate()"><mat-icon class="terminate">highlight_off</mat-icon></a></td>
+      <td mat-cell *matCellDef="let row"><a (click)="onTerminate(row)"><mat-icon class="terminate">highlight_off</mat-icon></a></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

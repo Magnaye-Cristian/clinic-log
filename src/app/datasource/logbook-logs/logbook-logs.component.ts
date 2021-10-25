@@ -51,8 +51,10 @@ export class LogbookLogsComponent implements AfterViewInit, OnInit {
     this.dialog.open(EditLogComponent);
   }
 
-  onMedicine() {
-    this.dialog.open(AddMedicineComponent);
+  onMedicine(row: any) {
+    this.dialog.open(AddMedicineComponent, {
+      data: row
+    });
   }
 
   onTerminate(row: any) {

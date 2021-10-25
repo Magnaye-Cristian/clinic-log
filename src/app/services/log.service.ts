@@ -8,9 +8,13 @@ import { HttpClientHelperService } from './http-client-helper.service';
   providedIn: 'root'
 })
 export class LogService {
+  logsUrl = 'logs'
+
+  updateMedicine(medInfo: { id: number, medicine: string }) {
+    return this.http.put(`${this.logsUrl}/medicine`, medInfo)
+  }
 
   constructor(private http: HttpClientHelperService) { }
-  logsUrl = 'logs'
   getLogsNoTimeOut() {
     return this.http.get('logs/notimeout');
   }
