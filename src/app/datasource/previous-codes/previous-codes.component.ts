@@ -30,6 +30,11 @@ export class PreviousCodesComponent implements OnInit {
     this.codeService.getAllCodes().subscribe((codes: ICode[]) => {
       if (codes.length < 1)
         return;
+
+      for (let code of codes) {
+        Object.assign(code, { date: new Date(code.created_on).toDateString() })
+      }
+
       console.log(codes)
       console.log(`sdasdjaskj`)
       this.dataSource = codes;
