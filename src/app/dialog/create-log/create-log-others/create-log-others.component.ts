@@ -77,11 +77,11 @@ export class CreateLogOthersComponent implements OnInit {
   //   console.log(this.createLog)
   // }
   type: Type[] = [
-    { value: '0', viewValue: 'Guardian' },
-    { value: '1', viewValue: 'Parent' },
-    { value: '2', viewValue: 'Visitor' },
-    { value: '3', viewValue: 'Guest' },
-    { value: '4', viewValue: 'Others' },
+    { value: 'guardian', viewValue: 'Guardian' },
+    { value: 'parent', viewValue: 'Parent' },
+    { value: 'visitor', viewValue: 'Visitor' },
+    { value: 'guest', viewValue: 'Guest' },
+    { value: 'others', viewValue: 'Others' },
   ];
 
   purpose: Purpose[] = [
