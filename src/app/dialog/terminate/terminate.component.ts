@@ -17,9 +17,9 @@ export class TerminateComponent implements OnInit {
     console.log()
   }
 
-  delete(): void {
+  timeout(): void {
     console.log(`delete button is selected`)
-    this.logService.delete(this.data.id).subscribe((x: any) => {
+    this.logService.timeout(this.data.id).subscribe((x: any) => {
       console.log(x)
       if (x.message === 'success')
         console.log('success')
