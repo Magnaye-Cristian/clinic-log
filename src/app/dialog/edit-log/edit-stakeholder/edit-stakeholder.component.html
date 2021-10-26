@@ -1,20 +1,20 @@
-<div class="log">
+<div class="log" [formGroup]="editLog">
   <div class="form-group">
     <label for="school_id">Sr-Code/ID Number:</label>
     <input
     required
-    ngModel
+    formControlName="school_id"
     name="school_id"
-    #school_id="ngModel"
     id="school_id"
     type="text"
     class="form-control"
     placeholder="Ex. 18-00000">
-    <a><button class="search"><mat-icon>search</mat-icon></button></a>
+    <a><button class="search" (click)="search()"><mat-icon>search</mat-icon></button></a>
   </div>
   <div class="form-group">
     <label for="department">First Name:</label>
     <input
+    [value]="first_name"
     name="first_name"
     id="first_name"
     type="text"
@@ -24,6 +24,7 @@
   <div class="form-group">
     <label for="department">Last Name:</label>
     <input
+    [value]="last_name"
     name="last_name"
     id="last_name"
     type="text"
@@ -33,6 +34,7 @@
   <div class="form-group">
     <label for="department">Middle Name:</label>
     <input
+    [value]="middle_name"
     name="middle_name"
     id="middle_name"
     type="text"
@@ -42,6 +44,7 @@
   <div class="form-group">
     <label for="department">Department:</label>
     <input
+    [value]="department"
     name="department"
     id="department"
     type="text"
@@ -50,7 +53,7 @@
   </div>
   <mat-form-field appearance="fill" class="dropdown">
     <mat-label>Purpose</mat-label>
-    <mat-select>
+    <mat-select formControlName="purpose">
       <mat-option *ngFor="let purpose of purpose" [value]="purpose.value">
         {{purpose.viewValue}}
       </mat-option>
@@ -58,7 +61,7 @@
   </mat-form-field>
   <mat-form-field appearance="fill" class="dropdown">
     <mat-label>Complaint</mat-label>
-    <mat-select>
+    <mat-select formControlName="complaint">
       <mat-option *ngFor="let complaint of complaint" [value]="complaint.value">
         {{complaint.viewValue}}
       </mat-option>
@@ -66,8 +69,8 @@
   </mat-form-field>
   <mat-form-field appearance="fill" class="dropdown">
     <mat-label>Medicine</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let medicine of medicine" [value]="medicine.value">
+    <mat-select formControlName="medicine">
+      <mat-option *ngFor="let medicine of medicines" [value]="medicine.value">
         {{medicine.viewValue}}
       </mat-option>
     </mat-select>
@@ -76,6 +79,6 @@
     <button class="cancel">Cancel</button>
   </div>
   <div class="btn2">
-    <button class="update">Update Log</button>
+    <button class="update" (click)="updateLogUniversity()">Update Log</button>
   </div>
 </div>

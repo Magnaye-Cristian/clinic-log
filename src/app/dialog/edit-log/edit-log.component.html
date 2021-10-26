@@ -1,9 +1,9 @@
 <div>
   <h1>Modify Log for:</h1>
-  <ul>
+  <!-- <ul>
     <li [class.active]="viewMode == 'stakeholders'"><a (click)="viewMode = 'stakeholders'">University</a></li>
     <li [class.active]="viewMode == 'others'"><a (click)="viewMode = 'others'">Non-University</a></li>
-  </ul>
+  </ul> -->
 </div>
 <div [ngSwitch]="viewMode">
   <div *ngSwitchCase="'stakeholders'" class="forms"><app-edit-stakeholder></app-edit-stakeholder></div>

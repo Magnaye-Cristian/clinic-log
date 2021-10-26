@@ -41,7 +41,7 @@
     <!-- Edit Column -->
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Modify</th>
-      <td mat-cell *matCellDef="let row"><a (click)="onEdit()"><mat-icon class="edit">edit</mat-icon></a></td>
+      <td mat-cell *matCellDef="let row"><a (click)="onEdit(row)"><mat-icon class="edit">edit</mat-icon></a></td>
     </ng-container>
 
     <!-- Terminate Column -->

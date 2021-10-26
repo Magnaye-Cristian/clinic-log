@@ -24,11 +24,13 @@ interface Complaint {
   styleUrls: ['./create-log-stakeholders.component.css']
 })
 export class CreateLogStakeholdersComponent implements OnInit {
+  last_name: string;
+  middle_name: string;
 
   constructor(private fb: FormBuilder, private LogService: LogService, private accountService: AccountService) { }
   createLog: FormGroup;
   department: string = '';
-  name: string = ''
+  first_name: string = ''
   ngOnInit(): void {
     this.createLog = this.fb.group({
       student_id: this.fb.control(''),
@@ -71,14 +73,18 @@ export class CreateLogStakeholdersComponent implements OnInit {
 
     this.accountService.get(this.student_id.value).subscribe((profile: IProfile) => {
       this.department = ''
-      this.name = ''
+      this.first_name = ''
+      this.middle_name = ''
+      this.last_name = ''
       this.profile = null;
       console.log(profile)
       if (!profile)
         return;
       this.profile = profile
       this.department = profile.department;
-      this.name = `${profile.first_name} ${profile.last_name}`
+      this.first_name = profile.first_name;
+      this.last_name = profile.last_name;
+      this.middle_name = profile.middle_name;
     })
   }
 

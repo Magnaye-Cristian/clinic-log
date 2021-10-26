@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { COMPLAINTENUM } from 'src/app/models/complaint.enum';
+import { ILogUpdateDTO } from 'src/app/models/log-update-dto.model';
+import { IProfile } from 'src/app/models/profile.model';
+import { PURPOSEENUM } from 'src/app/models/purpose.enum';
+import { AccountService } from 'src/app/services/account.service';
+import { LogService } from 'src/app/services/log.service';
 
 interface Purpose {
   value: string;
@@ -21,56 +29,138 @@ interface Medicine {
   styleUrls: ['./edit-stakeholder.component.css']
 })
 export class EditStakeholderComponent implements OnInit {
+  editLog: FormGroup;
+  department: string = '';
+  profile: any;
+  first_name: string = '';
+  middle_name: string = '';
+  last_name: string = '';
+  updateValue: any;
+  profile_id: number;
 
-  constructor() { }
-
+  constructor(private fb: FormBuilder, private accountService: AccountService, @Inject(MAT_DIALOG_DATA) public data, private logService: LogService) { }
+  _data: any;
   ngOnInit(): void {
+    /**
+     * populate logic
+     * get all data from row
+     * populate fields
+     */
+    this._data = JSON.parse(JSON.stringify(this.data))
+    const { school_id, purpose, complaint, medicine, first_name, last_name, middle_name, department } = this._data
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.middle_name = middle_name;
+    this.department = department;
+    console.log(this._data)
+    this.updateValue = this._data;
+    this.editLog = this.fb.group({
+      school_id: this.fb.control(school_id),
+      purpose: this.fb.control(purpose),
+      complaint: this.fb.control(complaint),
+      medicine: this.fb.control(medicine),
+    })
+    this.search()
+  }
+
+  get student_id(): AbstractControl { return this.editLog.get('school_id') }
+  get purposeControl(): AbstractControl { return this.editLog.get('purpose') }
+  get complaintControl(): AbstractControl { return this.editLog.get('complaint') }
+  get medicineControl(): AbstractControl { return this.editLog.get('medicine') }
+
+  search(): void {
+    console.log('search is clicked')
+    console.log(this.student_id.value)
+    if (!this.student_id.value)
+      return;
+
+    this.accountService.get(this.student_id.value).subscribe((profile: IProfile) => {
+      this.profile_id = profile.id;
+      this.department = ''
+      this.first_name = ''
+      this.middle_name = ''
+      this.last_name = ''
+      this.profile = null;
+      console.log(profile)
+      if (!profile)
+        return;
+      this.profile = profile
+      this.department = profile.department;
+      this.first_name = profile.first_name;
+      this.last_name = profile.last_name;
+      this.middle_name = profile.middle_name;
+      console.log(profile)
+    })
+  }
+  updateLogUniversity() {
+    console.log(this.editLog.value)
+    const id = this._data.id;
+    this.updateValue.purpose = this.purposeControl.value;
+    this.updateValue.complaint = this.complaintControl.value;
+    this.updateValue.medicine = this.medicineControl.value;
+    this.updateValue.department = this.department;
+    // console.log(this.updateValue)
+    let updateObject: any = this.updateValue;
+    updateObject.people_id = this.profile.id;
+    console.log(`profile_id ${updateObject.people_id}`)
+    delete updateObject.school_id;
+    delete updateObject.timein;
+    delete updateObject.timeout;
+    delete updateObject.university_id;
+    delete updateObject.name;
+    console.log(updateObject)
+    this.logService.update(updateObject).subscribe((x: any) => {
+      if (x.message === 'success')
+        console.log('success')
+      else
+        console.log('failed')
+    })
   }
 
   purpose: Purpose[] = [
-    {value: '0', viewValue: 'BP Monitoring'},
-    {value: '1', viewValue: 'Check-up'},
-    {value: '2', viewValue: 'Consultation'},
-    {value: '3', viewValue: 'Emergency Case'},
-    {value: '4', viewValue: 'First Aid'},
-    {value: '5', viewValue: 'Medical'},
-    {value: '6', viewValue: 'Medicine'},
-    {value: '7', viewValue: 'Others'},
+    { value: PURPOSEENUM.BPMONITORING, viewValue: 'BP Monitoring' },
+    { value: PURPOSEENUM.CHECK_UP, viewValue: 'Check-up' },
+    { value: PURPOSEENUM.CONSULTATION, viewValue: 'Consultation' },
+    { value: PURPOSEENUM.EMERGENCYCASE, viewValue: 'Emergency Case' },
+    { value: PURPOSEENUM.FIRSTAID, viewValue: 'First Aid' },
+    { value: PURPOSEENUM.MEDICAL, viewValue: 'Medical' },
+    { value: PURPOSEENUM.MEDICINE, viewValue: 'Medicine' },
+    { value: PURPOSEENUM.OTHERS, viewValue: 'Others' },
   ];
 
   complaint: Complaint[] = [
-    {value: '0', viewValue: 'Abdominal Pain'},
-    {value: '1', viewValue: 'Allergy'},
-    {value: '2', viewValue: 'Body Malaise'},
-    {value: '3', viewValue: 'Chest Pain'},
-    {value: '4', viewValue: 'Cold'},
-    {value: '5', viewValue: 'Dysmenorrhea'},
-    {value: '6', viewValue: 'Headache'},
-    {value: '7', viewValue: 'Nausea'},
-    {value: '8', viewValue: 'Skin Rash'},
-    {value: '9', viewValue: 'Sore Throat'},
-    {value: '10', viewValue: 'Sprain'},
-    {value: '11', viewValue: 'Vomiting'},
-    {value: '12', viewValue: 'Wound'},
-    {value: '13', viewValue: 'Others'},
+    { value: COMPLAINTENUM.ABDOMINALPAIN, viewValue: 'Abdominal Pain' },
+    { value: COMPLAINTENUM.ALLERGY, viewValue: 'Allergy' },
+    { value: COMPLAINTENUM.BODYMALAISE, viewValue: 'Body Malaise' },
+    { value: COMPLAINTENUM.CHESTPAIN, viewValue: 'Chest Pain' },
+    { value: COMPLAINTENUM.COLD, viewValue: 'Cold' },
+    { value: COMPLAINTENUM.DYSMENORRHEA, viewValue: 'Dysmenorrhea' },
+    { value: COMPLAINTENUM.HEADACHE, viewValue: 'Headache' },
+    { value: COMPLAINTENUM.NAUSEA, viewValue: 'Nausea' },
+    { value: COMPLAINTENUM.SKIN_RASH, viewValue: 'Skin Rash' },
+    // { value: COMPLAINTENUM., viewValue: 'Sore Throat' },
+    { value: COMPLAINTENUM.SPRAIN, viewValue: 'Sprain' },
+    { value: COMPLAINTENUM.VOMNITING, viewValue: 'Vomiting' },
+    { value: COMPLAINTENUM.WOUND, viewValue: 'Wound' },
+    { value: COMPLAINTENUM.OTHERS, viewValue: 'Others' },
   ];
 
-  medicine: Medicine[] = [
-    {value: '0', viewValue: 'Antacid'},
-    {value: '1', viewValue: 'Antibiotics'},
-    {value: '2', viewValue: 'Antihistamine'},
-    {value: '3', viewValue: 'Aspirin'},
-    {value: '4', viewValue: 'Bio Flu'},
-    {value: '5', viewValue: 'Biogesic'},
-    {value: '6', viewValue: 'Buscopan'},
-    {value: '7', viewValue: 'Heat Pack Bag'},
-    {value: '8', viewValue: 'Ice Pack Bag'},
-    {value: '9', viewValue: 'Loperamide'},
-    {value: '10', viewValue: 'Mefenamic Acid'},
-    {value: '11', viewValue: 'Strepsils'},
-    {value: '12', viewValue: 'Vomiting'},
-    {value: '13', viewValue: 'Wound Dressing'},
-    {value: '14', viewValue: 'Others'},
+  medicines: Medicine[] = [
+    { value: 'Antacid', viewValue: 'Antacid' },
+    { value: 'Antibiotics', viewValue: 'Antibiotics' },
+    { value: 'Antihistamine', viewValue: 'Antihistamine' },
+    { value: 'Aspirin', viewValue: 'Aspirin' },
+    { value: 'Bio Flu', viewValue: 'Bio Flu' },
+    { value: 'Biogesic', viewValue: 'Biogesic' },
+    { value: 'Buscopan', viewValue: 'Buscopan' },
+    { value: 'Heat Pack Bag', viewValue: 'Heat Pack Bag' },
+    { value: 'Ice Pack Bag', viewValue: 'Ice Pack Bag' },
+    { value: 'Loperamide', viewValue: 'Loperamide' },
+    { value: 'Mefenamic Acid', viewValue: 'Mefenamic Acid' },
+    { value: 'Strepsils', viewValue: 'Strepsils' },
+    { value: 'Vomiting', viewValue: 'Vomiting' },
+    { value: 'Wound', viewValue: 'Wound Dressing' },
+    { value: 'Others', viewValue: 'Others' },
   ];
 
 }

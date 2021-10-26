@@ -58,8 +58,15 @@ export class LogbookLogsComponent implements AfterViewInit, OnInit {
     })
   }
 
-  onEdit() {
-    this.dialog.open(EditLogComponent);
+  onEdit(row) {
+    const dialog = this.dialog.open(EditLogComponent, {
+      data: row
+    });
+
+    dialog.afterClosed().subscribe(() => {
+      console.log(`onEdit is closed`)
+      this.getLogs();
+    })
   }
 
   onMedicine(row: any) {
