@@ -20,11 +20,22 @@ export class LogService {
   updateMedicine(medInfo: { id: number, medicine: string }) {
     return this.http.put(`${this.logsUrl}/medicine`, medInfo)
   }
+  timeout(id: number) {
+    return this.http.post(`${this.logsUrl}/timeoutLog`, { id: id });
+  }
   getLogsNoTimeOut() {
     return this.http.get('logs/notimeout');
   }
   create(log: LogCreateDTO) {
     return this.http.post('logs/', log);
+  }
+  getLogsWithTimeout() {
+    return this.http.get('logs/withtimeout');
+  }
+  getMedicineRecord(year: number, month: number, day: number) {
+    let httpParams = new HttpParams().set('day', day).set('month', month).set('year', year);
+    const options: Object = { observe: 'response', headers: new HttpHeaders({ 'x-auth-token': '' }), params: httpParams };
+    return this.http.get(`logs/medicine`, options)
   }
   delete(id: number) {
     let httpParams = new HttpParams().set('id', id);
