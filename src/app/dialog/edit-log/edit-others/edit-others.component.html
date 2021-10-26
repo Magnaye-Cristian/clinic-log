@@ -1,8 +1,8 @@
-<div class="log">
+<div class="log" [formGroup]="editOthersLog">
   <div class="form-group">
     <mat-form-field appearance="fill" class="purpose">
       <mat-label>Type of Non-University Personnel</mat-label>
-      <mat-select>
+      <mat-select formControlName = 'type_spec'>
         <mat-option *ngFor="let type of type" [value]="type.value">
           {{type.viewValue}}
         </mat-option>
@@ -13,6 +13,7 @@
     <label for="first_name">First Name:</label>
     <input
     required
+    formControlName="first_name"
     name="first_name"
     id="first_name"
     type="text"
@@ -23,6 +24,7 @@
     <label for="last_name">Last Name:</label>
     <input
     required
+    formControlName="last_name"
     name="last_name"
     id="last_name"
     type="text"
@@ -33,6 +35,7 @@
     <label for="middle_name">Midlle Name:</label>
     <input
     required
+    formControlName="middle_name"
     name="middle_name"
     id="middle_name"
     type="text"
@@ -43,6 +46,7 @@
     <label for="address">Address:</label>
     <input
     required
+    formControlName="address"
     name="address"
     id="address"
     type="text"
@@ -51,7 +55,7 @@
   </div>
   <mat-form-field appearance="fill" class="purpose">
     <mat-label>Purpose</mat-label>
-    <mat-select>
+    <mat-select formControlName="purpose">
       <mat-option *ngFor="let purpose of purpose" [value]="purpose.value">
         {{purpose.viewValue}}
       </mat-option>
@@ -59,7 +63,7 @@
   </mat-form-field>
   <mat-form-field appearance="fill" class="dropdown">
     <mat-label>Complaint</mat-label>
-    <mat-select>
+    <mat-select formControlName="complaint">
       <mat-option *ngFor="let complaint of complaint" [value]="complaint.value">
         {{complaint.viewValue}}
       </mat-option>
@@ -67,8 +71,8 @@
   </mat-form-field>
   <mat-form-field appearance="fill" class="dropdown">
     <mat-label>Medicine</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let medicine of medicine" [value]="medicine.value">
+    <mat-select formControlName="medicine">
+      <mat-option *ngFor="let medicine of medicines" [value]="medicine.value">
         {{medicine.viewValue}}
       </mat-option>
     </mat-select>
@@ -77,6 +81,6 @@
     <button class="cancel">Cancel</button>
   </div>
   <div class="btn2">
-    <button class="update">Update Log</button>
+    <button class="update" (click)="updateLog()">Update Log</button>
   </div>
 </div>
