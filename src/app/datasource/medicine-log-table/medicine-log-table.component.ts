@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -16,7 +16,7 @@ export class MedicineLogTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<MedicineLogTableItem>;
   dataSource: MedicineLogTableDataSource;
-
+  @Input() date;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['num', 'name', 'srCode', 'department', 'complaint', 'medicine', 'date'];
   constructor(private logService: LogService) {
@@ -25,8 +25,15 @@ export class MedicineLogTableComponent implements AfterViewInit, OnInit {
   ngOnInit(): void {
     // const date = this.transformDate(new Date())
     // console.log(date)
-    const date = new Date();
-    this.logService.getMedicineRecord(date.getFullYear(), date.getMonth() + 1, date.getDate()).subscribe((records: any) => {
+    this.getMedicineRecords(new Date());
+
+  }
+  getMedicineRecords(date: Date) {
+    const month = date.getMonth() + 1;
+    console.log(date.getDate())
+    console.log(month)
+    console.log(date.getFullYear())
+    this.logService.getMedicineRecord(date.getFullYear(), month, date.getDate()).subscribe((records: any) => {
       records.forEach((record, index) => {
         console.log(record)
         // let column: { num: number, name: string, srCode: string, department: string, complaint: string, medicine: string, date: string };
@@ -38,7 +45,14 @@ export class MedicineLogTableComponent implements AfterViewInit, OnInit {
       this.dataSource.paginator = this.paginator;
       this.table.dataSource = this.dataSource;
     })
+  }
+  dateChanged($event: any) {
+    console.log($event)
+    console.log(`received by medicine log`)
+    const date = new Date($event);
+    console.log(date)
 
+    this.getMedicineRecords(date);
   }
 
   ngAfterViewInit(): void {
