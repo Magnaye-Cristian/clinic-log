@@ -29,8 +29,10 @@ export class LogService {
   create(log: LogCreateDTO) {
     return this.http.post('logs/', log);
   }
-  getLogsWithTimeout() {
-    return this.http.get('logs/withtimeout');
+  getLogsWithTimeout(year: number, month: number, day: number) {
+    let httpParams = new HttpParams().set('day', day).set('month', month).set('year', year);
+    const options: Object = { observe: 'response', headers: new HttpHeaders({ 'x-auth-token': '' }), params: httpParams };
+    return this.http.get('logs/withtimeout', options);
   }
   getMedicineRecord(year: number, month: number, day: number) {
     let httpParams = new HttpParams().set('day', day).set('month', month).set('year', year);
