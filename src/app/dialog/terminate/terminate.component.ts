@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnInit, Output } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LogService } from 'src/app/services/log.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { LogService } from 'src/app/services/log.service';
   styleUrls: ['./terminate.component.css']
 })
 export class TerminateComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number, first_name: string, last_name: string }, private logService: LogService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { id: number, first_name: string, last_name: string }, private logService: LogService, private matDialogRef: MatDialog) { }
   terminateMessage = ''
 
   ngOnInit(): void {
@@ -26,6 +26,10 @@ export class TerminateComponent implements OnInit {
       else
         console.log('failed')
     })
+  }
+
+  cancel(): void {
+    this.matDialogRef.closeAll();
   }
 
 }
