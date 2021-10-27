@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { COMPLAINTENUM } from 'src/app/models/complaint.enum';
 import { PURPOSEENUM } from 'src/app/models/purpose.enum';
 import { AccountService } from 'src/app/services/account.service';
@@ -39,7 +39,7 @@ export class EditOthersComponent implements OnInit {
     this._logService = value;
   }
 
-  constructor(private fb: FormBuilder, private accountService: AccountService, @Inject(MAT_DIALOG_DATA) public data, private _logService: LogService) { }
+  constructor(private fb: FormBuilder, private accountService: AccountService, @Inject(MAT_DIALOG_DATA) public data, private _logService: LogService, private matDialogRef: MatDialog) { }
   editOthersLog;
   _data;
   ngOnInit(): void {
@@ -104,6 +104,10 @@ export class EditOthersComponent implements OnInit {
       else
         console.log('failed')
     })
+  }
+
+  cancel(): void {
+    this.matDialogRef.closeAll();
   }
 
   type: Type[] = [

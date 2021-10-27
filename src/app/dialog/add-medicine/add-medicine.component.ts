@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LogService } from 'src/app/services/log.service';
 
 interface Medicine {
@@ -14,7 +14,7 @@ interface Medicine {
 })
 export class AddMedicineComponent implements OnInit {
 
-  constructor(private logService: LogService, @Inject(MAT_DIALOG_DATA) public data: { id: number }) { }
+  constructor(private logService: LogService, @Inject(MAT_DIALOG_DATA) public data: { id: number }, private matDialogRef: MatDialog) { }
   selectedMedicine
   ngOnInit(): void {
 
@@ -33,6 +33,10 @@ export class AddMedicineComponent implements OnInit {
       else
         console.log('failed')
     })
+  }
+
+  cancel(): void {
+    this.matDialogRef.closeAll();
   }
 
   medicines: Medicine[] = [

@@ -13,6 +13,11 @@ export class LogOutComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  cancel(): void {
+    this.matDialogRef.closeAll();
+  }
+
   logout(): void {
     this.matDialogRef.closeAll();
     this.accountService.logout();

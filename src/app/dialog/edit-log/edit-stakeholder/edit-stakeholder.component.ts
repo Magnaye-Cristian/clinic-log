@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { COMPLAINTENUM } from 'src/app/models/complaint.enum';
 import { ILogUpdateDTO } from 'src/app/models/log-update-dto.model';
 import { IProfile } from 'src/app/models/profile.model';
@@ -38,7 +38,7 @@ export class EditStakeholderComponent implements OnInit {
   updateValue: any;
   profile_id: number;
 
-  constructor(private fb: FormBuilder, private accountService: AccountService, @Inject(MAT_DIALOG_DATA) public data, private logService: LogService) { }
+  constructor(private fb: FormBuilder, private accountService: AccountService, @Inject(MAT_DIALOG_DATA) public data, private logService: LogService, private matDialogRef: MatDialog) { }
   _data: any;
   ngOnInit(): void {
     /**
@@ -115,6 +115,10 @@ export class EditStakeholderComponent implements OnInit {
       else
         console.log('failed')
     })
+  }
+
+  cancel(): void {
+    this.matDialogRef.closeAll();
   }
 
   purpose: Purpose[] = [
