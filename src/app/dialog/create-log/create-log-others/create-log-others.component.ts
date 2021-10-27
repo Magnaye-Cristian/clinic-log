@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { COMPLAINTENUM } from 'src/app/models/complaint.enum';
 import { LogCreateDTO } from 'src/app/models/log-create-dto.model';
 import { LOGTYPEENUM } from 'src/app/models/log-type.enum';
@@ -30,7 +31,7 @@ interface Complaint {
 export class CreateLogOthersComponent implements OnInit {
   createLog: FormGroup;
 
-  constructor(private logService: LogService, private fb: FormBuilder) { }
+  constructor(private logService: LogService, private fb: FormBuilder, private matDialogRef: MatDialog) { }
 
   get firstnameControl(): AbstractControl { return this.createLog.get('first_name') }
   get lastnameControl(): AbstractControl { return this.createLog.get('last_name') }
@@ -51,7 +52,9 @@ export class CreateLogOthersComponent implements OnInit {
     })
   }
 
-
+  cancel(): void {
+    this.matDialogRef.closeAll();
+  }
 
   create(): void {
     console.log(`create`)
@@ -70,6 +73,7 @@ export class CreateLogOthersComponent implements OnInit {
     }
     this.logService.create(logCreateDTO).subscribe((x) => {
       console.log(x)
+      this.matDialogRef.closeAll();
     });
   }
 

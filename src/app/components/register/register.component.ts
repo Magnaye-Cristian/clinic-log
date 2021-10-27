@@ -20,7 +20,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
   user: user_type[] = [
-    { value: 'head admin', viewValue: 'Head Admin' },
     { value: 'admin', viewValue: 'Admin' },
     { value: 'student', viewValue: 'Student' },
     { value: 'faculty', viewValue: 'Faculty' },

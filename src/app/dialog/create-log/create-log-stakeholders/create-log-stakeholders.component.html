@@ -71,7 +71,7 @@
     </mat-select>
   </mat-form-field>
   <div class="btn1">
-    <button class="cancel">Cancel</button>
+    <button class="cancel" (click)="cancel()">Cancel</button>
   </div>
   <div class="btn2">
     <button class="create" (click)="create()" [disabled]="!isCreateActive">Create Log</button>
