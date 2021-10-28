@@ -29,6 +29,9 @@
   color: #51cbce;
   font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
 }
+h1 {
+  font-size: 18px;
+}
 h3 {
   color: #9a9a9a;
   font-weight: 300;
