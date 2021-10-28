@@ -50,6 +50,10 @@ td {
       overflow: auto;
       white-space: nowrap;
     }
+  }
+  @media only screen
+  and (min-device-width : 300px)
+  and (max-device-width : 780px) {
       .search {
         float: left;
         margin: 0%;
