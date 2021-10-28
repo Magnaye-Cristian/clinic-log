@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-disable',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisableComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data, private accountService: AccountService) { }
 
   ngOnInit(): void {
+
   }
+  deactivate() {
+    console.log(this.data)
+    this.accountService.deactivateAccount(this.data.school_id).subscribe(x => { console.log(x) })
+  }
+
 
 }
