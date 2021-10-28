@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { IProfile } from 'src/app/models/profile.model';
 import { AccountService } from 'src/app/services/account.service';
 
@@ -10,7 +11,7 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class UpdateProfileComponent implements OnInit {
   updateForm: FormGroup;
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private matDialogRef: MatDialog) { }
 
   ngOnInit(): void {
     this.updateForm = new FormGroup({
@@ -48,6 +49,10 @@ export class UpdateProfileComponent implements OnInit {
     this.accountService.updateProfile(updateForm).subscribe(x => {
       console.log(x)
     })
+  }
+
+  cancel(): void {
+    this.matDialogRef.closeAll();
   }
 
 }
