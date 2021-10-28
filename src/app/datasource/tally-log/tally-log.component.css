@@ -82,7 +82,7 @@ mat-cell:last-of-type, mat-header-cell:last-of-type, mat-footer-cell:last-of-typ
 }
 
 @media only screen
-  and (min-device-width : 360px)
+  and (min-device-width : 300px)
   and (max-device-width : 1024px) {
     .table {
       width: 98%;
