@@ -96,4 +96,8 @@ export class AccountService {
       link = 'student-account'
     this.router.navigate([`/${link}`]);
   }
+
+  deactivateAccount(school_id: string) {
+    return this.http.post('accounts/deactivate', { school_id: school_id });
+  }
 }
