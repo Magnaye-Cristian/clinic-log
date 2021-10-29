@@ -11,64 +11,51 @@
     <div class="form-group">
       <label for="srcode">Sr-Code/ID Number:</label>
       <input
-      required
-      ngModel
+      [value]="school_id"
       name="srcode"
-      #srcode="ngModel"
       id="srcode"
       type="text"
       class="form-control"
-      placeholder="18-00000"
       disabled>
     </div>
     <div class="form-group">
       <label for="name">First Name:</label>
       <input
-      required
-      ngModel
+      [value]="first_name"
       name="name"
-      #name="ngModel"
       id="name"
       type="text"
       class="form-control"
-      placeholder="Juan"
       disabled>
     </div>
     <div class="form-group">
       <label for="name">Last Name:</label>
       <input
-      required
-      ngModel
+      [value]="last_name"
       name="name"
-      #name="ngModel"
       id="name"
       type="text"
       class="form-control"
-      placeholder="Cruz"
       disabled>
     </div>
     <div class="form-group">
       <label for="name">Middle Name:</label>
       <input
-      ngModel
+      [value]="middle_name"
       name="name"
-      #name="ngModel"
       id="name"
       type="text"
       class="form-control"
-      placeholder="Dela"
       disabled>
     </div>
     <div class="form-group">
       <label for="department">Department:</label>
       <input
-      ngModel
+      [value]="department"
       name="department"
-      #department="ngModel"
       id="department"
       type="text"
       class="form-control"
-      placeholder="CICS"
       disabled>
     </div>
     <div class="btn">

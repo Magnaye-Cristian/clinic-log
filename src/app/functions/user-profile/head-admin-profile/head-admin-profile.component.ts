@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { GenerateCodeComponent } from 'src/app/dialog/generate-code/generate-code.component';
 import { UpdateProfileComponent } from 'src/app/dialog/update-profile/update-profile.component';
+import { IProfile } from 'src/app/models/profile.model';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'head-admin-profile',
@@ -9,17 +11,33 @@ import { UpdateProfileComponent } from 'src/app/dialog/update-profile/update-pro
   styleUrls: ['./head-admin-profile.component.css']
 })
 export class HeadAdminProfileComponent implements OnInit {
+  first_name: string = '';
+  last_name: string = '';
+  middle_name: string = '';
+  department: string = '';
+  school_id: string = '';
 
-  constructor(private dialog: MatDialog) { }
-
+  constructor(private dialog: MatDialog, private accountService: AccountService) { }
   ngOnInit(): void {
+    this.setProfileValue();
   }
 
-  onCreate(){
+  setProfileValue() {
+    this.accountService.getProfileFromServer().subscribe((profile: IProfile) => {
+      console.log(profile)
+      this.school_id = profile.school_id;
+      this.first_name = profile.first_name;
+      this.last_name = profile.last_name;
+      this.middle_name = profile.middle_name;
+      this.department = profile.department;
+    })
+  }
+
+  onCreate() {
     this.dialog.open(UpdateProfileComponent);
   }
 
-  onClick(){
+  onClick() {
     this.dialog.open(GenerateCodeComponent);
   }
 
