@@ -7,6 +7,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DisableComponent } from 'src/app/dialog/disable/disable.component';
 import { AccountService } from 'src/app/services/account.service';
 import { ROLEENUM } from 'src/app/models/role.enum';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-faculty-list',
@@ -17,19 +18,40 @@ export class FacultyListComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<FacultyListItem>;
-  dataSource: FacultyListDataSource;
+  dataSource: any;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name', 'status', 'department', 'disable'];
+  searchControl: FormControl;
+  backup: any;
 
   constructor(private dialog: MatDialog, private accountService: AccountService) {
     // this.dataSource = new FacultyListDataSource();
   }
   ngOnInit(): void {
+    this.searchControl = new FormControl();
     console.log(`faculty accounts`)
     this.getList();
+    setTimeout(() => {
+      this.search()
+    }, 1100);
   }
-
+  search() {
+    console.log(`search`)
+    console.log(this.dataSource)
+    this.searchControl.valueChanges.subscribe((search: string) => {
+      let newDataSource = [];
+      for (let item of this.backup) {
+        if (item.school_id.toLowerCase().startsWith(search.toLowerCase())) {
+          newDataSource.push(item)
+          console.log(`pushing`)
+          console.log(item)
+        }
+      }
+      this.table.dataSource = newDataSource;
+      console.log(this.dataSource)
+    })
+  }
   getList() {
     this.accountService.getAccounts(ROLEENUM.FACULTY).subscribe((accounts: any) => {
       console.log(accounts)
@@ -41,6 +63,7 @@ export class FacultyListComponent implements AfterViewInit, OnInit {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.table.dataSource = this.dataSource;
+      this.backup = JSON.parse(JSON.stringify(this.dataSource))
     })
   }
   onDisable(row){
