@@ -42,7 +42,7 @@ td {
   font-weight: 400;
 }
 @media only screen
-  and (min-device-width : 360px)
+  and (min-device-width : 300px)
   and (max-device-width : 1024px) {
     .table {
       width: 90%;
@@ -51,14 +51,14 @@ td {
       white-space: nowrap;
     }
   }
-@media only screen
-  and (min-device-width : 360px)
+  @media only screen
+  and (min-device-width : 300px)
   and (max-device-width : 780px) {
-    .search {
-      float: left;
-      margin: 0%;
-      margin-bottom: 2%;
-      width: 90%;
+      .search {
+        float: left;
+        margin: 0%;
+        margin-bottom: 2%;
+        width: 90%;
+      }
     }
-  }
 

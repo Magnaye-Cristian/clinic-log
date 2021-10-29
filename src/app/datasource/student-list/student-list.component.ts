@@ -26,18 +26,30 @@ export class StudentListComponent implements AfterViewInit, OnInit {
     // this.dataSource = new StudentListDataSource();
   }
   ngOnInit(): void {
+    console.log(`student accounts`)
+    this.getList();
+  }
+
+  getList() {
     this.accountService.getAccounts(ROLEENUM.STUDENT).subscribe((accounts: any) => {
       console.log(accounts)
+      for (let account of accounts) {
+        Object.assign(account, { name: `${account.first_name} ${account.last_name}` })
+      }
       this.dataSource = accounts;
+
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.table.dataSource = this.dataSource;
     })
   }
-  onDisable(){
-    this.dialog.open(DisableComponent);
+  onDisable(row) {
+    const dialog = this.dialog.open(DisableComponent, {
+      data: row
+    });
+    dialog.afterClosed().subscribe(() => this.getList())
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
   }
 }
