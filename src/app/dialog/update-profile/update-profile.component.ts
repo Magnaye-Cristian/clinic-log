@@ -15,35 +15,33 @@ export class UpdateProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateForm = new FormGroup({
-      first_name: new FormControl('account.first_name'),
-      last_name: new FormControl('account.last_name'),
-      middle_name: new FormControl('account.middle_name'),
-      department: new FormControl('account.department'),
-      program: new FormControl('account.program'),
-      password: new FormControl('account.password'),
+      first_name: new FormControl(''),
+      last_name: new FormControl(''),
+      middle_name: new FormControl(''),
+      department: new FormControl(''),
+      program: new FormControl(''),
+      password: new FormControl(''),
     });
     this.setProfileValues()
-
-
   }
+
   setProfileValues(): IProfile {
     let account: IProfile;
-    this.accountService.getProfileFromServer().subscribe((res: any) => {
-      console.log(res.body)
-      this.updateForm.patchValue(res.body);
+    this.accountService.getProfileFromServer().subscribe((profile: IProfile) => {
+      console.log(profile)
+      this.updateForm.patchValue(profile);
     });
     return account;
   }
 
   updateProfile(): void {
-    const first_name = this.updateForm.get('first_name').value;
     const updateForm = {
-      "first_name": "first_name",
-      "last_name": "laaaaaaname",
-      "middle_name": "mplace",
-      "password": "1231aA%1234567",
-      "department": 'department1',
-      "program": 'program1'
+      "first_name": this.updateForm.get('first_name').value,
+      "last_name": this.updateForm.get('last_name').value,
+      "middle_name": this.updateForm.get('middle_name').value,
+      "password": this.updateForm.get('password').value,
+      "department": this.updateForm.get('department').value,
+      "program": this.updateForm.get('program').value
     }
     console.log(updateForm)
     this.accountService.updateProfile(updateForm).subscribe(x => {
