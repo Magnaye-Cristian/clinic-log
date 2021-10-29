@@ -34,26 +34,26 @@ export class DashboardComponent implements OnInit {
   complaintsMulti: object[];
   legendTitle: string = 'Complaints';
 
-  // export var purpose = [
+  // testPurpose = [
   //   {
   //     "name": "Check-up",
   //     "value": "15"
-  //   },{
+  //   }, {
   //     "name": "Consultation",
   //     "value": "6"
-  //   },{
+  //   }, {
   //     "name": "Emergency Case",
   //     "value": "4"
-  //   },{
+  //   }, {
   //     "name": "First Aid",
   //     "value": "7"
-  //   },{
+  //   }, {
   //     "name": "Medical",
   //     "value": "45"
-  //   },{
+  //   }, {
   //     "name": "Medicine",
   //     "value": "18"
-  //   },{
+  //   }, {
   //     "name": "Others",
   //     "value": "4"
   //   }
@@ -66,14 +66,28 @@ export class DashboardComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.monthlyComplaintsChangeYear(2021);
+    const date = new Date()
+    this.monthlyComplaintsChangeYear(date.getFullYear());
 
-    this.dashboardService.getDashboardInfo().subscribe(x => {
-      this.stakeholders = x.role
-      // purpose of visit needs to pass month and year
-      this.purpose = x.purposes
-      console.log(x)
-    })
+    // this.dashboardService.getDashboardInfo().subscribe(x => {
+    //   this.stakeholders = x.role
+    //   // purpose of visit needs to pass month and year
+    //   
+    //   console.log(x)
+    // })
+    this.purposeRequest(date);
+  }
+  purposeRequest(_date: Date) {
+    const date = new Date(_date)
+    const month = date.getMonth() + 1;
+    console.log(date.getDate())
+    console.log(month)
+    console.log(date.getFullYear())
+    this.dashboardService.getPurpose(date.getFullYear(), month, date.getFullYear()).subscribe((records: any) => {
+      console.log(records)
+      this.purpose = records
+      console.log(this.purpose)
+    });
   }
 
   monthlyComplaintsChangeYear($event: any) {

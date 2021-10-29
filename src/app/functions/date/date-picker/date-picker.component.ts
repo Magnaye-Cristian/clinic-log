@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
@@ -42,7 +42,7 @@ export const MY_FORMATS = {
   ],
 })
 export class DatePickerComponent implements OnInit {
-
+  @Output() dateSelected = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -59,6 +59,7 @@ export class DatePickerComponent implements OnInit {
     const ctrlValue = this.date.value;
     ctrlValue.month(normalizedMonth.month());
     this.date.setValue(ctrlValue);
+    this.dateSelected.emit(ctrlValue);
     datepicker.close();
   }
 }
