@@ -68,14 +68,14 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     const date = new Date()
     this.monthlyComplaintsChangeYear(date.getFullYear());
-
-    // this.dashboardService.getDashboardInfo().subscribe(x => {
-    //   this.stakeholders = x.role
-    //   // purpose of visit needs to pass month and year
-    //   
-    //   console.log(x)
-    // })
+    this.setRoles();
     this.purposeRequest(date);
+  }
+  setRoles() {
+    this.dashboardService.getRoles().subscribe(roles => {
+      console.log(roles)
+      this.stakeholders = roles;
+    })
   }
   purposeRequest(_date: Date) {
     const date = new Date(_date)

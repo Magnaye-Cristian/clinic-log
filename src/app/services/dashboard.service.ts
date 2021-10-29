@@ -13,6 +13,9 @@ export class DashboardService {
     const options: Object = { observe: 'response', headers: new HttpHeaders({ 'x-auth-token': '' }), params: httpParams };
     return this.http.get('dashboard/purpose', options);
   }
+  getRoles() {
+    return this.http.get('dashboard/roles');
+  }
 
   getDashboardInfo() {
     return this.http.get('dashboard')
