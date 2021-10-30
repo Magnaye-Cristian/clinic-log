@@ -16,6 +16,7 @@ export class HeadAdminProfileComponent implements OnInit {
   middle_name: string = '';
   department: string = '';
   school_id: string = '';
+  university: string = '';
 
   constructor(private dialog: MatDialog, private accountService: AccountService) { }
   ngOnInit(): void {
@@ -30,6 +31,7 @@ export class HeadAdminProfileComponent implements OnInit {
       this.last_name = profile.last_name;
       this.middle_name = profile.middle_name;
       this.department = profile.department;
+      this.university = profile.university;
     })
   }
 
