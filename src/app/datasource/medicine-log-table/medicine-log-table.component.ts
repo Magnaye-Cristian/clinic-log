@@ -16,7 +16,6 @@ export class MedicineLogTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<MedicineLogTableItem>;
   dataSource: MedicineLogTableDataSource;
-  @Input() date;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['num', 'name', 'srCode', 'department', 'complaint', 'medicine', 'date'];
   constructor(private logService: LogService) {
@@ -25,9 +24,21 @@ export class MedicineLogTableComponent implements AfterViewInit, OnInit {
   ngOnInit(): void {
     // const date = this.transformDate(new Date())
     // console.log(date)
+    // const date = this.convertDateToUTC(new Date())
     this.getMedicineRecords(new Date());
 
   }
+
+  // private convertDateToUTC(date: Date): Date {
+  //   return new Date(date.getUTCFullYear(),
+  //     date.getUTCMonth(),
+  //     date.getUTCDate(),
+  //     date.getUTCHours(),
+  //     date.getUTCMinutes(),
+  //     date.getUTCSeconds()
+  //   );
+  // }
+
   getMedicineRecords(date: Date) {
     const month = date.getMonth() + 1;
     console.log(date.getDate())
@@ -46,6 +57,7 @@ export class MedicineLogTableComponent implements AfterViewInit, OnInit {
       this.table.dataSource = this.dataSource;
     })
   }
+
   dateChanged($event: any) {
     console.log($event)
     console.log(`received by medicine log`)
