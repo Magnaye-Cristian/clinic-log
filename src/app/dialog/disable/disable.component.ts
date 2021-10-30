@@ -10,9 +10,9 @@ import { AccountService } from 'src/app/services/account.service';
 export class DisableComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data, private accountService: AccountService) { }
-
+  school_id = ''
   ngOnInit(): void {
-
+    this.school_id = this.data.school_id
   }
   deactivate() {
     console.log(this.data)
