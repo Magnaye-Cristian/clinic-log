@@ -25,8 +25,8 @@ interface Complaint {
   styleUrls: ['./create-log-stakeholders.component.css']
 })
 export class CreateLogStakeholdersComponent implements OnInit {
-  last_name: string;
-  middle_name: string;
+  last_name: string = '';
+  middle_name: string = '';
 
   constructor(private fb: FormBuilder, private LogService: LogService, private accountService: AccountService, private matDialogRef: MatDialog) { }
   createLog: FormGroup;
