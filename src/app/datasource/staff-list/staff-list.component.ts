@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { StaffListDataSource, StaffListItem } from './staff-list-datasource';
@@ -15,7 +15,6 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./staff-list.component.css']
 })
 export class StaffListComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<StaffListItem>;
   dataSource: any;
@@ -24,6 +23,13 @@ export class StaffListComponent implements AfterViewInit, OnInit {
   displayedColumns = ['id', 'name', 'department', 'status', 'disable'];
   searchControl: FormControl;
   backup: any;
+  pageIndex: 0
+  currentPage: any = 0;
+  pageSize: any = 10;
+  totalSize = 0;
+  pageEvent: PageEvent;
+  paginator: any;
+  backupCurrentPage: any = 0;
 
   constructor(private dialog: MatDialog, private accountService: AccountService) {
     // this.dataSource = new StaffListDataSource();
@@ -65,6 +71,20 @@ export class StaffListComponent implements AfterViewInit, OnInit {
       this.table.dataSource = this.dataSource;
       this.backup = JSON.parse(JSON.stringify(this.dataSource))
     })
+  }
+  handlePage(e: any) {
+    this.currentPage = e.pageIndex;
+    this.backupCurrentPage = e.pageIndex;
+    this.pageSize = e.pageSize;
+    this.iterator();
+    console.log(e)
+  }
+  iterator() {
+    const end = (this.currentPage + 1) * this.pageSize;
+    const start = this.currentPage * this.pageSize;
+    const part = this.dataSource.slice(start, end);
+    this.totalSize = this.dataSource.length;
+    this.table.dataSource = part;
   }
   onDisable(row) {
     const dialog = this.dialog.open(DisableComponent, {
