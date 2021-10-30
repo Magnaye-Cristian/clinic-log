@@ -16,7 +16,7 @@ export class LogbookRecordsComponent implements OnInit {
   @ViewChild(MatTable) table!: MatTable<LogbookRecordsItem>;
   dataSource: LogbookRecordsDataSource;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['num', 'name', 'srCode', 'department', 'purpose', 'date', 'timeIn', 'timeOut'];
+  displayedColumns = ['num', 'name', 'srCode', 'department', 'purpose', 'type', 'address', 'date', 'timeIn', 'timeOut'];
 
   constructor(private logService: LogService) {
 
@@ -36,10 +36,24 @@ export class LogbookRecordsComponent implements OnInit {
     console.log(month)
     console.log(date.getFullYear())
     this.logService.getLogsWithTimeout(date.getFullYear(), month, date.getDate()).subscribe((records: any) => {
-      records.forEach((record, index) => {
-        console.log(record)
+      records.forEach((z, index) => {
+        console.log(z)
+
+
+        const appendObject = {
+          num: index + 1,
+          name: `${z.first_name} ${z.last_name}`,
+          school_id_placeholder: z.school_id,
+          department_placeholder: z.department,
+          date: new Date(z.timeout).toDateString(),
+          srCode: z.school_id
+        }
+        if (z?.type === 'non-university') {
+          appendObject.school_id_placeholder = z.type_spec;
+          appendObject.department_placeholder = z.address;
+        }
         // let column: { num: number, name: string, srCode: string, department: string, complaint: string, medicine: string, date: string };
-        Object.assign(record, { num: index + 1, name: `${record.first_name}  ${record.last_name}`, date: new Date(record.timeout).toDateString(), srCode: record.school_id })
+        Object.assign(z, appendObject)
       });
       this.dataSource = records;
 
