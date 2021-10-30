@@ -46,6 +46,7 @@ export class UpdateProfileComponent implements OnInit {
     console.log(updateForm)
     this.accountService.updateProfile(updateForm).subscribe(x => {
       console.log(x)
+      location.reload();
     })
   }
 
