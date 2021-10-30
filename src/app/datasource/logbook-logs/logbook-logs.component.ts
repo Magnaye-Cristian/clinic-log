@@ -22,7 +22,7 @@ export class LogbookLogsComponent implements AfterViewInit, OnInit {
   // dataSource: LogbookLogsDataSource;
   dataSource: any;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['school id', 'name', 'department', 'purpose', 'medicine', 'edit', 'terminate'];
+  displayedColumns = ['school_id', 'name', 'department', 'purpose', 'medicine', 'edit', 'terminate'];
   constructor(private dialog: MatDialog, private logService: LogService) {
     // this.dataSource = new LogbookLogsDataSource();
   }

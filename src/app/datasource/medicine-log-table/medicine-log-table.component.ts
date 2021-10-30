@@ -17,7 +17,7 @@ export class MedicineLogTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatTable) table!: MatTable<MedicineLogTableItem>;
   dataSource: MedicineLogTableDataSource;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['num', 'name', 'srCode', 'department', 'complaint', 'medicine', 'date'];
+  displayedColumns = ['num', 'name', 'school_id', 'department', 'complaint', 'medicine', 'date'];
   constructor(private logService: LogService) {
 
   }
