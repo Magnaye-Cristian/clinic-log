@@ -2,7 +2,7 @@
   <div class="form-group">
     <mat-form-field appearance="fill" class="purpose">
       <mat-label>Type of Non-University Personnel</mat-label>
-      <mat-select>
+      <mat-select formControlName="type_spec">
         <mat-option *ngFor="let type of type" [value]="type.value">
           {{type.viewValue}}
         </mat-option>

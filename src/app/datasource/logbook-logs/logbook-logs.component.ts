@@ -45,7 +45,7 @@ export class LogbookLogsComponent implements AfterViewInit, OnInit {
           department_placeholder: z.department
         }
         if (z?.type === 'non-university') {
-          appendObject.school_id_placeholder = z.type;
+          appendObject.school_id_placeholder = z.type_spec;
           appendObject.department_placeholder = z.address;
         }
         Object.assign(z, appendObject)
