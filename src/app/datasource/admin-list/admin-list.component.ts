@@ -31,6 +31,7 @@ export class AdminListComponent implements AfterViewInit, OnInit {
   totalSize = 0;
   pageEvent: PageEvent;
   paginator: any;
+  backupCurrentPage: any;
   constructor(private dialog: MatDialog, private accountService: AccountService) {
     // this.dataSource = new AdminListDataSource();
   }
@@ -47,6 +48,8 @@ export class AdminListComponent implements AfterViewInit, OnInit {
     console.log(this.dataSource)
     this.searchControl.valueChanges.subscribe((search: string) => {
       let newDataSource = [];
+      if (!search)
+        return this.currentPage = this.backupCurrentPage;
       for (let item of this.backup) {
         if (item.school_id.toLowerCase().startsWith(search.toLowerCase())) {
           newDataSource.push(item)
@@ -55,8 +58,9 @@ export class AdminListComponent implements AfterViewInit, OnInit {
         }
       }
       this.table.dataSource = newDataSource;
+      this.currentPage = 0;
       this.iterator(newDataSource)
-      console.log(this.dataSource)
+      console.log(this.backup)
     })
   }
   getList() {
@@ -77,6 +81,7 @@ export class AdminListComponent implements AfterViewInit, OnInit {
   }
   handlePage(e: any) {
     this.currentPage = e.pageIndex;
+    this.backupCurrentPage = e.pageIndex;
     this.pageSize = e.pageSize;
     this.iterator(this.dataSource);
     console.log(e)
