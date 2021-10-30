@@ -31,7 +31,7 @@ export class AdminListComponent implements AfterViewInit, OnInit {
   totalSize = 0;
   pageEvent: PageEvent;
   paginator: any;
-  backupCurrentPage: any;
+  backupCurrentPage: any = 0;
   constructor(private dialog: MatDialog, private accountService: AccountService) {
     // this.dataSource = new AdminListDataSource();
   }
@@ -48,8 +48,6 @@ export class AdminListComponent implements AfterViewInit, OnInit {
     console.log(this.dataSource)
     this.searchControl.valueChanges.subscribe((search: string) => {
       let newDataSource = [];
-      if (!search)
-        return this.currentPage = this.backupCurrentPage;
       for (let item of this.backup) {
         if (item.school_id.toLowerCase().startsWith(search.toLowerCase())) {
           newDataSource.push(item)
@@ -57,10 +55,10 @@ export class AdminListComponent implements AfterViewInit, OnInit {
           console.log(item)
         }
       }
-      this.table.dataSource = newDataSource;
       this.currentPage = 0;
-      this.iterator(newDataSource)
-      console.log(this.backup)
+      this.dataSource = newDataSource;
+      this.iterator()
+      console.log(this.dataSource)
     })
   }
   getList() {
@@ -76,20 +74,21 @@ export class AdminListComponent implements AfterViewInit, OnInit {
       this.table.dataSource = this.dataSource;
       this.backup = JSON.parse(JSON.stringify(this.dataSource))
       this.totalSize = this.dataSource.length;
-      this.iterator(this.dataSource);
+      this.iterator();
     })
   }
   handlePage(e: any) {
     this.currentPage = e.pageIndex;
     this.backupCurrentPage = e.pageIndex;
     this.pageSize = e.pageSize;
-    this.iterator(this.dataSource);
+    this.iterator();
     console.log(e)
   }
-  iterator(dataSource: any[]) {
+  iterator() {
     const end = (this.currentPage + 1) * this.pageSize;
     const start = this.currentPage * this.pageSize;
-    const part = dataSource.slice(start, end);
+    const part = this.dataSource.slice(start, end);
+    this.totalSize = this.dataSource.length;
     this.table.dataSource = part;
   }
   onDisable(row) {
