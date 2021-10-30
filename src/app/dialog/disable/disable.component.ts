@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AccountService } from 'src/app/services/account.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class DisableComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data, private accountService: AccountService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data, private accountService: AccountService, private matDialogRef: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -17,6 +17,11 @@ export class DisableComponent implements OnInit {
   deactivate() {
     console.log(this.data)
     this.accountService.deactivateAccount(this.data.school_id).subscribe(x => { console.log(x) })
+    this.matDialogRef.closeAll();
+  }
+
+  cancel(): void {
+    this.matDialogRef.closeAll();
   }
 
 
