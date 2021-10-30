@@ -23,6 +23,11 @@ export class LogService {
   timeout(id: number) {
     return this.http.post(`${this.logsUrl}/timeoutLog`, { id: id });
   }
+  getTally(month: number, year: number) {
+    let httpParams = new HttpParams().set('month', month).set('year', year);
+    const options: Object = { observe: 'response', headers: new HttpHeaders({ 'x-auth-token': '' }), params: httpParams };
+    return this.http.get('logs/tally', options);
+  }
   getLogsNoTimeOut() {
     return this.http.get('logs/notimeout');
   }

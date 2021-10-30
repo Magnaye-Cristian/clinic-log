@@ -1,6 +1,6 @@
 <div class="table mat-elevation-z8" id="table">
     <div class="date">
-      <date-picker></date-picker>
+      <date-picker (dateSelected)="setTallyLog($event)"></date-picker>
     </div>
     <div class="btn">
       <button class="print-btn" mat-raised-button
