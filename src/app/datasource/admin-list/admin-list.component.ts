@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { AdminListDataSource, AdminListItem } from './admin-list-datasource';
@@ -17,7 +17,6 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./admin-list.component.css']
 })
 export class AdminListComponent implements AfterViewInit, OnInit {
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<AdminListItem>;
   dataSource: any;
@@ -26,7 +25,12 @@ export class AdminListComponent implements AfterViewInit, OnInit {
   displayedColumns = ['id', 'name', 'status', 'disable'];
   searchControl: FormControl;
   backup: any;
-
+  pageIndex: 0
+  currentPage: any = 0;
+  pageSize: any = 10;
+  totalSize = 0;
+  pageEvent: PageEvent;
+  paginator: any;
   constructor(private dialog: MatDialog, private accountService: AccountService) {
     // this.dataSource = new AdminListDataSource();
   }
@@ -51,6 +55,7 @@ export class AdminListComponent implements AfterViewInit, OnInit {
         }
       }
       this.table.dataSource = newDataSource;
+      this.iterator(newDataSource)
       console.log(this.dataSource)
     })
   }
@@ -66,7 +71,21 @@ export class AdminListComponent implements AfterViewInit, OnInit {
       this.dataSource.paginator = this.paginator;
       this.table.dataSource = this.dataSource;
       this.backup = JSON.parse(JSON.stringify(this.dataSource))
+      this.totalSize = this.dataSource.length;
+      this.iterator(this.dataSource);
     })
+  }
+  handlePage(e: any) {
+    this.currentPage = e.pageIndex;
+    this.pageSize = e.pageSize;
+    this.iterator(this.dataSource);
+    console.log(e)
+  }
+  iterator(dataSource: any[]) {
+    const end = (this.currentPage + 1) * this.pageSize;
+    const start = this.currentPage * this.pageSize;
+    const part = dataSource.slice(start, end);
+    this.table.dataSource = part;
   }
   onDisable(row) {
     const dialog = this.dialog.open(DisableComponent, {
