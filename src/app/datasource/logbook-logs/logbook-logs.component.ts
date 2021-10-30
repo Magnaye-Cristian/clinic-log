@@ -25,7 +25,6 @@ export class LogbookLogsComponent implements AfterViewInit, OnInit {
   displayedColumns = ['school id', 'name', 'department', 'purpose', 'medicine', 'edit', 'terminate'];
   constructor(private dialog: MatDialog, private logService: LogService) {
     // this.dataSource = new LogbookLogsDataSource();
-
   }
 
   ngOnInit(): void {
@@ -40,7 +39,15 @@ export class LogbookLogsComponent implements AfterViewInit, OnInit {
     this.logService.getLogsNoTimeOut().subscribe(x => {
       for (let z of x) {
         console.log(z)
-        const appendObject = { name: `${z.first_name} ${z.last_name}` }
+        const appendObject = {
+          name: `${z.first_name} ${z.last_name}`,
+          school_id_placeholder: z.school_id,
+          department_placeholder: z.department
+        }
+        if (z?.type === 'non-university') {
+          appendObject.school_id_placeholder = z.type;
+          appendObject.department_placeholder = z.address;
+        }
         Object.assign(z, appendObject)
       }
 
