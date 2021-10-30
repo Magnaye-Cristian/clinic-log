@@ -48,7 +48,7 @@ export class MedicineLogTableComponent implements AfterViewInit, OnInit {
       records.forEach((record, index) => {
         console.log(record)
         // let column: { num: number, name: string, srCode: string, department: string, complaint: string, medicine: string, date: string };
-        Object.assign(record, { num: index + 1, name: record.first_name + record.lastname, date: new Date(record.timeout).toDateString(), srCode: record.school_id })
+        Object.assign(record, { num: index + 1, name: `${record.first_name}  ${record.last_name}`, date: new Date(record.timeout).toDateString(), srCode: record.school_id })
       });
       this.dataSource = records;
 
