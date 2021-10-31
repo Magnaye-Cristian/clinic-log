@@ -57,6 +57,7 @@ export class TallyLogComponent implements AfterViewInit {
       console.log(complaints)
       let singleRow = []
       let data = []
+      let grandTotal = 0;
       for (let complaint of complaints) {
         singleRow = [];
         singleRow.push(complaint)
@@ -67,6 +68,7 @@ export class TallyLogComponent implements AfterViewInit {
               if (new Date(tal.timein).getDate() === i) {
                 singleRow[i] = tal.count;
                 total += tal.count;
+                grandTotal += tal.count;
               } else {
                 if (!singleRow[i])
                   singleRow[i] = 0;
@@ -77,6 +79,11 @@ export class TallyLogComponent implements AfterViewInit {
         singleRow.push(total)
         data.push(singleRow)
       }
+      let total = [];
+      total[0] = 'TOTAL';
+      total[numberOfDays + 1] = grandTotal;
+      data.push(total)
+      console.log(grandTotal)
       console.log(data)
 
       this.dataSource = data
