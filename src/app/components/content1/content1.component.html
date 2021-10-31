@@ -7,9 +7,10 @@
 
     <form class="login-form" (ngSubmit)="login(loginForm.value)" #loginForm="ngForm">
       <div class="form-group">
-        <mat-form-field class="form-input">
+        <mat-form-field class="form-input" autocomplete="off">
           <mat-label>University: </mat-label>
           <input
+          autocomplete="off"
           required
           ngModel
           name="university"
@@ -24,9 +25,10 @@
       </div>
 
       <div class="form-group">
-        <mat-form-field class="form-input">
+        <mat-form-field class="form-input" autocomplete="off">
           <mat-label>Sr-Code:</mat-label>
           <input
+          autocomplete="off"
           required
           minlength="8"
           ngModel
@@ -43,9 +45,10 @@
       </div>
 
       <div class="form-group">
-        <mat-form-field class="form-input">
+        <mat-form-field  class="form-input" autocomplete="off">
           <mat-label>Password:</mat-label>
           <input
+          autocomplete="off"
           required
           ngModel
           name="password"
