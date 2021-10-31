@@ -53,8 +53,8 @@ export class AddMedicineComponent implements OnInit {
     { value: 'Loperamide', viewValue: 'Loperamide' },
     { value: 'Mefenamic Acid', viewValue: 'Mefenamic Acid' },
     { value: 'Strepsils', viewValue: 'Strepsils' },
-    { value: 'Vomiting', viewValue: 'Vomiting' },
-    { value: 'Wound', viewValue: 'Wound Dressing' },
+    { value: 'Antiemetics', viewValue: 'Antiemetics' },
+    { value: 'Wound Dressing', viewValue: 'Wound Dressing' },
     { value: 'Others', viewValue: 'Others' },
   ];
 }
