@@ -28,7 +28,7 @@ export class AddMedicineComponent implements OnInit {
     }
     console.log(medInfo)
     this.logService.updateMedicine(medInfo).subscribe((x: any) => {
-
+      this.matDialogRef.closeAll()
       if (x.message === 'success')
         console.log('success')
       else
