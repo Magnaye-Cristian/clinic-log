@@ -14,9 +14,10 @@ interface Medicine {
 })
 export class AddMedicineComponent implements OnInit {
 
-  constructor(private logService: LogService, @Inject(MAT_DIALOG_DATA) public data: { id: number }, private matDialogRef: MatDialog) { }
+  constructor(private logService: LogService, @Inject(MAT_DIALOG_DATA) public data: { id: number, medicine: string }, private matDialogRef: MatDialog) { }
   selectedMedicine
   ngOnInit(): void {
+    this.selectedMedicine = this.data?.medicine ? this.data.medicine : '';
 
   }
 
