@@ -112,6 +112,7 @@ export class EditStakeholderComponent implements OnInit {
     delete updateObject.department_placeholder;
     console.log(updateObject)
     this.logService.update(updateObject).subscribe((x: any) => {
+      this.matDialogRef.closeAll();
       if (x.message === 'success')
         console.log('success')
       else
@@ -164,8 +165,8 @@ export class EditStakeholderComponent implements OnInit {
     { value: 'Loperamide', viewValue: 'Loperamide' },
     { value: 'Mefenamic Acid', viewValue: 'Mefenamic Acid' },
     { value: 'Strepsils', viewValue: 'Strepsils' },
-    { value: 'Vomiting', viewValue: 'Vomiting' },
-    { value: 'Wound', viewValue: 'Wound Dressing' },
+    { value: 'Antiemetics', viewValue: 'Antiemetics' },
+    { value: 'Wound Dressing', viewValue: 'Wound Dressing' },
     { value: 'Others', viewValue: 'Others' },
   ];
 

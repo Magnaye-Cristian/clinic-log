@@ -28,7 +28,7 @@ export class AddMedicineComponent implements OnInit {
     }
     console.log(medInfo)
     this.logService.updateMedicine(medInfo).subscribe((x: any) => {
-
+      this.matDialogRef.closeAll()
       if (x.message === 'success')
         console.log('success')
       else
@@ -53,8 +53,8 @@ export class AddMedicineComponent implements OnInit {
     { value: 'Loperamide', viewValue: 'Loperamide' },
     { value: 'Mefenamic Acid', viewValue: 'Mefenamic Acid' },
     { value: 'Strepsils', viewValue: 'Strepsils' },
-    { value: 'Vomiting', viewValue: 'Vomiting' },
-    { value: 'Wound', viewValue: 'Wound Dressing' },
+    { value: 'Antiemetics', viewValue: 'Antiemetics' },
+    { value: 'Wound Dressing', viewValue: 'Wound Dressing' },
     { value: 'Others', viewValue: 'Others' },
   ];
 }
