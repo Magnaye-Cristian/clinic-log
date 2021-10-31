@@ -38,8 +38,6 @@ export class LogbookRecordsComponent implements OnInit {
     this.logService.getLogsWithTimeout(date.getFullYear(), month, date.getDate()).subscribe((records: any) => {
       records.forEach((z, index) => {
         console.log(z)
-
-
         const appendObject = {
           num: index + 1,
           name: `${z.first_name} ${z.last_name}`,
@@ -48,6 +46,8 @@ export class LogbookRecordsComponent implements OnInit {
           date: new Date(z.timeout).toDateString(),
           srCode: z.school_id
         }
+        z.timein = new Date(z.timein)
+        z.timeout = new Date(z.timeout)
         if (z?.type === 'non-university') {
           appendObject.school_id_placeholder = z.type_spec;
           appendObject.department_placeholder = z.address;

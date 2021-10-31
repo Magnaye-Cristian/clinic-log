@@ -60,13 +60,13 @@
     <!-- Time In Column -->
     <ng-container matColumnDef="timeIn">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Time In</th>
-      <td mat-cell *matCellDef="let row">{{row.timeIn}}</td>
+      <td mat-cell *matCellDef="let row">{{row.timein | date: 'shortTime'}}</td>
     </ng-container>
 
     <!-- Time Out Column -->
     <ng-container matColumnDef="timeOut">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Time Out</th>
-      <td mat-cell *matCellDef="let row">{{row.timeOut}}</td>
+      <td mat-cell *matCellDef="let row">{{row.timeout| date: 'shortTime'}}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
