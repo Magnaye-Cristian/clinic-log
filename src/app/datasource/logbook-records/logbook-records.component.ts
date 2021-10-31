@@ -16,7 +16,7 @@ export class LogbookRecordsComponent implements OnInit {
   @ViewChild(MatTable) table!: MatTable<LogbookRecordsItem>;
   dataSource: LogbookRecordsDataSource;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['num', 'name', 'srCode', 'department', 'purpose', 'type', 'address', 'date', 'timeIn', 'timeOut'];
+  displayedColumns = ['num', 'name', 'srCode', 'department', 'purpose', 'type', 'date', 'timeIn', 'timeOut'];
 
   constructor(private logService: LogService) {
 
