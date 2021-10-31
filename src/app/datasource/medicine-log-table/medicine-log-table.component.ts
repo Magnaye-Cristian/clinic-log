@@ -15,9 +15,9 @@ export class MedicineLogTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<MedicineLogTableItem>;
-  dataSource: MedicineLogTableDataSource;
+  dataSource: any;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['num', 'name', 'school_id', 'department', 'complaint', 'medicine', 'date'];
+  displayedColumns = ['num', 'name', 'school_id', 'department', 'complaint', 'medicine', 'type', 'address', 'date'];
   constructor(private logService: LogService) {
 
   }
@@ -45,10 +45,23 @@ export class MedicineLogTableComponent implements AfterViewInit, OnInit {
     console.log(month)
     console.log(date.getFullYear())
     this.logService.getMedicineRecord(date.getFullYear(), month, date.getDate()).subscribe((records: any) => {
-      records.forEach((record, index) => {
-        console.log(record)
-        // let column: { num: number, name: string, srCode: string, department: string, complaint: string, medicine: string, date: string };
-        Object.assign(record, { num: index + 1, name: `${record.first_name}  ${record.last_name}`, date: new Date(record.timeout).toDateString(), srCode: record.school_id })
+      records.forEach((z, index) => {
+        console.log(z)
+
+
+        const appendObject = {
+          num: index + 1,
+          name: `${z.first_name} ${z.last_name}`,
+          school_id_placeholder: z.school_id,
+          department_placeholder: z.department,
+          date: new Date(z.timeout).toDateString(),
+          srCode: z.school_id
+        }
+        if (z?.type === 'non-university') {
+          appendObject.school_id_placeholder = z.type_spec;
+          appendObject.department_placeholder = z.address;
+        }
+        Object.assign(z, appendObject)
       });
       this.dataSource = records;
 
