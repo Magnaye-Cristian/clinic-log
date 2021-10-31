@@ -108,6 +108,8 @@ export class EditStakeholderComponent implements OnInit {
     delete updateObject.timeout;
     delete updateObject.university_id;
     delete updateObject.name;
+    delete updateObject.school_id_placeholder;
+    delete updateObject.department_placeholder;
     console.log(updateObject)
     this.logService.update(updateObject).subscribe((x: any) => {
       if (x.message === 'success')
