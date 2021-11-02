@@ -44,7 +44,6 @@ export class NewCodesComponent implements OnInit {
         })
       }
       this.dataSource = tableData;
-      this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.table.dataSource = this.dataSource;
     })

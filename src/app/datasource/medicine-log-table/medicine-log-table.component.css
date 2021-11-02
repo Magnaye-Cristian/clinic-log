@@ -29,6 +29,9 @@ mat-icon {
   line-height: .4em;
   margin-right: 10px;
 }
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  padding-right: 20px;
+}
 table {
   border-spacing: 2px;
 }
@@ -42,6 +45,7 @@ th {
 td {
   font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
   font-weight: 400;
+  text-transform: capitalize;
 }
 @media only screen
   and (min-device-width : 300px)

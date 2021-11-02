@@ -65,7 +65,6 @@ export class MedicineLogTableComponent implements AfterViewInit, OnInit {
       });
       this.dataSource = records;
 
-      this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.table.dataSource = this.dataSource;
     })

@@ -20,6 +20,9 @@ th {
   font-weight: 600;
   border-top: 1px solid #dee2e6;
 }
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  padding-right: 20px;
+}
 @media only screen
   and (min-device-width : 300px)
   and (max-device-width : 780px) {
