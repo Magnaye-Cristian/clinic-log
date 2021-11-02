@@ -99,6 +99,7 @@ export class EditOthersComponent implements OnInit {
     // delete updateObject.name;
     // console.log(updateObject)
     this.logService.update(updateObject).subscribe((x: any) => {
+      this.matDialogRef.closeAll();
       if (x.message === 'success')
         console.log('success')
       else
