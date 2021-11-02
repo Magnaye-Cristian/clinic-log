@@ -28,7 +28,10 @@ h1 {
   display: flex;
   overflow: auto;
 }
-
+ngx-charts-number-card {
+  text-transform: uppercase;
+  font-weight: 500;
+}
 .number-cards {
   height: 200px;
   margin: 2%;
