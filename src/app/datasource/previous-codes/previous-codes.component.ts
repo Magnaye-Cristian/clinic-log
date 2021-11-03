@@ -30,9 +30,10 @@ export class PreviousCodesComponent implements OnInit {
     this.codeService.getAllCodes().subscribe((codes: ICode[]) => {
       if (codes.length < 1)
         return;
-
+      let id = 0
       for (let code of codes) {
-        Object.assign(code, { date: new Date(code.created_on).toDateString() })
+        ++id;
+        Object.assign(code, { date: new Date(code.created_on).toDateString(), _id: id })
       }
 
       console.log(codes)
