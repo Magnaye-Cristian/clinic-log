@@ -3,83 +3,71 @@
     <div class="head">
       <img class="img" src="assets/head-admin.png">
       <h1 class="header">admin</h1>
-      <h3>Put Name Of School Here!</h3>
+      <h3>{{university}}</h3>
     </div>
   </div>
   <div class="info mat-elevation-z8">
     <h1 class="info-header">Account Information</h1>
     <div class="form-group">
+      <label for="srcode">Sr-Code/ID Number:</label>
+      <input
+      [value]="school_id"
+      name="srcode"
+      id="srcode"
+      type="text"
+      class="form-control"
+      disabled>
+    </div>
+    <div class="form-group">
       <label for="name">First Name:</label>
       <input
-      required
-      ngModel
+      [value]="first_name"
       name="name"
-      #name="ngModel"
       id="name"
       type="text"
       class="form-control"
-      placeholder="Ex. Juan Dela Cruz"
       disabled>
     </div>
     <div class="form-group">
       <label for="name">Last Name:</label>
       <input
-      required
-      ngModel
+      [value]="last_name"
       name="name"
-      #name="ngModel"
       id="name"
       type="text"
       class="form-control"
-      placeholder="Ex. Juan Dela Cruz"
       disabled>
     </div>
     <div class="form-group">
       <label for="name">Middle Name:</label>
       <input
-      required
-      ngModel
+      [value]="middle_name"
       name="name"
-      #name="ngModel"
       id="name"
       type="text"
       class="form-control"
-      placeholder="Ex. Juan Dela Cruz"
       disabled>
     </div>
     <div class="form-group">
       <label for="department">Department:</label>
       <input
-      required
-      ngModel
+      [value]="department"
       name="department"
-      #department="ngModel"
       id="department"
       type="text"
       class="form-control"
-      placeholder="Ex. CICS"
       disabled>
-    </div>
-    <div class="alert alert-danger" *ngIf="department.touched && !department.valid">
-      <div *ngIf="department.errors?.required">Department is required.</div>
     </div>
     <div class="form-group">
-      <label for="srcode">Sr-Code/ID Number:</label>
+      <label for="program">Program:</label>
       <input
-      required
-      ngModel
-      name="srcode"
-      #srcode="ngModel"
-      id="srcode"
+      [value]="program"
+      name="program"
+      id="program"
       type="text"
       class="form-control"
-      placeholder="Ex. 18-00000"
       disabled>
     </div>
-    <div class="alert alert-danger" *ngIf="srcode.touched && !srcode.valid">
-      <div *ngIf="srcode.errors?.required">Sr-Code is required.</div>
-    </div>
-
     <div class="btn">
       <button class="update" mat-raised-button (click)="onCreate()">Update Profile</button>
     </div>
