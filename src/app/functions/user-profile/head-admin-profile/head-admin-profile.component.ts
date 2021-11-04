@@ -34,7 +34,7 @@ export class HeadAdminProfileComponent implements OnInit {
     })
   }
 
-  onCreate() {
+  onUpdate() {
     this.dialog.open(UpdateProfileComponent);
   }
 

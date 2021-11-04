@@ -37,7 +37,7 @@ export class AdminProfileComponent implements OnInit {
     })
   }
 
-  onCreate(){
+  onUpdate(){
     this.dialog.open(UpdateProfileComponent);
   }
 
