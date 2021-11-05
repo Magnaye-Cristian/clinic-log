@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
     console.log(registrationObject);
     this.accountService.register(registrationObject).subscribe((x: any) => {
       console.log(x)
-      this.accountService.navigateByRole(x.body.role)
+      this.accountService.navigateByRole(x.role)
     })
 
   }

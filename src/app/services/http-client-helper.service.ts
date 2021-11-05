@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/internal/operators/map';
 
 
+import jwt_decode from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,7 +20,7 @@ export class HttpClientHelperService {
      */
     return this.http.post<T>(url, body, this.options).pipe(
       map((res: any) => {
-        if (url === 'authenticate')
+        if (url === 'authenticate' || 'register')
           this.saveToken(res);
         return res.body;
       })
@@ -29,8 +30,15 @@ export class HttpClientHelperService {
     if (result.status !== 200)
       return;
     const token = result.headers.get('x-auth-token')
-    console.log(`token + ${token}`)
-    localStorage.setItem('token', result.headers.get('x-auth-token'))
+    try {
+      jwt_decode(token);
+      console.log(`token + ${token}`)
+      localStorage.setItem('token', result.headers.get('x-auth-token'))
+    }
+    catch (error) {
+      console.log(`could not save token, error ${error}`)
+      return null;
+    }
   }
 
   put<T>(url: string, body: any) {
