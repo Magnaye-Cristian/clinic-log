@@ -31,9 +31,10 @@ export class RegisterComponent implements OnInit {
      * on register
      * redirect to default page according to accounttype
      */
-
-    console.log(registrationForm);
-    this.accountService.register(registrationForm).subscribe((x: any) => {
+    const registrationObject = JSON.parse(JSON.stringify(registrationForm));
+    delete registrationObject.confirmPassword;
+    console.log(registrationObject);
+    this.accountService.register(registrationObject).subscribe((x: any) => {
       console.log(x)
       this.accountService.navigateByRole(x.body.role)
     })
