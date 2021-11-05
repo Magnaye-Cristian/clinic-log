@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { GenerateCodeComponent } from 'src/app/dialog/generate-code/generate-code.component';
 import { UpdateProfileComponent } from 'src/app/dialog/update-profile/update-profile.component';
 import { IProfile } from 'src/app/models/profile.model';
 import { AccountService } from 'src/app/services/account.service';
@@ -35,12 +34,8 @@ export class HeadAdminProfileComponent implements OnInit {
     })
   }
 
-  onCreate() {
+  onUpdate() {
     this.dialog.open(UpdateProfileComponent);
-  }
-
-  onClick() {
-    this.dialog.open(GenerateCodeComponent);
   }
 
 }
