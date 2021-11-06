@@ -209,12 +209,12 @@
         minlength="8"
         placeholder="Ex. 000xxx">
       </div>
-      <div *ngIf="requiredForm.controls['confirmPassword'].invalid && requiredForm.controls['confirmPassword'].touched" class="alert alert-danger">
+      <div *ngIf="requiredForm.controls['password'].value && (requiredForm.controls['confirmPassword'].errors.required || requiredForm.controls['confirmPassword'].value !== requiredForm.controls['password'].value)" class="alert alert-danger">
         <div *ngIf="requiredForm.controls['confirmPassword'].errors.required">
-          Password is required.
+          Confirm Password is required.
         </div>
-        <div *ngIf="requiredForm.controls['confirmPassword'].errors.minlength">
-          Must be at least 8 characters.
+        <div *ngIf="requiredForm.controls['confirmPassword'].value !== requiredForm.controls['password'].value">
+          Password is not the same
         </div>
       </div>
         <button type="submit" [disabled]="!requiredForm.valid">Register</button>
