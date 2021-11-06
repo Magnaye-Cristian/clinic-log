@@ -41,6 +41,10 @@ button {
   border-radius: 5px;
   border: none;
 }
+button:disabled {
+  background-color: #035774;
+  color: rgb(165, 165, 165);
+}
 .right {
   float: right;
   width: 50%;

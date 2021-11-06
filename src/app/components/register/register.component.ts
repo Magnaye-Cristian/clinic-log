@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IRegister } from 'src/app/models/register.models';
 import { AccountService } from 'src/app/services/account.service';
 import { RegisterService } from 'src/app/services/register.service';
@@ -14,11 +15,35 @@ interface user_type {
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  requiredForm: FormGroup;
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private fb: FormBuilder) {
+    form: this.requiredForm;
+   }
 
   ngOnInit(): void {
-  }
+    this.requiredForm = this.fb.group({
+      role: [null, Validators.required],
+      code: ['', [Validators.required,
+        Validators.pattern("^[a-z0-9A-Z]{2,}$")] ],
+      school_id: ['', [Validators.required,
+        Validators.pattern("^[a-z0-9A-Z_ -]{5,}$")] ],
+      first_name: ['', [Validators.required,
+        Validators.pattern("^[a-zA-Z_ ]{2,}$")] ],
+      last_name: ['', [Validators.required,
+        Validators.pattern("^[a-zA-Z_ ]{2,}$")] ],
+      middle_name: ['', [Validators.required,
+        Validators.pattern("^[a-zA-Z_ ]{2,}$")] ],
+      university: ['', [Validators.required,
+        Validators.pattern("^[a-zA-Z0-9_ ]*$")] ],
+      department: ['', [Validators.required,
+          Validators.pattern("^[a-zA-Z0-9_ ]*$")] ],
+      program: ['', [Validators.required,
+          Validators.pattern("^[a-zA-Z-_ ]*$")] ],
+      password: [null, Validators.required],
+      confirmPassword: [null, Validators.required],
+      });
+    }
   user: user_type[] = [
     { value: 'admin', viewValue: 'Admin' },
     { value: 'student', viewValue: 'Student' },
@@ -40,5 +65,6 @@ export class RegisterComponent implements OnInit {
     })
 
   }
+
 
 }

@@ -12,6 +12,7 @@ import { LogOutComponent } from '../dialog/log-out/log-out.component';
 })
 export class AdminAccountComponent {
   viewMode ='profile';
+  panelOpenState = false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
