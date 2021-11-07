@@ -2,6 +2,7 @@ import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/cor
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
+import { timeInterval } from 'rxjs/operators';
 import { LogService } from 'src/app/services/log.service';
 import { LogbookRecordsDataSource, LogbookRecordsItem } from './logbook-records-datasource';
 
@@ -16,7 +17,7 @@ export class LogbookRecordsComponent implements OnInit {
   @ViewChild(MatTable) table!: MatTable<LogbookRecordsItem>;
   dataSource: LogbookRecordsDataSource;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['num','srCode', 'name' , 'department', 'purpose', 'date', 'timeIn', 'timeOut'];
+  displayedColumns = ['num', 'srCode', 'name', 'department', 'purpose', 'date', 'timeIn', 'timeOut'];
 
   constructor(private logService: LogService) {
 
@@ -38,12 +39,19 @@ export class LogbookRecordsComponent implements OnInit {
     this.logService.getLogsWithTimeout(date.getFullYear(), month, date.getDate()).subscribe((records: any) => {
       records.forEach((z, index) => {
         console.log(z)
+
+        let timeout = new Date(z.timeout)
+        timeout.setHours(timeout.getHours() - 8)
+        let timein = new Date(z.timein);
+        timein.setHours(timein.getHours() - 8)
         const appendObject = {
           num: index + 1,
           name: `${z.first_name} ${z.last_name}`,
           school_id_placeholder: z.school_id,
           department_placeholder: z.department,
-          date: new Date(z.timeout).toDateString(),
+          date: timeout,
+          _timeout: timeout,
+          _timein: timein,
           srCode: z.school_id
         }
         z.timein = new Date(z.timein)

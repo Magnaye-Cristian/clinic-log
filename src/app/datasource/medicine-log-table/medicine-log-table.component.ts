@@ -48,15 +48,17 @@ export class MedicineLogTableComponent implements AfterViewInit, OnInit {
       records.forEach((z, index) => {
         console.log(z)
 
-
+        let timeout = new Date(z.timeout)
+        timeout.setHours(timeout.getHours() - 8)
         const appendObject = {
           num: index + 1,
           name: `${z.first_name} ${z.last_name}`,
           school_id_placeholder: z.school_id,
           department_placeholder: z.department,
-          date: new Date(z.timeout).toDateString(),
+          date: timeout,
           srCode: z.school_id
         }
+        console.log(`${z.timeout} .... ${appendObject.date}`)
         if (z?.type === 'non-university') {
           appendObject.school_id_placeholder = z.type_spec;
           appendObject.department_placeholder = z.address;
