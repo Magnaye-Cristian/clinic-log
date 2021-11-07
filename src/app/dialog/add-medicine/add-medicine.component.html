@@ -1,13 +1,20 @@
 <div class="log">
   <h1>Choose the Medicine</h1>
-  <mat-form-field appearance="fill" class="dropdown">
+  <mat-form-field appearance="fill" class="dropdown" >
     <mat-label>Medicine</mat-label>
-    <mat-select [(ngModel)]="selectedMedicine">
+    <mat-select [(ngModel)]="selectedMedicine"
+      #medicine="ngModel"
+      id="medicine"
+      matInput
+      required>
       <mat-option *ngFor="let medicine of medicines" [value]="medicine.value">
         {{medicine.viewValue}}
       </mat-option>
     </mat-select>
   </mat-form-field>
+  <div *ngIf="medicine.touched && !medicine.valid"class="alert alert-danger">
+    Sr-Code is required.
+  </div>
   <div class="btn1">
     <button class="cancel" (click)="cancel()">Cancel</button>
   </div>
