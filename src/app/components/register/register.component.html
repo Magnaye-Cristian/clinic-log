@@ -214,7 +214,7 @@
           Confirm Password is required.
         </div>
         <div *ngIf="requiredForm.controls['confirmPassword'].value !== requiredForm.controls['password'].value">
-          Password is not the same
+          Password is not the same.
         </div>
       </div>
         <button type="submit" [disabled]="!requiredForm.valid">Register</button>
