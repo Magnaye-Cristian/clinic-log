@@ -74,6 +74,7 @@ export class CreateLogOthersComponent implements OnInit {
     this.logService.create(logCreateDTO).subscribe((x) => {
       console.log(x)
       this.matDialogRef.closeAll();
+      
     });
   }
 
