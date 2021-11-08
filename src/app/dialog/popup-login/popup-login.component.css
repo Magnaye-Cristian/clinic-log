@@ -3,11 +3,11 @@
   height: 100%;
   margin: 0%;
   padding: 30px;
-  border: 2px solid red;
 }
 h3 {
   text-align: center;
   text-transform: uppercase;
+  color: rgb(245, 71, 71);
   font-weight: 600;
   font-family: Montserrat,"Helvetica Neue",Arial,sans-serif;
 }
