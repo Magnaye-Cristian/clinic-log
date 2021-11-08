@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { PopupLoginComponent } from 'src/app/dialog/popup-login/popup-login.component';
 import { ILogin } from 'src/app/models/login.model';
 import { ROLEENUM } from 'src/app/models/role.enum';
 import { AccountService } from 'src/app/services/account.service';
@@ -19,7 +21,8 @@ export class Content1Component implements OnInit {
     // @Inject(MAT_DIALOG_DATA) data,
     // private _ngZone: NgZone
     private router: Router,
-    private accountService: AccountService
+    private accountService: AccountService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -51,6 +54,7 @@ export class Content1Component implements OnInit {
         console.log(error)
         console.log('invalid credentials')
         this.dialogOpen('Invalid Credentials')
+        this.dialog.open(PopupLoginComponent, { panelClass: 'custom-dialog-container' });
       }
     )
 

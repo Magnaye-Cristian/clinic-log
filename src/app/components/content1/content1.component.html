@@ -26,7 +26,7 @@
 
       <div class="form-group">
         <mat-form-field class="form-input" autocomplete="off">
-          <mat-label>Sr-Code:</mat-label>
+          <mat-label>Sr-Code / ID Number:</mat-label>
           <input
           autocomplete="off"
           required
@@ -61,7 +61,7 @@
           <div *ngIf="password.errors?.required">Password is required.</div>
         </div>
       </div>
-      <button class="button" mat-button type="submit" [disabled]="false">Login</button>
+      <button class="button" mat-button type="submit" [disabled]="!loginForm.valid">Login</button>
     </form>
   </div>
   <div class="container">

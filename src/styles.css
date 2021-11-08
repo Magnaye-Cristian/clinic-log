@@ -12,3 +12,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 a {
   cursor: pointer;
 }
+.custom-dialog-container .mat-dialog-container {
+  padding: 0%;
+}
