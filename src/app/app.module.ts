@@ -83,6 +83,8 @@ import { CodesListComponent } from './functions/codes-list/codes-list.component'
 import { NewCodesListComponent } from './functions/new-codes-list/new-codes-list.component';
 import { NewCodesComponent } from './datasource/new-codes/new-codes.component';
 import { PreviousCodesComponent } from './datasource/previous-codes/previous-codes.component';
+import { PopupLoginComponent } from './dialog/popup-login/popup-login.component';
+import { PopupRegisterComponent } from './dialog/popup-register/popup-register.component';
 
 
 @NgModule({
@@ -135,7 +137,9 @@ import { PreviousCodesComponent } from './datasource/previous-codes/previous-cod
     CodesListComponent,
     NewCodesListComponent,
     NewCodesComponent,
-    PreviousCodesComponent
+    PreviousCodesComponent,
+    PopupLoginComponent,
+    PopupRegisterComponent
   ],
   imports: [
     BrowserModule,

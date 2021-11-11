@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupRegisterComponent } from 'src/app/dialog/popup-register/popup-register.component';
 import { IRegister } from 'src/app/models/register.models';
 import { AccountService } from 'src/app/services/account.service';
 import { RegisterService } from 'src/app/services/register.service';
@@ -17,7 +19,7 @@ interface user_type {
 export class RegisterComponent implements OnInit {
   requiredForm: FormGroup;
 
-  constructor(private accountService: AccountService, private fb: FormBuilder) {
+  constructor(private accountService: AccountService, private fb: FormBuilder, public dialog: MatDialog) {
     form: this.requiredForm;
   }
 
@@ -25,24 +27,25 @@ export class RegisterComponent implements OnInit {
     this.requiredForm = this.fb.group({
       role: [null, Validators.required],
       code: ['', [Validators.required,
-      Validators.pattern("^[a-z0-9A-Z]{2,}$")]],
+        Validators.pattern("^[a-z0-9A-Z]{2,}$")]],
       school_id: ['', [Validators.required,
-      Validators.pattern("^[a-z0-9A-Z_ -]{5,}$")]],
+        Validators.pattern("^[a-z0-9A-Z_ -]{5,}$")]],
       first_name: ['', [Validators.required,
-      Validators.pattern("^[a-zA-Z_ ]{2,}$")]],
+        Validators.pattern("^[a-zA-Z_ ]{2,}$")]],
       last_name: ['', [Validators.required,
-      Validators.pattern("^[a-zA-Z_ ]{2,}$")]],
+        Validators.pattern("^[a-zA-Z_ ]{2,}$")]],
       middle_name: ['', [Validators.required,
-      Validators.pattern("^[a-zA-Z_ ]{1,}$")]],
+        Validators.pattern("^[a-zA-Z_ ]{1,}$")]],
       university: ['', [Validators.required,
-      Validators.pattern("^[a-zA-Z0-9_ ]*$")]],
+        Validators.pattern("^[a-zA-Z0-9_ ]*$")]],
       department: ['', [Validators.required,
-      Validators.pattern("^[a-zA-Z0-9_ ]*$")]],
+        Validators.pattern("^[a-zA-Z0-9_ ]*$")]],
       program: ['', [Validators.required,
-      Validators.pattern("^[a-zA-Z-_ ]*$")]],
+        Validators.pattern("^[a-zA-Z-_ ]*$")]],
       password: ['', [Validators.required,
-      Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]],
-      confirmPassword: [null, Validators.required],
+        Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]],
+      confirmPassword: ['', [Validators.required,
+        Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]]
     });
   }
   user: user_type[] = [
@@ -63,8 +66,11 @@ export class RegisterComponent implements OnInit {
     this.accountService.register(registrationObject).subscribe((x: any) => {
       console.log(x)
       this.accountService.navigateByRole(x.role)
+    },error => {
+      console.log(error)
+      console.log('invalid credentials')
+      this.dialog.open(PopupRegisterComponent, { panelClass: 'custom-dialog-container' });
     })
-
   }
 
 }

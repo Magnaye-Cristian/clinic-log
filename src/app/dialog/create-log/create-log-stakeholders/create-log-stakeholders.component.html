@@ -56,7 +56,7 @@
   </div>
   <mat-form-field appearance="fill" class="dropdown">
     <mat-label>Purpose</mat-label>
-    <mat-select formControlName="purpose">
+    <mat-select formControlName="purpose" required>
       <mat-option *ngFor="let purpose of purpose" [value]="purpose.value">
         {{purpose.viewValue}}
       </mat-option>
@@ -64,7 +64,7 @@
   </mat-form-field>
   <mat-form-field appearance="fill" class="dropdown">
     <mat-label>Complaint</mat-label>
-    <mat-select formControlName="complaint">
+    <mat-select formControlName="complaint" required>
       <mat-option *ngFor="let complaint of complaint" [value]="complaint.value">
         {{complaint.viewValue}}
       </mat-option>

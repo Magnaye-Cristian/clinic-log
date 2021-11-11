@@ -46,7 +46,7 @@
       </div>
       <div *ngIf="requiredForm.controls['school_id'].invalid && requiredForm.controls['school_id'].touched" class="alert alert-danger">
         <div *ngIf="requiredForm.controls['school_id'].errors.required">
-          First Name is required.
+          Sr-Code/ID Number is required.
         </div>
         <div *ngIf="requiredForm.controls['school_id'].errors.minlength">
           Must be more than 6 characters.
@@ -193,7 +193,7 @@
           Must be at least 8 characters.
         </div>
         <div *ngIf="requiredForm.controls['password'].errors.pattern">
-          Must contain at least 1 number, special characters, and capital letter .
+          Must contain at least 1 number, special characters, and capital letter.
         </div>
       </div>
       <div class="form-group" autocomplete="off">
@@ -211,10 +211,16 @@
       </div>
       <div *ngIf="requiredForm.controls['confirmPassword'].invalid && requiredForm.controls['confirmPassword'].touched" class="alert alert-danger">
         <div *ngIf="requiredForm.controls['confirmPassword'].errors.required">
-          Confirm Password is required.
+          Confirm password is required.
         </div>
-        <div *ngIf="requiredForm.controls['confirmPassword'].value !== requiredForm.controls['password'].value">
-          Password is not the same.
+        <div *ngIf="requiredForm.controls['confirmPassword'].errors.minlength">
+          Must be at least 8 characters.
+        </div>
+        <div *ngIf="requiredForm.controls['confirmPassword'].errors.pattern">
+          Must contain at least 1 number, special characters, and capital letter.
+        </div>
+        <div *ngIf="requiredForm.controls['confirmPassword'].value !== requiredForm.controls['password'] && requiredForm.controls['confirmPassword'].touched">
+          Password and confirm password does not match.
         </div>
       </div>
         <button type="submit" [disabled]="!requiredForm.valid">Register</button>
