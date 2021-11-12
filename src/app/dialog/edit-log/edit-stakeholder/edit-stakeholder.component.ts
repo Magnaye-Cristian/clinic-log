@@ -75,7 +75,8 @@ export class EditStakeholderComponent implements OnInit {
       return;
 
     this.accountService.get(this.student_id.value).subscribe((profile: IProfile) => {
-      this.profile_id = profile.id;
+      console.log(profile)
+      // this.profile_id = profile.id;
       this.department = ''
       this.first_name = ''
       this.middle_name = ''
