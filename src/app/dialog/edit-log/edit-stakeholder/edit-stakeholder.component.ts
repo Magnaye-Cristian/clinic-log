@@ -96,6 +96,10 @@ export class EditStakeholderComponent implements OnInit {
   updateLogUniversity() {
     console.log(this.editLog.value)
     const id = this._data.id;
+    this.updateValue.first_name = this.first_name;
+    this.updateValue.last_name = this.last_name;
+    this.updateValue.middle_name = this.middle_name;
+    this.updateValue.department = this.department;
     this.updateValue.purpose = this.purposeControl.value;
     this.updateValue.complaint = this.complaintControl.value;
     this.updateValue.medicine = this.medicineControl.value;
