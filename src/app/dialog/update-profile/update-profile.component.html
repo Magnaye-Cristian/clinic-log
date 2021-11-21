@@ -5,6 +5,7 @@
     <div class="form-group">
       <label for="first_name">First Name:</label>
       <input
+      required
       formControlName="first_name"
       name="first_name"
       id="first_name"
@@ -26,6 +27,7 @@
     <div class="form-group">
       <label for="middle_name">Middle Name:</label>
       <input
+      required
       formControlName="middle_name"
       name="middle_name"
       id="middle_name"
@@ -36,6 +38,7 @@
     <div class="form-group">
       <label for="name">Department:</label>
       <input
+      required
       formControlName="department"
       name="department"
       id="department"
@@ -46,6 +49,7 @@
     <div class="form-group">
       <label for="name">Program:</label>
       <input
+      required
       formControlName="program"
       name="program"
       id="program"
@@ -56,8 +60,9 @@
     <div class="form-group">
       <label for="password">Password:</label>
       <input
+      required
       formControlName="password"
-      minlength="6"
+      minlength="8"
       name="password"
       id="password"
       type="text"
@@ -68,7 +73,7 @@
       <button class="cancel" mat-raised-button type="button" (click)="cancel()">Cancel</button>
     </div>
     <div class="btn2">
-      <button class="update" type="submit" mat-raised-button>Update Profile</button>
+      <button class="update" type="submit" mat-raised-button [disabled]="!updateForm.valid">Update Profile</button>
     </div>
   </form>
   </div>
