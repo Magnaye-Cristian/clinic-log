@@ -65,8 +65,7 @@ export class TallyLogComponent implements AfterViewInit {
         for (let i = 1; i <= numberOfDays; i++) {
           for (const tal of tally) {
             if (tal.complaint === complaint) {
-              const timein = tal.timein.setHours(tal.timein.getHours() - 8)
-              if (new Date(timein).getDate() === i) {
+              if (new Date(tal.timein).getDate() === i) {
                 singleRow[i] = tal.count;
                 total += tal.count;
                 grandTotal += tal.count;
