@@ -35,7 +35,8 @@ export class HeadAdminProfileComponent implements OnInit {
   }
 
   onUpdate() {
-    this.dialog.open(UpdateProfileComponent);
+    const dialog = this.dialog.open(UpdateProfileComponent);
+    dialog.afterClosed().subscribe(() => { this.setProfileValue() });
   }
 
 }
