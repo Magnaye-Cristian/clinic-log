@@ -37,8 +37,9 @@ export class StudentProfileComponent implements OnInit {
     })
   }
 
-  onUpdate(){
-    this.dialog.open(UpdateProfileComponent);
+  onUpdate() {
+    const dialog = this.dialog.open(UpdateProfileComponent);
+    dialog.afterClosed().subscribe(() => { this.setProfileValue() });
   }
 
 }
