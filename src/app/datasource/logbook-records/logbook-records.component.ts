@@ -41,9 +41,9 @@ export class LogbookRecordsComponent implements OnInit {
         console.log(z)
 
         let timeout = new Date(z.timeout)
-        timeout.setHours(timeout.getHours() - 8)
+        // timeout.setHours(timeout.getHours() - 8)
         let timein = new Date(z.timein);
-        timein.setHours(timein.getHours() - 8)
+        // timein.setHours(timein.getHours() - 8)
         const appendObject = {
           num: index + 1,
           name: `${z.first_name} ${z.last_name}`,

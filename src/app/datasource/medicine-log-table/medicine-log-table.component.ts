@@ -49,7 +49,7 @@ export class MedicineLogTableComponent implements AfterViewInit, OnInit {
         console.log(z)
 
         let timeout = new Date(z.timeout)
-        timeout.setHours(timeout.getHours() - 8)
+        // timeout.setHours(timeout.getHours() - 8)
         const appendObject = {
           num: index + 1,
           name: `${z.first_name} ${z.last_name}`,
